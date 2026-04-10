@@ -1,0 +1,232 @@
+/*
+ * Skyfall Ledger — Primitive interactive styles
+ *
+ * Handles pseudo-classes (:hover, :active, :focus-within, :disabled, :checked)
+ * that cannot be expressed as inline styles.
+ *
+ * Components set variant colors via scoped CSS custom properties
+ * (--_bg, --_color, --_border, etc.) on the element's inline style.
+ * This file handles WHEN those values are applied (state transitions).
+ *
+ * Layout, sizing, spacing, and non-interactive colors remain inline.
+ */
+
+/* ================================================================
+   VISUALLY HIDDEN INPUT (checkbox, radio, switch)
+   ================================================================ */
+.ledger-sr-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ================================================================
+   BUTTON
+   ================================================================ */
+.ledger-btn {
+  background: var(--_bg);
+  color: var(--_color);
+  border: 1px solid var(--_border, transparent);
+  cursor: pointer;
+  transition:
+    background var(--ledger-duration-short) var(--ledger-easing-settle),
+    border-color var(--ledger-duration-short) var(--ledger-easing-settle),
+    box-shadow var(--ledger-duration-short) var(--ledger-easing-settle),
+    opacity var(--ledger-duration-short) var(--ledger-easing-settle);
+}
+.ledger-btn:hover:not(:disabled) {
+  background: var(--_bg-hover, var(--_bg));
+  border-color: var(--_border-hover, var(--_border, transparent));
+}
+.ledger-btn:active:not(:disabled) {
+  background: var(--_bg-active, var(--_bg-hover, var(--_bg)));
+}
+.ledger-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ================================================================
+   INPUT WRAPPER
+   ================================================================ */
+.ledger-input-wrap {
+  border: 1px solid var(--ledger-color-border-default);
+  transition:
+    border-color var(--ledger-duration-short) var(--ledger-easing-settle),
+    box-shadow var(--ledger-duration-short) var(--ledger-easing-settle);
+}
+.ledger-input-wrap:hover:not([data-disabled]):not(:focus-within) {
+  border-color: var(--ledger-color-border-strong);
+}
+.ledger-input-wrap:focus-within {
+  border-color: var(--ledger-color-border-accent);
+  box-shadow: 0 0 0 1px var(--ledger-color-border-accent);
+}
+.ledger-input-wrap[data-invalid] {
+  border-color: var(--ledger-color-negative);
+}
+.ledger-input-wrap[data-invalid]:focus-within {
+  border-color: var(--ledger-color-negative);
+  box-shadow: 0 0 0 1px var(--ledger-color-negative);
+}
+.ledger-input-wrap[data-disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ledger-input-wrap input,
+.ledger-input-wrap textarea {
+  outline: none;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  width: 100%;
+}
+.ledger-input-wrap input::placeholder,
+.ledger-input-wrap textarea::placeholder {
+  color: var(--ledger-color-text-muted);
+}
+
+/* ================================================================
+   CHECKBOX
+   ================================================================ */
+.ledger-checkbox {
+  cursor: pointer;
+  user-select: none;
+}
+.ledger-checkbox__box {
+  border: 2px solid var(--ledger-color-border-strong);
+  transition:
+    background var(--ledger-duration-short) var(--ledger-easing-settle),
+    border-color var(--ledger-duration-short) var(--ledger-easing-settle);
+}
+.ledger-checkbox:hover:not([data-disabled]) .ledger-checkbox__box {
+  border-color: var(--ledger-color-border-accent);
+}
+.ledger-checkbox[data-checked] .ledger-checkbox__box,
+.ledger-checkbox[data-indeterminate] .ledger-checkbox__box {
+  background: var(--ledger-color-teal-500);
+  border-color: var(--ledger-color-teal-500);
+}
+.ledger-checkbox[data-disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ================================================================
+   RADIO
+   ================================================================ */
+.ledger-radio {
+  cursor: pointer;
+  user-select: none;
+}
+.ledger-radio__dot {
+  border: 2px solid var(--ledger-color-border-strong);
+  transition:
+    border-color var(--ledger-duration-short) var(--ledger-easing-settle);
+}
+.ledger-radio:hover:not([data-disabled]) .ledger-radio__dot {
+  border-color: var(--ledger-color-border-accent);
+}
+.ledger-radio[data-checked] .ledger-radio__dot {
+  border-color: var(--ledger-color-teal-500);
+}
+.ledger-radio[data-checked] .ledger-radio__dot::after {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ledger-color-teal-500);
+}
+.ledger-radio[data-disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ================================================================
+   SWITCH
+   ================================================================ */
+.ledger-switch {
+  cursor: pointer;
+  user-select: none;
+}
+.ledger-switch__track {
+  background: var(--ledger-color-border-strong);
+  transition: background var(--ledger-duration-short) var(--ledger-easing-settle);
+}
+.ledger-switch__thumb {
+  transition: transform var(--ledger-duration-short) var(--ledger-easing-settle);
+}
+.ledger-switch[data-checked] .ledger-switch__track {
+  background: var(--ledger-color-teal-500);
+}
+.ledger-switch[data-checked] .ledger-switch__thumb {
+  transform: translateX(20px);
+}
+.ledger-switch:hover:not([data-disabled]) .ledger-switch__track {
+  background: var(--ledger-color-border-accent);
+}
+.ledger-switch:hover:not([data-disabled])[data-checked] .ledger-switch__track {
+  background: var(--ledger-color-teal-400);
+}
+.ledger-switch[data-disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ================================================================
+   SEGMENTED CONTROL
+   ================================================================ */
+.ledger-seg__item {
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background var(--ledger-duration-short) var(--ledger-easing-settle),
+    color var(--ledger-duration-short) var(--ledger-easing-settle),
+    box-shadow var(--ledger-duration-short) var(--ledger-easing-settle);
+}
+.ledger-seg__item:hover:not([data-active='true']) {
+  color: var(--ledger-color-text-secondary);
+  background: var(--ledger-color-surface-default);
+}
+.ledger-seg__item[data-active='true'] {
+  background: var(--ledger-color-surface-raised);
+  color: var(--ledger-color-text-primary);
+  box-shadow: var(--ledger-shadow-1);
+}
+
+/* ================================================================
+   CHIP
+   ================================================================ */
+.ledger-chip {
+  border: 1px solid var(--_border, var(--ledger-color-border-default));
+  background: var(--_bg, transparent);
+  color: var(--_color, var(--ledger-color-text-secondary));
+  transition:
+    background var(--ledger-duration-short) var(--ledger-easing-settle),
+    border-color var(--ledger-duration-short) var(--ledger-easing-settle);
+}
+.ledger-chip[data-interactive]:hover {
+  background: var(--ledger-color-surface-sunken);
+  border-color: var(--ledger-color-border-strong);
+  cursor: pointer;
+}
+.ledger-chip[data-selected] {
+  background: var(--ledger-color-teal-900);
+  border-color: var(--ledger-color-teal-500);
+  color: var(--ledger-color-teal-300);
+}
+.ledger-chip[data-disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}

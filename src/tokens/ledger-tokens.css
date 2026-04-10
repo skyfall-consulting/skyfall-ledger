@@ -227,6 +227,16 @@ body {
   font-variant-numeric: tabular-nums lining-nums;
 }
 
+/* Focus ring — interactive components add class="ledger-focus-ring" */
+.ledger-focus-ring:focus-visible {
+  outline: var(--ledger-focus-ring-width) solid var(--ledger-focus-ring-color);
+  outline-offset: var(--ledger-focus-ring-offset);
+}
+
+.ledger-focus-ring:focus:not(:focus-visible) {
+  outline: none;
+}
+
 /* Reduced motion — kill digit-roll, chart animations, settle transitions */
 @media (prefers-reduced-motion: reduce) {
   *,

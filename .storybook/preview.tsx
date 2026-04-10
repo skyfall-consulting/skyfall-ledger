@@ -3,6 +3,7 @@ import type { Preview } from '@storybook/react';
 import { LedgerThemeProvider, type LedgerThemeMode } from '../src/theme';
 import skyfallLedgerTheme from './skyfallLedgerTheme';
 import '../src/tokens/ledger-tokens.css';
+import '../src/components/primitives.css';
 import './storybook.css';
 
 /**
