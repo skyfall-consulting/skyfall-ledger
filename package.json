@@ -1,0 +1,118 @@
+{
+  "name": "@skyfall_ai/ledger",
+  "version": "0.0.1",
+  "description": "Skyfall Ledger — Modern fintech design system. Composed money UI for the next generation of financial products.",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./charts": {
+      "import": {
+        "types": "./dist/charts/index.d.mts",
+        "default": "./dist/charts/index.mjs"
+      },
+      "require": {
+        "types": "./dist/charts/index.d.ts",
+        "default": "./dist/charts/index.js"
+      }
+    },
+    "./icons": {
+      "import": {
+        "types": "./dist/icons/index.d.mts",
+        "default": "./dist/icons/index.mjs"
+      },
+      "require": {
+        "types": "./dist/icons/index.d.ts",
+        "default": "./dist/icons/index.js"
+      }
+    },
+    "./styles": "./dist/index.css",
+    "./tokens": "./src/tokens/ledger-tokens.css"
+  },
+  "files": [
+    "dist",
+    "src/tokens/*.css"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "scripts": {
+    "dev": "storybook dev -p 6007",
+    "build": "tsup",
+    "build:storybook": "storybook build",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "clean": "rm -rf dist storybook-static",
+    "prepublishOnly": "npm run clean && npm run build",
+    "chromatic": "chromatic --build-script-name=build:storybook"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
+    "recharts": ">=2.12.0",
+    "lucide-react": ">=0.400.0"
+  },
+  "peerDependenciesMeta": {
+    "recharts": {
+      "optional": false
+    },
+    "lucide-react": {
+      "optional": false
+    }
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^8.6.0",
+    "@storybook/addon-essentials": "^8.6.0",
+    "@storybook/addon-themes": "^8.6.0",
+    "@storybook/react": "^8.6.0",
+    "@storybook/react-vite": "^8.6.0",
+    "@storybook/theming": "^8.6.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "chromatic": "^15.2.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.35.0",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "lucide-react": "^0.468.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "recharts": "^2.15.0",
+    "storybook": "^8.6.0",
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.0",
+    "vite": "^5.4.0"
+  },
+  "keywords": [
+    "fintech",
+    "design-system",
+    "react",
+    "components",
+    "ui",
+    "money",
+    "finance",
+    "banking",
+    "skyfall",
+    "ledger"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/gerardovinces/skyfall-ledger#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gerardovinces/skyfall-ledger.git"
+  }
+}

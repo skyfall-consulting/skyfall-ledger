@@ -1,0 +1,240 @@
+/*
+ * Skyfall Ledger — Design Tokens (CSS variables)
+ *
+ * Identity: "Obsidian & Lucid Teal"
+ * Naming convention: --ledger-{category}-{role}-{variant}-{scale}
+ *
+ * Two themes ship by default:
+ *   :root                      → light mode (Paper)
+ *   [data-ledger-theme="dark"] → dark mode (Obsidian, hero theme)
+ *
+ * The TS counterpart lives at `src/tokens/*.ts` and the two are kept
+ * in sync by hand. If you change a value here, change it there too.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root,
+[data-ledger-theme='light'] {
+  /* ============================================
+     NEUTRAL SPINE — OBSIDIAN
+     ============================================ */
+  --ledger-color-obsidian-0: #ffffff;
+  --ledger-color-obsidian-50: #f7f8fa;
+  --ledger-color-obsidian-100: #eef1f5;
+  --ledger-color-obsidian-200: #dde3ec;
+  --ledger-color-obsidian-300: #bdc6d3;
+  --ledger-color-obsidian-400: #8994a5;
+  --ledger-color-obsidian-500: #5b6779;
+  --ledger-color-obsidian-600: #3b4556;
+  --ledger-color-obsidian-700: #232b3a;
+  --ledger-color-obsidian-800: #161c28;
+  --ledger-color-obsidian-900: #0b1018;
+  --ledger-color-obsidian-950: #05080e;
+
+  /* ============================================
+     PRIMARY ACCENT — LUCID TEAL
+     ============================================ */
+  --ledger-color-teal-50: #e6fbf6;
+  --ledger-color-teal-100: #c8f6ec;
+  --ledger-color-teal-200: #9aefdd;
+  --ledger-color-teal-300: #6ff5e1;
+  --ledger-color-teal-400: #2ee6c6;
+  --ledger-color-teal-500: #14c8aa;
+  --ledger-color-teal-600: #0fa48c;
+  --ledger-color-teal-700: #0b7d6b;
+  --ledger-color-teal-800: #0a5b4f;
+  --ledger-color-teal-900: #083f37;
+
+  /* ============================================
+     SECONDARY ACCENTS
+     ============================================ */
+  --ledger-color-horizon-400: #5aa8ff;
+  --ledger-color-horizon-500: #2e7fe8;
+  --ledger-color-horizon-600: #1c5bba;
+
+  --ledger-color-violet-400: #9b8cff;
+  --ledger-color-violet-500: #6e5be6;
+
+  /* ============================================
+     FINANCIAL SEMANTIC PALETTE
+     ============================================ */
+  --ledger-color-positive: #29c26a; /* mint-500 */
+  --ledger-color-positive-subtle: #e8f8ee;
+  --ledger-color-negative: #e54b4b; /* coral-500 */
+  --ledger-color-negative-subtle: #fdecec;
+  --ledger-color-warning: #f5a524; /* amber-500 */
+  --ledger-color-warning-subtle: #fff6e5;
+  --ledger-color-info: #2e7fe8; /* horizon-500 */
+  --ledger-color-info-subtle: #eaf3ff;
+  --ledger-color-pending: #8994a5; /* obsidian-400 */
+
+  /* ============================================
+     SURFACE / TEXT / BORDER ALIASES (LIGHT)
+     ============================================ */
+  --ledger-color-text-primary: #0b1018;
+  --ledger-color-text-secondary: #3b4556;
+  --ledger-color-text-muted: #5b6779;
+  --ledger-color-text-inverse: #ffffff;
+  --ledger-color-text-accent: #0fa48c;
+
+  --ledger-color-surface-canvas: #f7f8fa;
+  --ledger-color-surface-default: #ffffff;
+  --ledger-color-surface-raised: #ffffff;
+  --ledger-color-surface-sunken: #eef1f5;
+  --ledger-color-surface-overlay: rgba(11, 16, 24, 0.45);
+
+  --ledger-color-border-subtle: #eef1f5;
+  --ledger-color-border-default: #dde3ec;
+  --ledger-color-border-strong: #bdc6d3;
+  --ledger-color-border-accent: #2ee6c6;
+
+  /* ============================================
+     ELEVATION (LIGHT — soft drop shadows)
+     ============================================ */
+  --ledger-shadow-1: 0 1px 2px rgba(11, 16, 24, 0.04), 0 2px 8px rgba(11, 16, 24, 0.04);
+  --ledger-shadow-2: 0 2px 4px rgba(11, 16, 24, 0.06), 0 8px 16px rgba(11, 16, 24, 0.06);
+  --ledger-shadow-3: 0 4px 8px rgba(11, 16, 24, 0.08), 0 12px 24px rgba(11, 16, 24, 0.08);
+  --ledger-shadow-4: 0 8px 16px rgba(11, 16, 24, 0.1), 0 16px 40px rgba(11, 16, 24, 0.1);
+  --ledger-shadow-5: 0 12px 24px rgba(11, 16, 24, 0.12), 0 24px 56px rgba(11, 16, 24, 0.14);
+
+  /* ============================================
+     TYPOGRAPHY
+     ============================================ */
+  --ledger-font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --ledger-font-display: 'Inter Display', 'Inter', system-ui, sans-serif;
+  --ledger-font-mono: 'JetBrains Mono', 'SFMono-Regular', 'IBM Plex Mono', Consolas, monospace;
+  --ledger-font-feature-tabular: 'tnum', 'lnum';
+
+  --ledger-font-size-display-xl: 56px;
+  --ledger-font-size-display-lg: 40px;
+  --ledger-font-size-display-md: 32px;
+  --ledger-font-size-title-lg: 24px;
+  --ledger-font-size-title-md: 20px;
+  --ledger-font-size-title-sm: 18px;
+  --ledger-font-size-body-lg: 16px;
+  --ledger-font-size-body-md: 14px;
+  --ledger-font-size-body-sm: 13px;
+  --ledger-font-size-label: 12px;
+  --ledger-font-size-mono-lg: 20px;
+  --ledger-font-size-mono-md: 14px;
+  --ledger-font-size-mono-sm: 12px;
+
+  /* ============================================
+     SPACING (4px base)
+     ============================================ */
+  --ledger-space-0: 0;
+  --ledger-space-1: 2px;
+  --ledger-space-2: 4px;
+  --ledger-space-3: 8px;
+  --ledger-space-4: 12px;
+  --ledger-space-5: 16px;
+  --ledger-space-6: 20px;
+  --ledger-space-7: 24px;
+  --ledger-space-8: 32px;
+  --ledger-space-9: 40px;
+  --ledger-space-10: 48px;
+  --ledger-space-11: 64px;
+  --ledger-space-12: 80px;
+  --ledger-space-13: 96px;
+
+  /* ============================================
+     RADIUS
+     ============================================ */
+  --ledger-radius-xs: 4px;
+  --ledger-radius-sm: 8px;
+  --ledger-radius-md: 12px;
+  --ledger-radius-lg: 16px;
+  --ledger-radius-xl: 24px;
+  --ledger-radius-pill: 999px;
+
+  /* ============================================
+     MOTION
+     ============================================ */
+  --ledger-duration-micro: 120ms;
+  --ledger-duration-short: 180ms;
+  --ledger-duration-medium: 240ms;
+  --ledger-duration-long: 320ms;
+  --ledger-easing-settle: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ledger-easing-exit: cubic-bezier(0.4, 0, 1, 1);
+
+  /* ============================================
+     FOCUS RING
+     ============================================ */
+  --ledger-focus-ring-width: 2px;
+  --ledger-focus-ring-offset: 2px;
+  --ledger-focus-ring-color: #2ee6c6;
+
+  /* ============================================
+     Z-INDEX
+     ============================================ */
+  --ledger-z-sticky: 100;
+  --ledger-z-dropdown: 1000;
+  --ledger-z-popover: 1100;
+  --ledger-z-tooltip: 1200;
+  --ledger-z-modal: 2000;
+  --ledger-z-drawer: 2100;
+  --ledger-z-toast: 3000;
+}
+
+/* ================================================
+   DARK MODE — OBSIDIAN (hero theme)
+   ================================================ */
+[data-ledger-theme='dark'] {
+  --ledger-color-text-primary: #ffffff;
+  --ledger-color-text-secondary: #bdc6d3;
+  --ledger-color-text-muted: #8994a5;
+  --ledger-color-text-inverse: #0b1018;
+  --ledger-color-text-accent: #6ff5e1;
+
+  --ledger-color-surface-canvas: #0b1018;
+  --ledger-color-surface-default: #161c28;
+  --ledger-color-surface-raised: #232b3a;
+  --ledger-color-surface-sunken: #05080e;
+  --ledger-color-surface-overlay: rgba(5, 8, 14, 0.7);
+
+  --ledger-color-border-subtle: #232b3a;
+  --ledger-color-border-default: #3b4556;
+  --ledger-color-border-strong: #5b6779;
+  --ledger-color-border-accent: #2ee6c6;
+
+  /* Dark elevation = inner highlight + faint drop */
+  --ledger-shadow-1: inset 0 1px 0 rgba(255, 255, 255, 0.03), 0 1px 2px rgba(0, 0, 0, 0.4);
+  --ledger-shadow-2: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 2px 6px rgba(0, 0, 0, 0.5);
+  --ledger-shadow-3: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 6px 16px rgba(0, 0, 0, 0.55);
+  --ledger-shadow-4: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 12px 32px rgba(0, 0, 0, 0.6);
+  --ledger-shadow-5: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 20px 48px rgba(0, 0, 0, 0.65);
+}
+
+/* ================================================
+   GLOBAL DEFAULTS
+   ================================================ */
+html,
+body {
+  background: var(--ledger-color-surface-canvas);
+  color: var(--ledger-color-text-primary);
+  font-family: var(--ledger-font-sans);
+  font-feature-settings: 'cv11', 'ss01', 'ss03';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Money classes — apply to anything that displays currency */
+.ledger-mono,
+.ledger-amount {
+  font-family: var(--ledger-font-sans);
+  font-feature-settings: var(--ledger-font-feature-tabular);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* Reduced motion — kill digit-roll, chart animations, settle transitions */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

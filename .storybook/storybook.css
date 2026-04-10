@@ -1,0 +1,22 @@
+/*
+ * Skyfall Ledger — Storybook-only styles
+ *
+ * Applies the Ledger surface tokens to the story canvas so stories rendered
+ * in dark mode never leak through Storybook's white background. Loaded after
+ * `ledger-tokens.css` in `preview.tsx`.
+ */
+
+.ledger-sb-surface {
+  background: var(--ledger-color-surface-canvas);
+  color: var(--ledger-color-text-primary);
+  font-family: var(--ledger-font-sans);
+  border-radius: var(--ledger-radius-md);
+}
+
+/* Tabular numerics by default in docs so example money columns line up */
+table,
+.ledger-amount,
+.ledger-mono {
+  font-feature-settings: var(--ledger-font-feature-tabular);
+  font-variant-numeric: tabular-nums lining-nums;
+}
