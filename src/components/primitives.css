@@ -391,3 +391,276 @@
   animation: ledger-popover-in var(--ledger-duration-short) var(--ledger-easing-settle);
 }
 @keyframes ledger-popover-in { from { opacity: 0; transform: translateY(4px); } }
+
+/* ================================================================
+   SLIDER
+   ================================================================ */
+.ledger-slider-input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  background: transparent;
+  cursor: pointer;
+  margin: 0;
+}
+.ledger-slider-input:focus { outline: none; }
+
+/* Track — WebKit */
+.ledger-slider-input::-webkit-slider-runnable-track {
+  border-radius: 9999px;
+  background: linear-gradient(
+    to right,
+    var(--ledger-color-teal-500) 0%,
+    var(--ledger-color-teal-500) var(--slider-fill, 0%),
+    var(--ledger-color-border-default) var(--slider-fill, 0%),
+    var(--ledger-color-border-default) 100%
+  );
+}
+/* Track — Firefox */
+.ledger-slider-input::-moz-range-track {
+  border-radius: 9999px;
+  background: var(--ledger-color-border-default);
+}
+.ledger-slider-input::-moz-range-progress {
+  border-radius: 9999px;
+  background: var(--ledger-color-teal-500);
+}
+/* Thumb — WebKit */
+.ledger-slider-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 9999px;
+  background-color: var(--ledger-color-surface-raised);
+  border: 2px solid var(--ledger-color-teal-500);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  transition: box-shadow 150ms ease, transform 150ms ease;
+}
+.ledger-slider-input::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+.ledger-slider-input:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px rgba(46, 230, 198, 0.25);
+}
+/* Thumb — Firefox */
+.ledger-slider-input::-moz-range-thumb {
+  border-radius: 9999px;
+  background-color: var(--ledger-color-surface-raised);
+  border: 2px solid var(--ledger-color-teal-500);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  transition: box-shadow 150ms ease, transform 150ms ease;
+}
+.ledger-slider-input::-moz-range-thumb:hover {
+  transform: scale(1.15);
+}
+.ledger-slider-input:focus-visible::-moz-range-thumb {
+  box-shadow: 0 0 0 3px rgba(46, 230, 198, 0.25);
+}
+/* Sizes */
+.ledger-slider-sm::-webkit-slider-runnable-track { height: 4px; }
+.ledger-slider-sm::-moz-range-track { height: 4px; }
+.ledger-slider-sm::-moz-range-progress { height: 4px; }
+.ledger-slider-sm::-webkit-slider-thumb { width: 14px; height: 14px; margin-top: -5px; }
+.ledger-slider-sm::-moz-range-thumb { width: 14px; height: 14px; }
+.ledger-slider-md::-webkit-slider-runnable-track { height: 6px; }
+.ledger-slider-md::-moz-range-track { height: 6px; }
+.ledger-slider-md::-moz-range-progress { height: 6px; }
+.ledger-slider-md::-webkit-slider-thumb { width: 18px; height: 18px; margin-top: -6px; }
+.ledger-slider-md::-moz-range-thumb { width: 18px; height: 18px; }
+
+/* ================================================================
+   DATE PICKER
+   ================================================================ */
+.ledger-datepicker-input:hover:not(:disabled):not(:focus) {
+  border-color: var(--ledger-color-border-strong);
+}
+.ledger-datepicker-input:focus {
+  outline: none;
+  border-color: var(--ledger-color-teal-500);
+  box-shadow: 0 0 0 3px rgba(46, 230, 198, 0.15);
+}
+.ledger-datepicker-input:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+.ledger-datepicker-input::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+/* ================================================================
+   INPUT GROUP
+   ================================================================ */
+.ledger-input-group:focus-within {
+  border-color: var(--ledger-color-teal-500);
+  box-shadow: 0 0 0 3px rgba(46, 230, 198, 0.15);
+}
+.ledger-input-group-error:focus-within {
+  border-color: var(--ledger-color-negative);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+.ledger-input-group-inner input,
+.ledger-input-group-inner select {
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* ================================================================
+   COLLAPSIBLE PANEL
+   ================================================================ */
+.ledger-collapsible-trigger:hover {
+  background-color: var(--ledger-color-surface-sunken);
+}
+
+/* ================================================================
+   OTP INPUT
+   ================================================================ */
+.ledger-otp-digit:hover:not(:disabled):not(:focus) {
+  border-color: var(--ledger-color-border-strong);
+}
+.ledger-otp-digit:focus {
+  outline: none;
+  border-color: var(--ledger-color-teal-500);
+  box-shadow: 0 0 0 3px rgba(46, 230, 198, 0.15);
+}
+
+/* ================================================================
+   FILE UPLOAD DROPZONE
+   ================================================================ */
+.ledger-file-dropzone {
+  cursor: pointer;
+  transition:
+    border-color var(--ledger-duration-short) var(--ledger-easing-settle),
+    background var(--ledger-duration-short) var(--ledger-easing-settle);
+}
+.ledger-file-dropzone:hover:not([data-disabled]) {
+  border-color: var(--ledger-color-border-strong);
+}
+.ledger-file-dropzone--dragging,
+.ledger-file-dropzone--dragging:hover {
+  border-color: var(--ledger-color-teal-500);
+  background: rgba(46, 230, 198, 0.05);
+}
+.ledger-file-dropzone[data-disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ================================================================
+   MULTI SELECT
+   ================================================================ */
+.ledger-multiselect-control {
+  border: 1px solid var(--ledger-color-border-default);
+  transition:
+    border-color var(--ledger-duration-short) var(--ledger-easing-settle),
+    box-shadow var(--ledger-duration-short) var(--ledger-easing-settle);
+}
+.ledger-multiselect-control:hover:not([data-disabled]):not(:focus) {
+  border-color: var(--ledger-color-border-strong);
+}
+.ledger-multiselect-control:focus {
+  outline: none;
+  border-color: var(--ledger-color-teal-500);
+  box-shadow: 0 0 0 3px rgba(46, 230, 198, 0.15);
+}
+.ledger-multiselect-control[data-invalid] {
+  border-color: var(--ledger-color-negative);
+}
+.ledger-multiselect-control[data-invalid]:focus {
+  border-color: var(--ledger-color-negative);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+.ledger-multiselect-control[data-disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.ledger-multiselect-option:hover {
+  background: var(--ledger-color-surface-sunken);
+}
+
+/* ================================================================
+   TAG INPUT
+   ================================================================ */
+.ledger-tag-input-container:focus-within {
+  border-color: var(--ledger-color-teal-500);
+  box-shadow: 0 0 0 3px rgba(46, 230, 198, 0.15);
+}
+.ledger-tag-input-error:focus-within {
+  border-color: var(--ledger-color-negative);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+/* ================================================================
+   AUTOCOMPLETE
+   ================================================================ */
+.ledger-autocomplete-input {
+  border: 1px solid var(--ledger-color-border-default);
+  transition:
+    border-color var(--ledger-duration-short) var(--ledger-easing-settle),
+    box-shadow var(--ledger-duration-short) var(--ledger-easing-settle);
+}
+.ledger-autocomplete-input:hover:not(:disabled):not(:focus) {
+  border-color: var(--ledger-color-border-strong);
+}
+.ledger-autocomplete-input:focus {
+  outline: none;
+  border-color: var(--ledger-color-teal-500);
+  box-shadow: 0 0 0 3px rgba(46, 230, 198, 0.15);
+}
+.ledger-autocomplete-input[aria-invalid='true'] {
+  border-color: var(--ledger-color-negative);
+}
+.ledger-autocomplete-input[aria-invalid='true']:focus {
+  border-color: var(--ledger-color-negative);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+.ledger-autocomplete-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.ledger-autocomplete-option:hover {
+  background: var(--ledger-color-surface-sunken);
+}
+
+/* ================================================================
+   TREE VIEW
+   ================================================================ */
+.ledger-tree-node {
+  cursor: pointer;
+  user-select: none;
+  transition: background var(--ledger-duration-short) var(--ledger-easing-settle);
+}
+.ledger-tree-node:hover:not([data-disabled]) {
+  background: var(--ledger-color-surface-sunken);
+}
+.ledger-tree-node:focus-visible {
+  outline: 2px solid var(--ledger-color-teal-500);
+  outline-offset: -2px;
+}
+.ledger-tree-node[data-disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.ledger-tree-chevron {
+  transition: transform var(--ledger-duration-short) var(--ledger-easing-settle);
+}
+.ledger-tree-chevron-open {
+  transform: rotate(90deg);
+}
+
+/* ================================================================
+   COMMAND PALETTE
+   ================================================================ */
+.ledger-cmd-item {
+  cursor: pointer;
+  transition: background var(--ledger-duration-short) var(--ledger-easing-settle);
+}
+.ledger-cmd-item:hover:not([data-disabled]) {
+  background: var(--ledger-color-surface-sunken);
+}
