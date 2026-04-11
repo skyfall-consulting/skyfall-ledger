@@ -10,7 +10,7 @@ import { Paper } from './Paper';
  * opinions -- the atom from which higher-level surfaces compose.
  */
 const meta: Meta<typeof Paper> = {
-  title: 'Surfaces/Paper',
+  title: 'Components/Surfaces/Paper',
   component: Paper,
   parameters: {
     layout: 'padded',

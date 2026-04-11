@@ -9,7 +9,7 @@ import { Stack } from './Stack';
  * with token-controlled gaps. Supports polymorphic rendering for semantic HTML.
  */
 const meta: Meta<typeof Stack> = {
-  title: 'Layout/Stack',
+  title: 'Components/Layout/Stack',
   component: Stack,
   parameters: {
     layout: 'padded',

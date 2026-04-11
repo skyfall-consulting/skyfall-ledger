@@ -27,7 +27,7 @@ import { focus } from './focus';
  * iterating on components.
  */
 const meta: Meta = {
-  title: 'Foundations/Tokens',
+  title: 'Components/Foundations/Tokens',
   parameters: {
     layout: 'fullscreen',
     docs: {

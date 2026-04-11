@@ -10,7 +10,7 @@ import { VisuallyHidden } from './VisuallyHidden';
  * technology.
  */
 const meta: Meta<typeof VisuallyHidden> = {
-  title: 'Utils/VisuallyHidden',
+  title: 'Components/Utils/VisuallyHidden',
   component: VisuallyHidden,
   parameters: {
     layout: 'padded',

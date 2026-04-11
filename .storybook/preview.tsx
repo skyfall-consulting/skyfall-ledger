@@ -42,6 +42,28 @@ const preview: Preview = {
       ],
     },
     layout: 'centered',
+    options: {
+      storySort: {
+        order: [
+          'Overview',
+          ['Introduction', 'Installation'],
+          'Components',
+          [
+            'Foundations',
+            ['Tokens', 'Theme', 'Icons', 'Typography'],
+            'Inputs',
+            'Data Display',
+            'Feedback',
+            'Surfaces',
+            'Navigation',
+            'Layout',
+            'Utils',
+          ],
+          'Ledger X',
+          ['Charts', 'FinTech'],
+        ],
+      },
+    },
   },
 
   globalTypes: {

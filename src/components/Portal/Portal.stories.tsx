@@ -11,7 +11,7 @@ import { Portal } from './Portal';
  * stacking context or overflow constraints.
  */
 const meta: Meta<typeof Portal> = {
-  title: 'Utils/Portal',
+  title: 'Components/Utils/Portal',
   component: Portal,
   parameters: {
     layout: 'padded',

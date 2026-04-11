@@ -9,7 +9,7 @@ import { Divider } from './Divider';
  * to visually divide sections of content.
  */
 const meta: Meta<typeof Divider> = {
-  title: 'Data Display/Divider',
+  title: 'Components/Data Display/Divider',
   component: Divider,
   parameters: {
     layout: 'padded',

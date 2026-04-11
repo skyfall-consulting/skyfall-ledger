@@ -13,7 +13,7 @@ import { fontFamily, fontSize, fontWeight as fontWeightTokens, lineHeight } from
  * sizes, scrollable body, optional footer, backdrop dismiss, and scroll-lock.
  */
 const meta: Meta<typeof Modal> = {
-  title: 'Surfaces/Modal',
+  title: 'Components/Surfaces/Modal',
   component: Modal,
   parameters: {
     layout: 'centered',

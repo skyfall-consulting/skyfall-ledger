@@ -13,7 +13,7 @@ import { fontFamily, fontSize, fontWeight as fontWeightTokens, tracking } from '
  * handling, and a disabled state.
  */
 const meta: Meta<typeof Link> = {
-  title: 'Navigation/Link',
+  title: 'Components/Navigation/Link',
   component: Link,
   parameters: {
     layout: 'padded',

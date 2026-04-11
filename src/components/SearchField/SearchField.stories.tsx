@@ -12,7 +12,7 @@ import { space } from '../../tokens/spacing';
  * and finding accounts in FinTech dashboards.
  */
 const meta: Meta<typeof SearchField> = {
-  title: 'Inputs/SearchField',
+  title: 'Components/Inputs/SearchField',
   component: SearchField,
   parameters: {
     layout: 'padded',

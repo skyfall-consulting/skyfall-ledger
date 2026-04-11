@@ -11,7 +11,7 @@ import { radius } from '../../tokens/radius';
  * helper/error text, sizes, slots, and all standard HTML input attributes.
  */
 const meta: Meta<typeof TextField> = {
-  title: 'Inputs/Text Field',
+  title: 'Components/Inputs/Text Field',
   component: TextField,
   parameters: {
     layout: 'padded',

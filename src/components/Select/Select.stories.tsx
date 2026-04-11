@@ -12,7 +12,7 @@ import { space } from '../../tokens/spacing';
  * accessibility attributes.
  */
 const meta: Meta<typeof Select> = {
-  title: 'Inputs/Select',
+  title: 'Components/Inputs/Select',
   component: Select,
   parameters: {
     layout: 'padded',

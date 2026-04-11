@@ -44,7 +44,7 @@ const ChevronRight = () => (
  * with optional attached mode for toolbar-style grouping.
  */
 const meta: Meta<typeof ButtonGroup> = {
-  title: 'Inputs/Button Group',
+  title: 'Components/Inputs/Button Group',
   component: ButtonGroup,
   parameters: {
     layout: 'padded',

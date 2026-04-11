@@ -10,7 +10,7 @@ import { Accordion, type AccordionItem } from './Accordion';
  * controlled and uncontrolled usage patterns.
  */
 const meta: Meta<typeof Accordion> = {
-  title: 'Surfaces/Accordion',
+  title: 'Components/Surfaces/Accordion',
   component: Accordion,
   parameters: {
     layout: 'padded',

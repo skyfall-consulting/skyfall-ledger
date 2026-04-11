@@ -9,7 +9,7 @@ import { Skeleton } from './Skeleton';
  * Compose multiple skeletons to mirror final layouts during loading.
  */
 const meta: Meta<typeof Skeleton> = {
-  title: 'Data Display/Skeleton',
+  title: 'Components/Data Display/Skeleton',
   component: Skeleton,
   parameters: {
     layout: 'padded',

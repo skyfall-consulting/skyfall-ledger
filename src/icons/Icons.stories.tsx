@@ -17,7 +17,7 @@ import { radius } from '../tokens/radius';
  * directly or via the `<Icon name="…" />` facade.
  */
 const meta: Meta = {
-  title: 'Foundations/Icons',
+  title: 'Components/Foundations/Icons',
   parameters: {
     layout: 'fullscreen',
     docs: {

@@ -18,7 +18,7 @@ import { Badge } from '../Badge';
  * balances, and invoice lists.
  */
 const meta: Meta<typeof Table> = {
-  title: 'Data Display/Table',
+  title: 'Components/Data Display/Table',
   component: Table,
   parameters: {
     layout: 'padded',

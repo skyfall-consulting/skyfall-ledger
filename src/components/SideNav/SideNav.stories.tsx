@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { SideNav, type SideNavItem } from './SideNav';
 
 const meta: Meta<typeof SideNav> = {
-  title: 'Navigation/SideNav',
+  title: 'Components/Navigation/SideNav',
   component: SideNav,
   parameters: { layout: 'fullscreen' },
 };

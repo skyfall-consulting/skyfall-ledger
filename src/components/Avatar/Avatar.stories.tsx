@@ -11,7 +11,7 @@ import { Card } from '../Card';
  * account managers, and team members in FinTech workflows.
  */
 const meta: Meta<typeof Avatar> = {
-  title: 'Data Display/Avatar',
+  title: 'Components/Data Display/Avatar',
   component: Avatar,
   parameters: {
     layout: 'padded',

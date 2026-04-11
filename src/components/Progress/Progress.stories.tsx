@@ -9,7 +9,7 @@ import { Progress } from './Progress';
  * indeterminate modes, color-coded by semantic tone.
  */
 const meta: Meta<typeof Progress> = {
-  title: 'Data Display/Progress',
+  title: 'Components/Data Display/Progress',
   component: Progress,
   parameters: {
     layout: 'padded',

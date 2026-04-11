@@ -1,161 +1,68 @@
-{/* Skyfall Ledger — Storybook landing page */}
+{/* Skyfall Ledger — Storybook Introduction */}
 
 import { Meta } from '@storybook/blocks';
 
-<Meta title="Introduction" />
+<Meta title="Overview/Introduction" />
 
-<div className="ledger-intro">
-  <div className="ledger-intro__header">
-    <img
-      className="ledger-intro__logo"
-      src="./ledger-logo.png"
-      alt="Skyfall Ledger"
-    />
-    <h1 className="ledger-intro__title">Skyfall Ledger</h1>
-  </div>
+# Skyfall Ledger
 
-  <p className="ledger-intro__subtitle">
-    Enterprise-grade FinTech design system. Composed, data-rich UI for the
-    next generation of financial products.
-  </p>
+Ledger is the FinTech UI kit in the Skyfall family of design systems. It provides a comprehensive set of React components purpose-built for financial SaaS products — from banking dashboards and payment flows to transaction management and operational tools.
 
-  <hr className="ledger-intro__divider" />
+## What Ledger is for
 
-  <h2 className="ledger-intro__section-title">System at a Glance</h2>
+Ledger is designed to accelerate product design and front-end development for financial applications, including:
 
-  <div className="ledger-intro__stats">
-    <div className="ledger-intro__stat">
-      <span className="ledger-intro__stat-value">55</span>
-      <span className="ledger-intro__stat-label">Components</span>
-    </div>
-    <div className="ledger-intro__stat">
-      <span className="ledger-intro__stat-value">9</span>
-      <span className="ledger-intro__stat-label">Categories</span>
-    </div>
-    <div className="ledger-intro__stat">
-      <span className="ledger-intro__stat-value">13</span>
-      <span className="ledger-intro__stat-label">Token Scales</span>
-    </div>
-    <div className="ledger-intro__stat">
-      <span className="ledger-intro__stat-value">2</span>
-      <span className="ledger-intro__stat-label">Themes</span>
-    </div>
-  </div>
+- **Banking and payments interfaces** — accounts, transfers, payment processing
+- **Transaction management** — ledgers, statements, audit trails
+- **Financial dashboards** — portfolio views, balance summaries, KPIs
+- **Data-dense operational tools** — tables, filters, bulk actions
+- **Compliance and admin workflows** — forms, approvals, status tracking
 
-  <hr className="ledger-intro__divider" />
+## Who Ledger is for
 
-  <h2 className="ledger-intro__section-title">Component Categories</h2>
+Ledger is built for product engineers, designers, and teams building financial products that need to be precise, trustworthy, and production-ready from day one.
 
-  <div className="ledger-intro__grid">
-    <div className="ledger-intro__card">
-      <p className="ledger-intro__card-label">Inputs</p>
-      <p className="ledger-intro__card-count">13 components</p>
-    </div>
-    <div className="ledger-intro__card">
-      <p className="ledger-intro__card-label">Data Display</p>
-      <p className="ledger-intro__card-count">11 components</p>
-    </div>
-    <div className="ledger-intro__card">
-      <p className="ledger-intro__card-label">Feedback</p>
-      <p className="ledger-intro__card-count">7 components</p>
-    </div>
-    <div className="ledger-intro__card">
-      <p className="ledger-intro__card-label">Surfaces</p>
-      <p className="ledger-intro__card-count">6 components</p>
-    </div>
-    <div className="ledger-intro__card">
-      <p className="ledger-intro__card-label">Navigation</p>
-      <p className="ledger-intro__card-count">6 components</p>
-    </div>
-    <div className="ledger-intro__card">
-      <p className="ledger-intro__card-label">Layout</p>
-      <p className="ledger-intro__card-count">5 components</p>
-    </div>
-    <div className="ledger-intro__card">
-      <p className="ledger-intro__card-label">Utils</p>
-      <p className="ledger-intro__card-count">5 components</p>
-    </div>
-    <div className="ledger-intro__card">
-      <p className="ledger-intro__card-label">Foundations</p>
-      <p className="ledger-intro__card-count">Typography + Tokens</p>
-    </div>
-    <div className="ledger-intro__card">
-      <p className="ledger-intro__card-label">FinTech</p>
-      <p className="ledger-intro__card-count">Domain layer</p>
-    </div>
-  </div>
+## System structure
 
-  <hr className="ledger-intro__divider" />
+Ledger is organized into two layers:
 
-  <h2 className="ledger-intro__section-title">Design Principles</h2>
+### Components
 
-  <div className="ledger-intro__principles">
-    <div className="ledger-intro__principle">
-      <svg className="ledger-intro__principle-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="9" cy="9" r="7" />
-        <path d="M9 5v4l3 2" />
-      </svg>
-      <p className="ledger-intro__principle-text">
-        <strong>Precision.</strong> Every pixel serves the data. Tabular numerics,
-        aligned columns, and measured whitespace.
-      </p>
-    </div>
-    <div className="ledger-intro__principle">
-      <svg className="ledger-intro__principle-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="4" width="14" height="10" rx="2" />
-        <path d="M2 8h14" />
-      </svg>
-      <p className="ledger-intro__principle-text">
-        <strong>Trust.</strong> Clear hierarchy, consistent patterns, and
-        accessible defaults that instill confidence.
-      </p>
-    </div>
-    <div className="ledger-intro__principle">
-      <svg className="ledger-intro__principle-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="4 13 8 9 12 11 16 5" />
-        <polyline points="12 5 16 5 16 9" />
-      </svg>
-      <p className="ledger-intro__principle-text">
-        <strong>Clarity.</strong> Data-dense interfaces that remain legible.
-        Obsidian surfaces with controlled contrast.
-      </p>
-    </div>
-    <div className="ledger-intro__principle">
-      <svg className="ledger-intro__principle-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M9 2v2M9 14v2M2 9h2M14 9h2M4.2 4.2l1.4 1.4M12.4 12.4l1.4 1.4M4.2 13.8l1.4-1.4M12.4 5.6l1.4-1.4" />
-        <circle cx="9" cy="9" r="3" />
-      </svg>
-      <p className="ledger-intro__principle-text">
-        <strong>Composability.</strong> Small, focused primitives that compose
-        into complex financial workflows.
-      </p>
-    </div>
-  </div>
+The shared core system — foundational building blocks used across all Skyfall UI kits. This includes inputs, data display, feedback, surfaces, navigation, layout primitives, and utilities. These components follow atomic design principles and compose predictably.
 
-  <hr className="ledger-intro__divider" />
+**Current core coverage:**
 
-  <h2 className="ledger-intro__section-title">Technical Foundation</h2>
+| Category | Components | Examples |
+|---|---|---|
+| **Foundations** | 4 | Typography, Tokens, Theme, Icons |
+| **Inputs** | 13 | Button, TextField, Select, Checkbox, SearchField, Textarea |
+| **Data Display** | 11 | Table, Avatar, Badge, Amount, DescriptionList, Tooltip |
+| **Feedback** | 7 | Alert, Toast, Dialog, Banner, Spinner, EmptyState |
+| **Surfaces** | 6 | Modal, Drawer, Accordion, Card, Paper, Popover |
+| **Navigation** | 6 | Tabs, Breadcrumbs, Menu, Pagination, SideNav, Link |
+| **Layout** | 5 | Stack, Box, Grid, Container, FormField |
+| **Utils** | 5 | Portal, VisuallyHidden, Backdrop, ClickAwayListener, NoSSR |
 
-  <div className="ledger-intro__grid">
-    <div className="ledger-intro__card">
-      <p className="ledger-intro__card-label">React 18</p>
-      <p className="ledger-intro__card-count">TypeScript strict mode</p>
-    </div>
-    <div className="ledger-intro__card">
-      <p className="ledger-intro__card-label">CSS Custom Properties</p>
-      <p className="ledger-intro__card-count">Inline styles + tokens</p>
-    </div>
-    <div className="ledger-intro__card">
-      <p className="ledger-intro__card-label">Dark + Light</p>
-      <p className="ledger-intro__card-count">Obsidian &amp; Paper themes</p>
-    </div>
-    <div className="ledger-intro__card">
-      <p className="ledger-intro__card-label">Recharts</p>
-      <p className="ledger-intro__card-count">Wrapped chart primitives</p>
-    </div>
-  </div>
+### Ledger X
 
-  <p className="ledger-intro__footer">
-    <span>@skyfall_ai/ledger</span> v0.0.1
-  </p>
-</div>
+The FinTech-specific extension layer. This includes domain components tailored to financial workflows and a Recharts-based data visualization system designed for financial dashboards and reports.
+
+## Design principles
+
+Ledger components are built around four qualities:
+
+- **Precision** — every pixel serves the data. Tabular numerics, aligned columns, and measured whitespace
+- **Trust** — consistent visual language and predictable behavior that instills confidence in financial contexts
+- **Clarity** — clean information hierarchy that supports data-dense interfaces without visual noise
+- **Composability** — atomic primitives that compose into complex financial workflows
+
+## Storybook organization
+
+This Storybook is organized as follows:
+
+| Section | Contents |
+|---|---|
+| **Components** | Shared core: Foundations, Inputs, Data Display, Feedback, Surfaces, Navigation, Layout, Utils |
+| **Ledger X** | FinTech extensions: Charts and domain-specific financial components |
+
+Browse the sidebar to explore components, view live examples, and review API documentation.

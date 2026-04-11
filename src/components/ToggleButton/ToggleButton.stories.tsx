@@ -10,7 +10,7 @@ import { space } from '../../tokens/spacing';
  * views or filters. Supports roving tab index and arrow-key navigation.
  */
 const meta: Meta<typeof ToggleButton> = {
-  title: 'Inputs/Toggle Button',
+  title: 'Components/Inputs/Toggle Button',
   component: ToggleButton,
   parameters: {
     layout: 'padded',

@@ -10,7 +10,7 @@ import { Popover } from './Popover';
  * modes. Closes on Escape and click-outside.
  */
 const meta: Meta<typeof Popover> = {
-  title: 'Surfaces/Popover',
+  title: 'Components/Surfaces/Popover',
   component: Popover,
   parameters: {
     layout: 'centered',

@@ -42,7 +42,7 @@ const FilterIcon = () => (
  * Always requires an `aria-label` for accessibility.
  */
 const meta: Meta<typeof IconButton> = {
-  title: 'Inputs/Icon Button',
+  title: 'Components/Inputs/Icon Button',
   component: IconButton,
   parameters: {
     layout: 'padded',

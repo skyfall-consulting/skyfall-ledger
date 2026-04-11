@@ -10,7 +10,7 @@ import { Card } from '../Card';
  * with semantic tone coloring and two size presets.
  */
 const meta: Meta<typeof Badge> = {
-  title: 'Data Display/Badge',
+  title: 'Components/Data Display/Badge',
   component: Badge,
   parameters: {
     layout: 'padded',

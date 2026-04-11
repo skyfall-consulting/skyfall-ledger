@@ -10,7 +10,7 @@ import { Spinner } from './Spinner';
  * workflows so users understand what they are waiting for.
  */
 const meta: Meta<typeof Spinner> = {
-  title: 'Feedback/Spinner',
+  title: 'Components/Feedback/Spinner',
   component: Spinner,
   parameters: {
     layout: 'padded',

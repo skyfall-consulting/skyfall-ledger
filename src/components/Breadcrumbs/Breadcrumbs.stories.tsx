@@ -12,7 +12,7 @@ import { radius } from '../../tokens/radius';
  * and button crumbs, collapsible middle items, and accessible markup.
  */
 const meta: Meta<typeof Breadcrumbs> = {
-  title: 'Navigation/Breadcrumbs',
+  title: 'Components/Navigation/Breadcrumbs',
   component: Breadcrumbs,
   parameters: {
     layout: 'padded',

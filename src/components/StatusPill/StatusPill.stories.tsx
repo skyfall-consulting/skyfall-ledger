@@ -11,7 +11,7 @@ import { Card } from '../Card';
  * pulses to convey ongoing activity.
  */
 const meta: Meta<typeof StatusPill> = {
-  title: 'FinTech/Status Pill',
+  title: 'Ledger X/FinTech/Status Pill',
   component: StatusPill,
   parameters: {
     layout: 'padded',

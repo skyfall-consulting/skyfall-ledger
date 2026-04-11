@@ -13,7 +13,7 @@ import { fontFamily, fontSize, fontWeight, tracking } from '../../tokens/typogra
  * variants for tabular financial data.
  */
 const meta: Meta<typeof Typography> = {
-  title: 'Foundations/Typography',
+  title: 'Components/Foundations/Typography',
   component: Typography,
   parameters: {
     layout: 'padded',

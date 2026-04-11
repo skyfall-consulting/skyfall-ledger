@@ -9,7 +9,7 @@ import { Alert } from './Alert';
  * feedback. Supports info, positive, negative, and warning tones.
  */
 const meta: Meta<typeof Alert> = {
-  title: 'Feedback/Alert',
+  title: 'Components/Feedback/Alert',
   component: Alert,
   parameters: {
     layout: 'padded',

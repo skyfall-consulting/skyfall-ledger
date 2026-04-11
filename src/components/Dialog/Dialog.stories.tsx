@@ -12,7 +12,7 @@ import { space } from '../../tokens/spacing';
  * button, and leverages the native <dialog> element for accessibility.
  */
 const meta: Meta<typeof Dialog> = {
-  title: 'Feedback/Dialog',
+  title: 'Components/Feedback/Dialog',
   component: Dialog,
   parameters: {
     layout: 'centered',

@@ -12,7 +12,7 @@ import { space } from '../../tokens/spacing';
  * Reads FormField context to auto-wire IDs and accessibility attributes.
  */
 const meta: Meta<typeof Textarea> = {
-  title: 'Inputs/Textarea',
+  title: 'Components/Inputs/Textarea',
   component: Textarea,
   parameters: {
     layout: 'padded',

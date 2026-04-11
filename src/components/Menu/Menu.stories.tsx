@@ -10,7 +10,7 @@ import { Menu, MenuItem, MenuDivider, MenuGroup } from './Menu';
  * click, closes on item click, Escape, or click outside.
  */
 const meta: Meta<typeof Menu> = {
-  title: 'Navigation/Menu',
+  title: 'Components/Navigation/Menu',
   component: Menu,
   parameters: {
     layout: 'centered',

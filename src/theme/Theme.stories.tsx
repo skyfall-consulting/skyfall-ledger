@@ -18,7 +18,7 @@ import { teal, obsidian } from '../tokens/colors';
  * (and identity-defining) mode for Skyfall Ledger.
  */
 const meta: Meta = {
-  title: 'Foundations/Theme',
+  title: 'Components/Foundations/Theme',
   parameters: {
     layout: 'fullscreen',
     docs: {

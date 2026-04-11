@@ -11,7 +11,7 @@ import { space } from '../../tokens/spacing';
  * control. Also exports Label, HelperText, and ErrorText for standalone use.
  */
 const meta: Meta<typeof FormField> = {
-  title: 'Layout/Form Field',
+  title: 'Components/Layout/Form Field',
   component: FormField,
   parameters: {
     layout: 'padded',

@@ -14,7 +14,7 @@ import { fontFamily, fontSize, fontWeight as fontWeightTokens, lineHeight } from
  * body, backdrop dismiss, and body scroll-lock.
  */
 const meta: Meta<typeof Drawer> = {
-  title: 'Surfaces/Drawer',
+  title: 'Components/Surfaces/Drawer',
   component: Drawer,
   parameters: {
     layout: 'centered',

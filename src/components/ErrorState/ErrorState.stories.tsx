@@ -9,7 +9,7 @@ import { ErrorState } from './ErrorState';
  * retry action. Guides users when a recoverable failure occurs.
  */
 const meta: Meta<typeof ErrorState> = {
-  title: 'Feedback/Error State',
+  title: 'Components/Feedback/Error State',
   component: ErrorState,
   parameters: {
     layout: 'padded',

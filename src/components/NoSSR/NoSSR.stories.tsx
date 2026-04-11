@@ -10,7 +10,7 @@ import { NoSSR } from './NoSSR';
  * browser-only APIs like `window` or `navigator`.
  */
 const meta: Meta<typeof NoSSR> = {
-  title: 'Utils/No SSR',
+  title: 'Components/Utils/No SSR',
   component: NoSSR,
   parameters: {
     layout: 'padded',

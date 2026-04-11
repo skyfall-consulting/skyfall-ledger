@@ -9,7 +9,7 @@ import { Backdrop } from './Backdrop';
  * Drawer, and Dialog. Supports three visual variants and click-to-dismiss.
  */
 const meta: Meta<typeof Backdrop> = {
-  title: 'Utils/Backdrop',
+  title: 'Components/Utils/Backdrop',
   component: Backdrop,
   parameters: {
     layout: 'fullscreen',

@@ -9,7 +9,7 @@ import { List, ListItem } from './List';
  * optional icons, trailing actions, and interactive states.
  */
 const meta: Meta<typeof List> = {
-  title: 'Data Display/List',
+  title: 'Components/Data Display/List',
   component: List,
   parameters: {
     layout: 'padded',

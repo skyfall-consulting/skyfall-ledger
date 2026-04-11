@@ -9,7 +9,7 @@ import { Tooltip } from './Tooltip';
  * to its trigger element via a portal.
  */
 const meta: Meta<typeof Tooltip> = {
-  title: 'Data Display/Tooltip',
+  title: 'Components/Data Display/Tooltip',
   component: Tooltip,
   parameters: {
     layout: 'centered',

@@ -10,7 +10,7 @@ import { Box } from './Box';
  * common layout needs without a full styled-system.
  */
 const meta: Meta<typeof Box> = {
-  title: 'Layout/Box',
+  title: 'Components/Layout/Box',
   component: Box,
   parameters: {
     layout: 'padded',

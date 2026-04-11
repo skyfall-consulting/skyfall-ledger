@@ -9,7 +9,7 @@ import { EmptyState } from './EmptyState';
  * users with an icon, title, description, and optional action.
  */
 const meta: Meta<typeof EmptyState> = {
-  title: 'Feedback/Empty State',
+  title: 'Components/Feedback/Empty State',
   component: EmptyState,
   parameters: {
     layout: 'padded',

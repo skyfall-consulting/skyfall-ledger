@@ -10,7 +10,7 @@ import { Card } from '../Card';
  * gaps and helpers for column span / start positioning.
  */
 const meta: Meta<typeof Grid> = {
-  title: 'Layout/Grid',
+  title: 'Components/Layout/Grid',
   component: Grid,
   parameters: {
     layout: 'padded',

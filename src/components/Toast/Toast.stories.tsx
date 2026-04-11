@@ -10,7 +10,7 @@ import { Toast } from './Toast';
  * info statuses with hover-pause behaviour.
  */
 const meta: Meta<typeof Toast> = {
-  title: 'Feedback/Toast',
+  title: 'Components/Feedback/Toast',
   component: Toast,
   parameters: {
     layout: 'fullscreen',

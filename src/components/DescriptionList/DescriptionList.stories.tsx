@@ -9,7 +9,7 @@ import { DescriptionList } from './DescriptionList';
  * and any two-column label-value layout.
  */
 const meta: Meta<typeof DescriptionList> = {
-  title: 'Data Display/DescriptionList',
+  title: 'Components/Data Display/DescriptionList',
   component: DescriptionList,
   parameters: {
     layout: 'padded',

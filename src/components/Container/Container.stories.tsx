@@ -10,7 +10,7 @@ import { Card } from '../Card';
  * horizontal padding, sized via `containerMaxWidth` layout tokens.
  */
 const meta: Meta<typeof Container> = {
-  title: 'Layout/Container',
+  title: 'Components/Layout/Container',
   component: Container,
   parameters: {
     layout: 'fullscreen',

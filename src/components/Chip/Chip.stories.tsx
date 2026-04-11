@@ -9,7 +9,7 @@ import { Chip } from './Chip';
  * Optionally interactive (clickable) and dismissible.
  */
 const meta: Meta<typeof Chip> = {
-  title: 'Data Display/Chip',
+  title: 'Components/Data Display/Chip',
   component: Chip,
   parameters: {
     layout: 'padded',

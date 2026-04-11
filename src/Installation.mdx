@@ -1,0 +1,99 @@
+{/* Skyfall Ledger — Installation */}
+
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Overview/Installation" />
+
+# Installation
+
+## Install the package
+
+```bash
+npm install @skyfall_ai/ledger
+```
+
+```bash
+pnpm add @skyfall_ai/ledger
+```
+
+Ledger requires React 18+ and Recharts 2.10+ as peer dependencies:
+
+```bash
+npm install react react-dom recharts
+```
+
+## Import styles and set up the provider
+
+Ledger uses CSS custom properties for all visual decisions and ships a theme provider to switch between dark (Obsidian) and light (Paper) modes. Set up both at your application root:
+
+```tsx
+// app/layout.tsx or main.tsx
+import '@skyfall_ai/ledger/styles';
+import { LedgerThemeProvider } from '@skyfall_ai/ledger';
+
+function App() {
+  return (
+    <LedgerThemeProvider mode="dark">
+      {/* your app */}
+    </LedgerThemeProvider>
+  );
+}
+```
+
+The styles import provides all Ledger CSS custom properties (`--ledger-*` tokens) and component styles. The `LedgerThemeProvider` injects the selected color palette.
+
+## Use components
+
+```tsx
+import { Button, TextField, Card, Typography } from '@skyfall_ai/ledger';
+
+function TransactionSearch() {
+  return (
+    <Card>
+      <Typography variant="title-sm">Find a transaction</Typography>
+      <TextField label="Reference or amount" placeholder="Search..." />
+      <Button>Search</Button>
+    </Card>
+  );
+}
+```
+
+## FinTech components
+
+Ledger X FinTech components compose from the core system and are imported from the same package:
+
+```tsx
+import { StatusPill, Amount } from '@skyfall_ai/ledger';
+```
+
+## Charts
+
+The chart system is built on Recharts. Import chart components from the charts subpath:
+
+```tsx
+import { Sparkline } from '@skyfall_ai/ledger/charts';
+```
+
+Recharts must be installed as a peer dependency.
+
+## Design tokens
+
+Ledger uses CSS custom properties for all visual decisions — colors, spacing, typography, motion, and elevation. Tokens are available globally once the styles are imported:
+
+```css
+.custom-element {
+  color: var(--ledger-color-text-primary);
+  font-family: var(--ledger-font-sans);
+  padding: var(--ledger-space-5);
+  border-radius: var(--ledger-radius-md);
+}
+```
+
+Browse the **Components / Foundations / Tokens** page in this Storybook for the full token reference.
+
+## Next steps
+
+- Browse **Components** in the sidebar to explore the full core system
+- Check **Ledger X / FinTech** for domain-specific financial components
+- Check **Ledger X / Charts** for data visualization components
+- Review **Components / Foundations** for design tokens, typography, and icons

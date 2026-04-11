@@ -9,7 +9,7 @@ import { Banner } from './Banner';
  * announcements, compliance notices, and critical status updates.
  */
 const meta: Meta<typeof Banner> = {
-  title: 'Feedback/Banner',
+  title: 'Components/Feedback/Banner',
   component: Banner,
   parameters: {
     layout: 'fullscreen',

@@ -10,7 +10,7 @@ import { RadioGroup, Radio } from './Radio';
  * modes, and FormField integration.
  */
 const meta: Meta<typeof RadioGroup> = {
-  title: 'Inputs/Radio Group',
+  title: 'Components/Inputs/Radio Group',
   component: RadioGroup,
   parameters: {
     layout: 'padded',

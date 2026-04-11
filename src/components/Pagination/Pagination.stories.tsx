@@ -12,7 +12,7 @@ import { radius } from '../../tokens/radius';
  * transaction lists, audit logs, statement history, and invoice tables.
  */
 const meta: Meta<typeof Pagination> = {
-  title: 'Navigation/Pagination',
+  title: 'Components/Navigation/Pagination',
   component: Pagination,
   parameters: {
     layout: 'padded',

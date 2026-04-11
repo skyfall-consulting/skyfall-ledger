@@ -12,7 +12,7 @@ import { fontFamily, fontSize, fontWeight, tracking } from '../../tokens/typogra
  * Every higher-level money component eventually composes through it.
  */
 const meta: Meta<typeof Amount> = {
-  title: 'Data Display/Amount',
+  title: 'Components/Data Display/Amount',
   component: Amount,
   parameters: {
     layout: 'padded',

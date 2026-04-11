@@ -10,7 +10,7 @@ import { ClickAwayListener } from './ClickAwayListener';
  * modal-like surfaces.
  */
 const meta: Meta<typeof ClickAwayListener> = {
-  title: 'Utils/Click-Away Listener',
+  title: 'Components/Utils/Click-Away Listener',
   component: ClickAwayListener,
   parameters: {
     layout: 'padded',
