@@ -1,12 +1,12 @@
 /**
  * Skyfall Ledger — <Amount /> barrel
  */
-export { Amount } from './Amount';
-export type {
-  AmountProps,
-  AmountSize,
-  AmountTone,
-  AmountSign,
-  AmountDecimals,
-  AmountWeight,
-} from './Amount.types';
+export {
+  Amount,
+  type AmountProps,
+  type AmountSize,
+  type AmountTone,
+  type AmountSign,
+  type AmountDecimals,
+  type AmountWeight,
+} from './Amount';

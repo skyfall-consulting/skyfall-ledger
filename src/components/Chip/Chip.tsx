@@ -6,13 +6,14 @@
  * primitives.css for hover/selected/disabled state transitions.
  */
 import * as React from 'react';
+import { cn } from '../../utils/cn';
 
 // ---------------------------------------------------------------------------
 // Types
 // ---------------------------------------------------------------------------
 export type ChipSize = 'sm' | 'md';
 
-export interface ChipProps {
+export interface ChipProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
   /** Whether the chip is in a selected state. */
   selected?: boolean;
@@ -68,16 +69,21 @@ const DismissIcon: React.FC = () => (
 // ---------------------------------------------------------------------------
 // Component
 // ---------------------------------------------------------------------------
-export const Chip: React.FC<ChipProps> = ({
-  children,
-  selected = false,
-  disabled = false,
-  onDismiss,
-  onClick,
-  size = 'md',
-  className,
-  style,
-}) => {
+export const Chip = React.forwardRef<HTMLElement, ChipProps>(
+  (
+    {
+      children,
+      selected = false,
+      disabled = false,
+      onDismiss,
+      onClick,
+      size = 'md',
+      className,
+      style,
+      ...rest
+    },
+    ref,
+  ) => {
   const sizeSpec = SIZE_MAP[size];
   const isInteractive = !!onClick;
   const Tag = isInteractive ? 'button' : 'span';
@@ -101,13 +107,11 @@ export const Chip: React.FC<ChipProps> = ({
     ...style,
   } as React.CSSProperties;
 
-  const classes = [
+  const classes = cn(
     'ledger-chip',
-    isInteractive ? 'ledger-focus-ring' : undefined,
+    isInteractive && 'ledger-focus-ring',
     className,
-  ]
-    .filter(Boolean)
-    .join(' ');
+  );
 
   const dataAttrs: Record<string, string | undefined> = {};
   if (isInteractive) dataAttrs['data-interactive'] = '';
@@ -121,12 +125,15 @@ export const Chip: React.FC<ChipProps> = ({
 
   return (
     <Tag
+      /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+      ref={ref as any}
       className={classes}
       style={chipStyle}
       onClick={isInteractive && !disabled ? onClick : undefined}
       disabled={isInteractive ? disabled : undefined}
       type={isInteractive ? 'button' : undefined}
       {...dataAttrs}
+      {...rest}
     >
       {children}
       {onDismiss && !disabled && (
@@ -161,4 +168,7 @@ export const Chip: React.FC<ChipProps> = ({
       )}
     </Tag>
   );
-};
+  },
+);
+
+Chip.displayName = 'Chip';

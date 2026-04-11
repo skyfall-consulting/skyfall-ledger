@@ -7,6 +7,7 @@
  */
 import * as React from 'react';
 import { useFormField } from '../FormField/FormFieldContext';
+import { cn } from '../../utils/cn';
 
 // ---------------------------------------------------------------------------
 // Types
@@ -94,7 +95,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const wrapperStyle: React.CSSProperties = {
       display: 'flex',
       alignItems: 'center',
-      gap: '8px',
+      gap: 'var(--ledger-space-3)',
       height: spec.height,
       padding: spec.padding,
       borderRadius: 'var(--ledger-radius-sm)',
@@ -107,7 +108,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <div
-        className={['ledger-input-wrap', className].filter(Boolean).join(' ')}
+        className={cn('ledger-input-wrap', className)}
         style={wrapperStyle}
         {...(isInvalid ? { 'data-invalid': '' } : {})}
         {...(isDisabled ? { 'data-disabled': '' } : {})}

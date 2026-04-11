@@ -10,6 +10,7 @@
  */
 import * as React from 'react';
 import { useFormField } from '../FormField/FormFieldContext';
+import { cn } from '../../utils/cn';
 import { fontFamily } from '../../tokens/typography';
 import { focus } from '../../tokens/focus';
 import { space } from '../../tokens/spacing';
@@ -186,7 +187,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
 
     return (
       <label
-        className={['ledger-checkbox', className].filter(Boolean).join(' ')}
+        className={cn('ledger-checkbox', className)}
         style={rootStyle}
         {...dataAttrs}
       >

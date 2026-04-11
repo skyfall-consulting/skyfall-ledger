@@ -8,6 +8,7 @@
 import * as React from 'react';
 import { controlHeight } from '../../tokens/sizing';
 import { radius } from '../../tokens/radius';
+import { cn } from '../../utils/cn';
 
 // ---------------------------------------------------------------------------
 // Reuse spinner keyframes injected by Button (or inject if loaded standalone)
@@ -150,9 +151,7 @@ export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
         disabled={isDisabled}
         aria-label={ariaLabel}
         aria-busy={loading || undefined}
-        className={['ledger-btn', 'ledger-focus-ring', className]
-          .filter(Boolean)
-          .join(' ')}
+        className={cn('ledger-btn', 'ledger-focus-ring', className)}
         style={mergedStyle}
         {...rest}
       >

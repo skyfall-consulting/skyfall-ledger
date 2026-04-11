@@ -8,8 +8,6 @@ import { space } from '../../tokens/spacing';
  *
  * A pill-style toggle button group for switching between mutually exclusive
  * views or filters. Supports roving tab index and arrow-key navigation.
- *
- * Previously named SegmentedControl.
  */
 const meta: Meta<typeof ToggleButton> = {
   title: 'Inputs/Toggle Button',

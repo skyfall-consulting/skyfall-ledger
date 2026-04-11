@@ -12,7 +12,7 @@ import * as React from 'react';
 export type BadgeTone = 'neutral' | 'positive' | 'negative' | 'warning' | 'info' | 'accent';
 export type BadgeSize = 'sm' | 'md';
 
-export interface BadgeProps {
+export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   /** Semantic color tone. @default 'neutral' */
   tone?: BadgeTone;
   /** Badge height preset. @default 'md' */
@@ -75,36 +75,44 @@ const SIZE_MAP: Record<BadgeSize, SizeSpec> = {
 // ---------------------------------------------------------------------------
 // Component
 // ---------------------------------------------------------------------------
-export const Badge: React.FC<BadgeProps> = ({
-  tone = 'neutral',
-  size = 'md',
-  children,
-  className,
-  style,
-}) => {
-  const toneColors = TONE_MAP[tone];
-  const sizeSpec = SIZE_MAP[size];
+export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
+  (
+    {
+      tone = 'neutral',
+      size = 'md',
+      children,
+      className,
+      style,
+      ...rest
+    },
+    ref,
+  ) => {
+    const toneColors = TONE_MAP[tone];
+    const sizeSpec = SIZE_MAP[size];
 
-  const badgeStyle: React.CSSProperties = {
-    display: 'inline-flex',
-    alignItems: 'center',
-    height: sizeSpec.height,
-    padding: sizeSpec.padding,
-    borderRadius: 'var(--ledger-radius-xs)',
-    fontFamily: 'var(--ledger-font-sans)',
-    fontSize: sizeSpec.fontSize,
-    fontWeight: 500,
-    letterSpacing: '0.02em',
-    textTransform: sizeSpec.textTransform,
-    whiteSpace: 'nowrap',
-    background: toneColors.background,
-    color: toneColors.color,
-    ...style,
-  };
+    const badgeStyle: React.CSSProperties = {
+      display: 'inline-flex',
+      alignItems: 'center',
+      height: sizeSpec.height,
+      padding: sizeSpec.padding,
+      borderRadius: 'var(--ledger-radius-xs)',
+      fontFamily: 'var(--ledger-font-sans)',
+      fontSize: sizeSpec.fontSize,
+      fontWeight: 500,
+      letterSpacing: '0.02em',
+      textTransform: sizeSpec.textTransform,
+      whiteSpace: 'nowrap',
+      background: toneColors.background,
+      color: toneColors.color,
+      ...style,
+    };
 
-  return (
-    <span className={className} style={badgeStyle}>
-      {children}
-    </span>
-  );
-};
+    return (
+      <span ref={ref} className={className} style={badgeStyle} {...rest}>
+        {children}
+      </span>
+    );
+  },
+);
+
+Badge.displayName = 'Badge';

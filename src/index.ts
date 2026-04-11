@@ -28,7 +28,7 @@ export * from './types';
 // Utils
 export * from './utils';
 
-// Components (Inputs, Data Display, Surfaces, Layout, FinTech, Deprecated)
+// Components (Inputs, Data Display, Feedback, Surfaces, Layout, Utils, FinTech)
 export * from './components';
 
 /**

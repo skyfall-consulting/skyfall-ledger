@@ -10,6 +10,7 @@
  */
 import * as React from 'react';
 import { useFormField } from '../FormField/FormFieldContext';
+import { cn } from '../../utils/cn';
 import { fontFamily } from '../../tokens/typography';
 import { focus } from '../../tokens/focus';
 import { space } from '../../tokens/spacing';
@@ -167,7 +168,7 @@ export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
 
     return (
       <label
-        className={['ledger-switch', className].filter(Boolean).join(' ')}
+        className={cn('ledger-switch', className)}
         style={rootStyle}
         {...dataAttrs}
       >

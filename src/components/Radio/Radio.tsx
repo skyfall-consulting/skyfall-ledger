@@ -11,6 +11,7 @@
  */
 import * as React from 'react';
 import { useFormField } from '../FormField/FormFieldContext';
+import { cn } from '../../utils/cn';
 import { fontFamily } from '../../tokens/typography';
 import { focus } from '../../tokens/focus';
 import { space } from '../../tokens/spacing';
@@ -212,7 +213,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
 
     return (
       <label
-        className={['ledger-radio', className].filter(Boolean).join(' ')}
+        className={cn('ledger-radio', className)}
         style={rootStyle}
         {...dataAttrs}
       >

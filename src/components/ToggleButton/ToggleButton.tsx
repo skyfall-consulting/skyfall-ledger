@@ -9,9 +9,6 @@
  * Container and sizing are set inline.
  *
  * Taxonomy: Inputs / Toggle Button
- *
- * NOTE: This component was previously named SegmentedControl. The old name
- * is available as a deprecated alias — see `src/components/SegmentedControl/`.
  */
 import * as React from 'react';
 import { fontFamily, fontWeight } from '../../tokens/typography';

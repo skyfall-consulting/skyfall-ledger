@@ -10,6 +10,7 @@
  */
 import * as React from 'react';
 import { space } from '../../tokens/spacing';
+import { cn } from '../../utils/cn';
 
 // ---------------------------------------------------------------------------
 // Inject attached-mode CSS once (border-radius overrides via child position)
@@ -41,7 +42,7 @@ if (typeof document !== 'undefined' && !document.getElementById('ledger-btn-grou
 export type ButtonGroupDirection = 'horizontal' | 'vertical';
 export type ButtonGroupSpacing = 'attached' | 'spaced';
 
-export interface ButtonGroupProps {
+export interface ButtonGroupProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Layout axis. @default 'horizontal' */
   direction?: ButtonGroupDirection;
   /** How children are spaced. @default 'spaced' */
@@ -57,36 +58,44 @@ export interface ButtonGroupProps {
 // ---------------------------------------------------------------------------
 // Component
 // ---------------------------------------------------------------------------
-export const ButtonGroup: React.FC<ButtonGroupProps> = ({
-  direction = 'horizontal',
-  spacing = 'spaced',
-  children,
-  className,
-  style,
-}) => {
-  const isAttached = spacing === 'attached';
+export const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
+  (
+    {
+      direction = 'horizontal',
+      spacing = 'spaced',
+      children,
+      className,
+      style,
+      ...rest
+    },
+    ref,
+  ) => {
+    const isAttached = spacing === 'attached';
 
-  const attachedClass = isAttached
-    ? `ledger-btn-group--attached-${direction}`
-    : undefined;
+    const attachedClass = isAttached
+      ? `ledger-btn-group--attached-${direction}`
+      : undefined;
 
-  const wrapperStyle: React.CSSProperties = {
-    display: 'inline-flex',
-    flexDirection: direction === 'vertical' ? 'column' : 'row',
-    alignItems: direction === 'vertical' ? 'stretch' : 'center',
-    gap: isAttached ? 0 : space[3],
-    ...style,
-  };
+    const wrapperStyle: React.CSSProperties = {
+      display: 'inline-flex',
+      flexDirection: direction === 'vertical' ? 'column' : 'row',
+      alignItems: direction === 'vertical' ? 'stretch' : 'center',
+      gap: isAttached ? 0 : space[3],
+      ...style,
+    };
 
-  return (
-    <div
-      role="group"
-      className={[attachedClass, className].filter(Boolean).join(' ') || undefined}
-      style={wrapperStyle}
-    >
-      {children}
-    </div>
-  );
-};
+    return (
+      <div
+        ref={ref}
+        role="group"
+        className={cn(attachedClass, className) || undefined}
+        style={wrapperStyle}
+        {...rest}
+      >
+        {children}
+      </div>
+    );
+  },
+);
 
 ButtonGroup.displayName = 'ButtonGroup';

@@ -10,6 +10,7 @@ import * as React from 'react';
 import { controlHeight } from '../../tokens/sizing';
 import { fontFamily, fontWeight } from '../../tokens/typography';
 import { radius } from '../../tokens/radius';
+import { cn } from '../../utils/cn';
 
 // ---------------------------------------------------------------------------
 // Spinner keyframes — injected once at module level
@@ -170,9 +171,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         type={type}
         disabled={isDisabled}
         aria-busy={loading || undefined}
-        className={['ledger-btn', 'ledger-focus-ring', className]
-          .filter(Boolean)
-          .join(' ')}
+        className={cn('ledger-btn', 'ledger-focus-ring', className)}
         style={mergedStyle}
         {...rest}
       >

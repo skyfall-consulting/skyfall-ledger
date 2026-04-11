@@ -30,7 +30,7 @@ export type StatusPillStatus =
 
 export type StatusPillSize = 'sm' | 'md';
 
-export interface StatusPillProps {
+export interface StatusPillProps extends React.HTMLAttributes<HTMLSpanElement> {
   /** The transaction/account status to display. */
   status: StatusPillStatus;
   /** Size preset. @default 'md' */
@@ -100,46 +100,54 @@ const SIZE_MAP: Record<StatusPillSize, SizeSpec> = {
 // ---------------------------------------------------------------------------
 // Component
 // ---------------------------------------------------------------------------
-export const StatusPill: React.FC<StatusPillProps> = ({
-  status,
-  size = 'md',
-  className,
-  style,
-}) => {
-  const config = STATUS_MAP[status];
-  const sizeSpec = SIZE_MAP[size];
+export const StatusPill = React.forwardRef<HTMLSpanElement, StatusPillProps>(
+  (
+    {
+      status,
+      size = 'md',
+      className,
+      style,
+      ...rest
+    },
+    ref,
+  ) => {
+    const config = STATUS_MAP[status];
+    const sizeSpec = SIZE_MAP[size];
 
-  const pillStyle: React.CSSProperties = {
-    display: 'inline-flex',
-    alignItems: 'center',
-    height: sizeSpec.height,
-    padding: sizeSpec.padding,
-    gap: sizeSpec.gap,
-    borderRadius: 'var(--ledger-radius-pill)',
-    background: 'var(--ledger-color-surface-sunken)',
-    fontFamily: 'var(--ledger-font-sans)',
-    fontSize: sizeSpec.fontSize,
-    fontWeight: 500,
-    color: config.textColor,
-    whiteSpace: 'nowrap',
-    ...style,
-  };
+    const pillStyle: React.CSSProperties = {
+      display: 'inline-flex',
+      alignItems: 'center',
+      height: sizeSpec.height,
+      padding: sizeSpec.padding,
+      gap: sizeSpec.gap,
+      borderRadius: 'var(--ledger-radius-pill)',
+      background: 'var(--ledger-color-surface-sunken)',
+      fontFamily: 'var(--ledger-font-sans)',
+      fontSize: sizeSpec.fontSize,
+      fontWeight: 500,
+      color: config.textColor,
+      whiteSpace: 'nowrap',
+      ...style,
+    };
 
-  const dotStyle: React.CSSProperties = {
-    width: sizeSpec.dotSize,
-    height: sizeSpec.dotSize,
-    borderRadius: '50%',
-    background: config.dotColor,
-    flexShrink: 0,
-    ...(status === 'processing'
-      ? { animation: 'ledger-pulse 1.5s ease-in-out infinite' }
-      : undefined),
-  };
+    const dotStyle: React.CSSProperties = {
+      width: sizeSpec.dotSize,
+      height: sizeSpec.dotSize,
+      borderRadius: '50%',
+      background: config.dotColor,
+      flexShrink: 0,
+      ...(status === 'processing'
+        ? { animation: 'ledger-pulse 1.5s ease-in-out infinite' }
+        : undefined),
+    };
 
-  return (
-    <span className={className} style={pillStyle}>
-      <span aria-hidden="true" style={dotStyle} />
-      {config.label}
-    </span>
-  );
-};
+    return (
+      <span ref={ref} className={className} style={pillStyle} {...rest}>
+        <span aria-hidden="true" style={dotStyle} />
+        {config.label}
+      </span>
+    );
+  },
+);
+
+StatusPill.displayName = 'StatusPill';
