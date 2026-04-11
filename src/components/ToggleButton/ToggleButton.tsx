@@ -1,12 +1,17 @@
 /**
- * Skyfall Ledger — <SegmentedControl />
+ * Skyfall Ledger — <ToggleButton />
  *
- * A pill-style segmented control that behaves like a radio group.
+ * A pill-style toggle button group that behaves like a radio group.
  * Supports two sizes (sm, md), full-width layout, and roving tab index
  * with arrow-key navigation.
  *
  * Active and hover styles delegate to `.ledger-seg__item` in primitives.css.
  * Container and sizing are set inline.
+ *
+ * Taxonomy: Inputs / Toggle Button
+ *
+ * NOTE: This component was previously named SegmentedControl. The old name
+ * is available as a deprecated alias — see `src/components/SegmentedControl/`.
  */
 import * as React from 'react';
 import { fontFamily, fontWeight } from '../../tokens/typography';
@@ -14,13 +19,13 @@ import { fontFamily, fontWeight } from '../../tokens/typography';
 // ---------------------------------------------------------------------------
 // Size specs
 // ---------------------------------------------------------------------------
-interface SegSizeSpec {
+interface ToggleSizeSpec {
   height: number;
   fontSize: string;
   padding: string;
 }
 
-const SIZE_MAP: Record<'sm' | 'md', SegSizeSpec> = {
+const SIZE_MAP: Record<'sm' | 'md', ToggleSizeSpec> = {
   sm: { height: 28, fontSize: '12px', padding: '0 10px' },
   md: { height: 34, fontSize: '13px', padding: '0 14px' },
 };
@@ -28,14 +33,14 @@ const SIZE_MAP: Record<'sm' | 'md', SegSizeSpec> = {
 // ---------------------------------------------------------------------------
 // Types
 // ---------------------------------------------------------------------------
-export interface SegmentedControlItem {
+export interface ToggleButtonItem {
   value: string;
   label: React.ReactNode;
 }
 
-export interface SegmentedControlProps {
+export interface ToggleButtonProps {
   /** The segment items to display. */
-  items: SegmentedControlItem[];
+  items: ToggleButtonItem[];
   /** Controlled selected value. */
   value?: string;
   /** Initial selected value (uncontrolled). Defaults to the first item. */
@@ -57,7 +62,7 @@ export interface SegmentedControlProps {
 // ---------------------------------------------------------------------------
 // Component
 // ---------------------------------------------------------------------------
-export const SegmentedControl = React.forwardRef<HTMLDivElement, SegmentedControlProps>(
+export const ToggleButton = React.forwardRef<HTMLDivElement, ToggleButtonProps>(
   (
     {
       items,
@@ -128,7 +133,6 @@ export const SegmentedControl = React.forwardRef<HTMLDivElement, SegmentedContro
 
         if (nextIndex >= 0) {
           handleSelect(items[nextIndex].value);
-          // Focus the newly selected button
           const buttons = containerRef.current?.querySelectorAll<HTMLButtonElement>(
             'button[role="radio"]',
           );
@@ -202,4 +206,4 @@ export const SegmentedControl = React.forwardRef<HTMLDivElement, SegmentedContro
   },
 );
 
-SegmentedControl.displayName = 'SegmentedControl';
+ToggleButton.displayName = 'ToggleButton';

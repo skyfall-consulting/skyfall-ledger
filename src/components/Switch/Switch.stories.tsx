@@ -10,7 +10,7 @@ import { space } from '../../tokens/spacing';
  * optional labels. Track and thumb animations use CSS custom properties.
  */
 const meta: Meta<typeof Switch> = {
-  title: 'Components/Switch',
+  title: 'Inputs/Switch',
   component: Switch,
   parameters: {
     layout: 'padded',

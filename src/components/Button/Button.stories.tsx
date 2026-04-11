@@ -12,7 +12,7 @@ import { fontFamily, fontSize, fontWeight as fontWeightTokens, tracking } from '
  * three sizes, loading state, and full-width layout.
  */
 const meta: Meta<typeof Button> = {
-  title: 'Components/Button',
+  title: 'Inputs/Button',
   component: Button,
   parameters: {
     layout: 'padded',

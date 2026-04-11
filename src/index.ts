@@ -8,7 +8,7 @@
  *   @skyfall_ai/ledger/tokens   → src/tokens/ledger-tokens.css (raw CSS variables)
  *   @skyfall_ai/ledger/styles   → dist/index.css (compiled stylesheet)
  *
- * Wave 0 ships foundations only — components are added in Wave 2+.
+ * Organized by the approved Skyfall 75-core taxonomy.
  * Charts and icons live behind their subpath exports so consumers that
  * never touch them never bundle Recharts or Lucide.
  */
@@ -28,7 +28,7 @@ export * from './types';
 // Utils
 export * from './utils';
 
-// Components — empty in Wave 0, ready to receive Wave 2 work
+// Components (Inputs, Data Display, Surfaces, Layout, FinTech, Deprecated)
 export * from './components';
 
 /**

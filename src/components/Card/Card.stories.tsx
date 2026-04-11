@@ -10,7 +10,7 @@ import { Amount } from '../Amount';
  * group related content with raised, outlined, or flat treatments.
  */
 const meta: Meta<typeof Card> = {
-  title: 'Components/Card',
+  title: 'Surfaces/Card',
   component: Card,
   parameters: {
     layout: 'padded',

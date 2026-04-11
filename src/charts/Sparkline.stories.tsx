@@ -13,7 +13,7 @@ import { fontFamily, fontSize, fontWeight, tracking } from '../tokens/typography
  * tooltip — meant to live next to a number, not replace it.
  */
 const meta: Meta<typeof Sparkline> = {
-  title: 'Charts/Sparkline',
+  title: 'Skyfall X/Charts/Sparkline',
   component: Sparkline,
   parameters: {
     layout: 'centered',

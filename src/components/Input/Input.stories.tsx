@@ -12,7 +12,7 @@ import { space } from '../../tokens/spacing';
  * context to auto-wire IDs and accessibility attributes.
  */
 const meta: Meta<typeof Input> = {
-  title: 'Components/Input',
+  title: 'Inputs/Input',
   component: Input,
   parameters: {
     layout: 'padded',

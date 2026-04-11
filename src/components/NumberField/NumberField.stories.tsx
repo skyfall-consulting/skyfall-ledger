@@ -11,7 +11,7 @@ import { space } from '../../tokens/spacing';
  * browser spinner artifacts.
  */
 const meta: Meta<typeof NumberField> = {
-  title: 'Components/NumberField',
+  title: 'Inputs/Number Field',
   component: NumberField,
   parameters: {
     layout: 'padded',

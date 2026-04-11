@@ -11,7 +11,7 @@ import { space } from '../../tokens/spacing';
  * and full keyboard accessibility.
  */
 const meta: Meta<typeof Checkbox> = {
-  title: 'Components/Checkbox',
+  title: 'Inputs/Checkbox',
   component: Checkbox,
   parameters: {
     layout: 'padded',
