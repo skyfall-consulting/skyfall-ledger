@@ -1,0 +1,56 @@
+<!-- Skyfall Ledger — Storybook manager head overrides -->
+<link rel="icon" type="image/png" href="./favicon.png" />
+<meta name="application-name" content="Skyfall Ledger" />
+<meta name="description" content="Skyfall Ledger — Enterprise-grade FinTech design system" />
+<style>
+  /*
+   * Manager chrome refinements.
+   * These target Storybook's internal DOM structure for polish
+   * that the theme API alone cannot achieve.
+   */
+
+  /* Sidebar brand area — contain the logo */
+  .sidebar-header img,
+  [class*="brand"] img {
+    max-height: 36px !important;
+    object-fit: contain;
+  }
+
+  /* Sidebar — refined hierarchy */
+  [class*="sidebar"] {
+    font-family: "Inter", system-ui, sans-serif !important;
+  }
+
+  /* Category root labels — uppercase fintech feel */
+  button[id] > span:first-child,
+  [data-nodetype="root"] > button > span {
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 10.5px !important;
+    font-weight: 600 !important;
+    color: #6B7A8D !important;
+  }
+
+  /* Active sidebar item — gold accent strip */
+  [data-selected="true"],
+  [aria-current="true"] {
+    background: rgba(201, 168, 76, 0.08) !important;
+    border-left: 2px solid #C9A84C !important;
+  }
+
+  /* Scrollbar — minimal, dark */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1C2433;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2A3545;
+  }
+</style>
