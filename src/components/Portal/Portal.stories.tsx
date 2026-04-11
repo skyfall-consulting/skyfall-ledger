@@ -13,13 +13,22 @@ import { Portal } from './Portal';
 const meta: Meta<typeof Portal> = {
   title: 'Components/Utils/Portal',
   component: Portal,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'Renders children into a DOM node outside the React tree. Supports custom containers, inline fallback via the disabled prop, and is SSR-safe.',
+          'Portal -- Renders children into a DOM node outside the parent React component hierarchy using `createPortal`. Defaults to `document.body` but accepts a custom container.\n\nUsage:\n- Use for overlays, tooltips, modals, and floating content that needs to escape stacking context or overflow constraints\n- Set `disabled` to render children inline instead of portalling (useful for testing or conditional behavior)\n- SSR-safe -- falls back to inline rendering until the component mounts on the client',
       },
+    },
+  },
+  argTypes: {
+    container: {
+      description: 'Target container element. Defaults to `document.body`.',
+    },
+    disabled: {
+      description: 'When `true`, renders children inline instead of portalling.',
     },
   },
 };

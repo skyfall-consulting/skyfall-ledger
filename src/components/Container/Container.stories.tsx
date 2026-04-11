@@ -12,12 +12,13 @@ import { Card } from '../Card';
 const meta: Meta<typeof Container> = {
   title: 'Components/Layout/Container',
   component: Container,
+  tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
     docs: {
       description: {
         component:
-          'A max-width centered wrapper with responsive horizontal padding. Sizes map to containerMaxWidth layout tokens.',
+          'Container -- Max-width centered wrapper with responsive horizontal padding. Sizes map to `containerMaxWidth` layout tokens and serve as the top-level page constraint in dashboard and detail layouts.\n\nUsage:\n- Use as the outermost content wrapper to enforce consistent max-width across pages\n- Supports polymorphic rendering (`div`, `section`, `main`) for semantic HTML\n- Set `center={false}` for full-width layouts that still need consistent horizontal padding',
       },
     },
   },
@@ -25,15 +26,21 @@ const meta: Meta<typeof Container> = {
     size: {
       control: { type: 'select' },
       options: ['sm', 'md', 'lg', 'xl', '2xl'],
+      description: 'Max-width preset from `containerMaxWidth` layout tokens.',
     },
     padding: {
       control: { type: 'select' },
       options: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+      description: 'Horizontal padding mapped to a Ledger space token (0--13).',
     },
-    center: { control: 'boolean' },
+    center: {
+      control: 'boolean',
+      description: 'Whether to center the container with auto margins.',
+    },
     as: {
       control: { type: 'select' },
       options: ['div', 'section', 'main'],
+      description: 'Polymorphic root element tag.',
     },
   },
   args: {
@@ -93,6 +100,13 @@ export const Sizes: Story = {
 // ---------- WithContent ----------
 
 export const WithContent: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'A realistic dashboard layout using Container as the page wrapper with Card children.',
+      },
+    },
+  },
   render: () => (
     <Container size="xl" as="main" padding={8}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ledger-space-6)' }}>

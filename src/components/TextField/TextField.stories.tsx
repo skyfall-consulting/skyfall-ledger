@@ -13,12 +13,19 @@ import { radius } from '../../tokens/radius';
 const meta: Meta<typeof TextField> = {
   title: 'Components/Inputs/Text Field',
   component: TextField,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'Fully-assembled labeled text field. Composes FormField + Input for a one-component drop-in.',
+          'TextField — Fully-assembled labeled text field that composes FormField + Input into a single drop-in component. Ideal for account-opening forms, payment details, and KYC data entry.\n\n' +
+          'Accessibility:\n' +
+          '- Auto-generates matching `id`, `htmlFor`, and `aria-describedby` via FormField context\n' +
+          '- Error text replaces helper text and sets `aria-invalid` on the underlying input\n' +
+          '- Required fields render an asterisk in the label and set the native `required` attribute\n' +
+          '- Supports `leftSlot` and `rightSlot` for icons marked `aria-hidden` in consuming code\n' +
+          '- Forwards ref to the underlying `<input>` element for imperative focus management',
       },
     },
   },
@@ -26,12 +33,28 @@ const meta: Meta<typeof TextField> = {
     size: {
       control: { type: 'select' },
       options: ['sm', 'md', 'lg'],
+      description: 'Controls the height preset of the input.',
     },
-    required: { control: 'boolean' },
-    disabled: { control: 'boolean' },
-    label: { control: 'text' },
-    helperText: { control: 'text' },
-    errorText: { control: 'text' },
+    required: {
+      control: 'boolean',
+      description: 'Marks the field as required with an asterisk and native attribute.',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Disables the input and dims the entire field.',
+    },
+    label: {
+      control: 'text',
+      description: 'Renders a Label element above the input.',
+    },
+    helperText: {
+      control: 'text',
+      description: 'Descriptive text rendered below the input.',
+    },
+    errorText: {
+      control: 'text',
+      description: 'Error message that replaces helper text and triggers the invalid state.',
+    },
   },
   args: {
     size: 'md',

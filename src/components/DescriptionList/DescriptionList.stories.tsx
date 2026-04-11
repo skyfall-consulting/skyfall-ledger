@@ -11,12 +11,13 @@ import { DescriptionList } from './DescriptionList';
 const meta: Meta<typeof DescriptionList> = {
   title: 'Components/Data Display/DescriptionList',
   component: DescriptionList,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'Semantic key-value list using dl/dt/dd. Supports vertical, horizontal, and grid layouts with optional dividers.',
+          'DescriptionList -- Semantic key-value display built on `<dl>` / `<dt>` / `<dd>` HTML elements. Supports vertical, horizontal, and CSS grid layouts with optional dividers and two density modes. Ideal for transaction details, account information panels, invoice metadata, and KYC review screens.\n\nAccessibility:\n- Uses native `<dl>`, `<dt>`, and `<dd>` elements providing inherent semantics for term-description pairs that screen readers announce correctly.\n- Grid layout uses `display: contents` on item wrappers so `<dt>` and `<dd>` remain direct children of the `<dl>` for correct accessibility tree structure.\n- Labels (`<dt>`) are styled with secondary text color and medium weight to create a clear visual hierarchy without relying on color alone.',
       },
     },
   },
@@ -24,12 +25,17 @@ const meta: Meta<typeof DescriptionList> = {
     layout: {
       control: 'select',
       options: ['vertical', 'horizontal', 'grid'],
+      description: 'Layout mode: vertical stacks, horizontal rows, or CSS grid columns.',
     },
     size: {
       control: 'select',
       options: ['sm', 'md'],
+      description: 'Spacing and font density preset.',
     },
-    dividers: { control: 'boolean' },
+    dividers: {
+      control: 'boolean',
+      description: 'Show a 1px divider between items for visual separation.',
+    },
   },
   args: {
     layout: 'vertical',

@@ -11,23 +11,34 @@ import { Backdrop } from './Backdrop';
 const meta: Meta<typeof Backdrop> = {
   title: 'Components/Utils/Backdrop',
   component: Backdrop,
+  tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
     docs: {
       description: {
         component:
-          'Full-viewport overlay with scroll locking, click-to-dismiss, and opacity variants. Used as the scrim layer behind Modal, Drawer, and Dialog.',
+          'Backdrop -- Full-viewport overlay primitive used behind Modal, Drawer, and Dialog. Supports three visual variants (`default`, `light`, `opaque`), body scroll locking, and click-to-dismiss behavior with a fade-in transition.\n\nAccessibility:\n- Rendered with `aria-hidden="true"` since the backdrop itself carries no interactive content\n- Body scroll lock prevents background content from scrolling under the overlay\n- Focus management is the responsibility of the surface component (Modal, Drawer, etc.) rendered on top\n- Use `disableClick` for mandatory confirmation dialogs that must not be dismissed by clicking the scrim',
       },
     },
   },
   argTypes: {
-    open: { control: 'boolean' },
+    open: {
+      control: 'boolean',
+      description: 'Whether the backdrop is visible.',
+    },
     variant: {
       control: { type: 'select' },
       options: ['default', 'light', 'opaque'],
+      description: 'Visual intensity of the overlay.',
     },
-    disableClick: { control: 'boolean' },
-    lockScroll: { control: 'boolean' },
+    disableClick: {
+      control: 'boolean',
+      description: 'When true, clicks on the backdrop are ignored (e.g. mandatory dialogs).',
+    },
+    lockScroll: {
+      control: 'boolean',
+      description: 'Whether to lock body scroll while open.',
+    },
   },
   args: {
     open: true,

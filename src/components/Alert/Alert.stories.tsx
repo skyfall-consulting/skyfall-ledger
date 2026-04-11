@@ -11,12 +11,13 @@ import { Alert } from './Alert';
 const meta: Meta<typeof Alert> = {
   title: 'Components/Feedback/Alert',
   component: Alert,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'Dismissible status banner with info, positive, negative, and warning tones. Supports optional title, custom icon, and dismiss control.',
+          'Alert -- Dismissible status banner for surfacing contextual feedback such as transaction confirmations, validation errors, and compliance warnings. Supports `info`, `positive`, `negative`, and `warning` tones with a left accent border, optional bold title, custom icon override, and an optional dismiss control.\n\n### Accessibility\n- Renders with `role="alert"`, which implicitly sets `aria-live="assertive"` so content is announced immediately by screen readers.\n- Dismiss button includes `aria-label="Dismiss"` and is keyboard-focusable with visible focus ring.\n- Default tone icons are marked `aria-hidden="true"` to avoid redundant announcements.\n- Use clear, concise copy -- screen readers will announce the full alert text on render.',
       },
     },
   },
@@ -24,9 +25,16 @@ const meta: Meta<typeof Alert> = {
     tone: {
       control: { type: 'select' },
       options: ['info', 'positive', 'negative', 'warning'],
+      description: 'Semantic color tone that controls the accent border, background, and default icon.',
     },
-    dismissible: { control: 'boolean' },
-    title: { control: 'text' },
+    dismissible: {
+      control: 'boolean',
+      description: 'When `true`, renders a dismiss button at the trailing edge of the alert.',
+    },
+    title: {
+      control: 'text',
+      description: 'Optional bold heading rendered above the body text.',
+    },
   },
   args: {
     tone: 'info',
@@ -85,6 +93,13 @@ export const WithTitle: Story = {
 // ---------- Dismissible ----------
 
 export const Dismissible: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Interactive dismiss flow. The alert can be re-shown after dismissal to demonstrate the `onDismiss` callback.',
+      },
+    },
+  },
   render: function DismissibleStory() {
     const [visible, setVisible] = React.useState(true);
 
@@ -141,6 +156,13 @@ export const CustomIcon: Story = {
 // ---------- All tones ----------
 
 export const AllTones: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'All four tone variants rendered together for visual comparison.',
+      },
+    },
+  },
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ledger-space-5)' }}>
       <Alert tone="info" title="Information">

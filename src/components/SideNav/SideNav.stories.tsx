@@ -5,7 +5,41 @@ import { SideNav, type SideNavItem } from './SideNav';
 const meta: Meta<typeof SideNav> = {
   title: 'Components/Navigation/SideNav',
   component: SideNav,
-  parameters: { layout: 'fullscreen' },
+  tags: ['autodocs'],
+  parameters: {
+    layout: 'fullscreen',
+    docs: {
+      description: {
+        component:
+          'SideNav -- vertical sidebar navigation for fintech dashboard layouts.\n\n' +
+          'Supports nested child items with auto-expand when a child is active, collapsible icon-only mode with smooth width transitions, ' +
+          'and active-page highlighting via a teal left border indicator. Renders as `<a>` for items with `href` and `<button>` otherwise.\n\n' +
+          'Accessibility:\n' +
+          '- Wrapped in `<nav>` with `aria-label="Side navigation"` for landmark navigation\n' +
+          '- Active item marked with `aria-current="page"` for screen readers\n' +
+          '- Collapsed items include a `title` attribute for tooltip on hover\n' +
+          '- Collapse toggle button has descriptive `aria-label` ("Expand navigation" / "Collapse navigation")\n' +
+          '- Disabled items set the native `disabled` attribute and are styled with reduced opacity\n' +
+          '- Icons are `aria-hidden` to prevent redundant screen reader output',
+      },
+    },
+  },
+  argTypes: {
+    activeId: {
+      control: 'text',
+      description: 'ID of the currently active item, highlighted with a teal left border.',
+    },
+    collapsed: {
+      control: 'boolean',
+      description: 'Whether the sidebar is collapsed to icon-only mode (56px wide).',
+    },
+    items: {
+      description: 'Navigation items, each with optional icon, href, children, and disabled state.',
+    },
+    onCollapse: {
+      description: 'Callback when the collapse toggle is clicked. When provided, the collapse button is rendered.',
+    },
+  },
 };
 export default meta;
 type Story = StoryObj<typeof SideNav>;
@@ -65,6 +99,13 @@ const dashboardItems: SideNavItem[] = [
 
 // --- Default ---
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Standard expanded sidebar with top-level Overview active. The Accounts item has nested children.',
+      },
+    },
+  },
   args: {
     items: dashboardItems,
     activeId: 'overview',
@@ -83,6 +124,13 @@ export const Default: Story = {
 
 // --- With Nested Active ---
 export const NestedActive: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'A nested child item (Savings) is active. The parent Accounts group auto-expands to reveal it.',
+      },
+    },
+  },
   args: {
     items: dashboardItems,
     activeId: 'savings',
@@ -92,6 +140,13 @@ export const NestedActive: Story = {
 
 // --- Collapsible ---
 export const Collapsible: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Interactive collapse toggle. Click the chevron button to switch between expanded (240px) and icon-only (56px) modes.',
+      },
+    },
+  },
   render: function CollapsibleStory() {
     const [collapsed, setCollapsed] = useState(false);
     return (
@@ -112,6 +167,13 @@ export const Collapsible: Story = {
 
 // --- Collapsed ---
 export const Collapsed: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Icon-only collapsed state at 56px width. Hover over icons to see the `title` tooltip.',
+      },
+    },
+  },
   args: {
     items: dashboardItems,
     activeId: 'transactions',
@@ -122,6 +184,13 @@ export const Collapsed: Story = {
 
 // --- With Disabled Item ---
 export const WithDisabledItem: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Settings item is disabled with reduced opacity and `cursor: not-allowed`. Disabled items cannot be clicked or focused.',
+      },
+    },
+  },
   args: {
     items: [
       ...dashboardItems.slice(0, 4),

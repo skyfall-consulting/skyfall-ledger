@@ -11,12 +11,13 @@ import { Skeleton } from './Skeleton';
 const meta: Meta<typeof Skeleton> = {
   title: 'Components/Data Display/Skeleton',
   component: Skeleton,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'Loading placeholder with shimmer animation. Supports text, rectangular, and circular variants.',
+          'Skeleton -- A loading placeholder with a shimmer animation. Supports text, rectangular, and circular shape variants for composing realistic loading states that mirror final layouts. Multi-line text skeletons automatically shorten the last line to 60% width for a natural paragraph appearance.\n\nAccessibility:\n- Renders as plain `<div>` elements without interactive roles; no ARIA attributes are needed since the skeleton is a purely visual loading indicator.\n- Pair with an `aria-busy="true"` attribute on the parent container and a live region announcement for screen reader users.\n- The shimmer animation uses `prefers-reduced-motion` safe CSS (gradient slide) and does not rely on opacity flashing.',
       },
     },
   },
@@ -24,10 +25,20 @@ const meta: Meta<typeof Skeleton> = {
     variant: {
       control: { type: 'select' },
       options: ['text', 'rectangular', 'circular'],
+      description: 'Shape of the skeleton: text line, rectangular block, or circle.',
     },
-    width: { control: 'text' },
-    height: { control: 'text' },
-    lines: { control: { type: 'number', min: 1, max: 10 } },
+    width: {
+      control: 'text',
+      description: 'Width of the skeleton. Accepts CSS values (px, %, em).',
+    },
+    height: {
+      control: 'text',
+      description: 'Height of the skeleton. Accepts CSS values.',
+    },
+    lines: {
+      control: { type: 'number', min: 1, max: 10 },
+      description: 'Number of text lines to render (text variant only). Last line is 60% width.',
+    },
   },
   args: {
     variant: 'text',
@@ -80,6 +91,13 @@ export const Circular: Story = {
 // ---------- CardSkeleton ----------
 
 export const CardSkeleton: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Composed skeleton matching a typical card layout with circular avatar, text lines, and a rectangular content block.',
+      },
+    },
+  },
   render: () => (
     <div
       style={{

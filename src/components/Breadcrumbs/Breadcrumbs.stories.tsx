@@ -14,19 +14,31 @@ import { radius } from '../../tokens/radius';
 const meta: Meta<typeof Breadcrumbs> = {
   title: 'Components/Navigation/Breadcrumbs',
   component: Breadcrumbs,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'Navigational breadcrumb trail showing the user\'s current location within the Ledger hierarchy. Uses `<nav>` with `aria-label="Breadcrumb"` and semantic `<ol>`/`<li>` markup.',
+          'Breadcrumbs -- navigational trail showing the current location within a fintech dashboard hierarchy.\n\n' +
+          'Supports link and button crumbs for ancestor pages, plain-text rendering for the current page, and collapsible ' +
+          'middle items via `maxItems` for deep navigation paths.\n\n' +
+          'Accessibility:\n' +
+          '- Wrapped in `<nav>` with `aria-label="Breadcrumb"` for landmark navigation\n' +
+          '- Uses semantic `<ol>`/`<li>` list structure for ordered path representation\n' +
+          '- Last item has `aria-current="page"` to indicate the current location\n' +
+          '- Chevron separators are `aria-hidden` so screen readers skip them\n' +
+          '- Ancestor crumbs render as `<a>` or `<button>` elements with focus-ring styles',
       },
     },
   },
   argTypes: {
     maxItems: {
       control: { type: 'number', min: 2, max: 10, step: 1 },
-      description: 'Maximum visible items before collapsing middle items to ellipsis.',
+      description: 'Maximum visible items before collapsing middle items to an ellipsis.',
+    },
+    items: {
+      description: 'Breadcrumb path items ordered from root to current page.',
     },
   },
 };

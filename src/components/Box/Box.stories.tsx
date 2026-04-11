@@ -12,39 +12,57 @@ import { Box } from './Box';
 const meta: Meta<typeof Box> = {
   title: 'Components/Layout/Box',
   component: Box,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'A generic polymorphic container with common layout style props for padding, margin, background, border, and display.',
+          'Box -- Generic polymorphic container with shorthand style props for padding, margin, background, border, and display. Maps spacing values to Ledger design tokens via CSS custom properties.\n\nUsage:\n- Use as a foundational layout building block for composing card layouts, section wrappers, and spacing containers\n- Supports polymorphic rendering via the `as` prop for semantic HTML (`section`, `article`, `nav`, etc.)\n- Spacing props accept token keys (0--13) that resolve to `--ledger-space-*` CSS variables',
       },
     },
   },
   argTypes: {
-    as: { control: 'text' },
+    as: {
+      control: 'text',
+      description: 'Polymorphic root element tag. Defaults to `div`.',
+    },
     padding: {
       control: { type: 'select' },
       options: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+      description: 'All-sides padding mapped to a Ledger space token (0--13).',
     },
     paddingX: {
       control: { type: 'select' },
       options: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+      description: 'Horizontal padding (left + right) mapped to a Ledger space token.',
     },
     paddingY: {
       control: { type: 'select' },
       options: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+      description: 'Vertical padding (top + bottom) mapped to a Ledger space token.',
     },
     margin: {
       control: { type: 'select' },
       options: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+      description: 'All-sides margin mapped to a Ledger space token.',
     },
-    background: { control: 'text' },
-    borderRadius: { control: 'text' },
-    border: { control: 'text' },
+    background: {
+      control: 'text',
+      description: 'Background color -- CSS variable or raw value.',
+    },
+    borderRadius: {
+      control: 'text',
+      description: 'Border radius -- CSS variable or raw value.',
+    },
+    border: {
+      control: 'text',
+      description: 'CSS border shorthand.',
+    },
     display: {
       control: { type: 'select' },
       options: ['block', 'flex', 'inline-flex', 'grid', 'inline', 'none'],
+      description: 'CSS display value.',
     },
   },
   args: {
@@ -107,6 +125,13 @@ export const WithBackground: Story = {
 // ---------- Composed ----------
 
 export const Composed: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Nested Box composition with inner paddingX override inside an outer Box.',
+      },
+    },
+  },
   render: () => (
     <Box padding={7} background="var(--ledger-color-surface-default)">
       <Box
@@ -125,6 +150,13 @@ export const Composed: Story = {
 // ---------- AsSection ----------
 
 export const AsSection: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Polymorphic rendering as a `<section>` element for semantic HTML.',
+      },
+    },
+  },
   args: {
     as: 'section',
     padding: 8,

@@ -46,12 +46,13 @@ const ChevronRight = () => (
 const meta: Meta<typeof ButtonGroup> = {
   title: 'Components/Inputs/Button Group',
   component: ButtonGroup,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'Flexbox layout wrapper for grouping Button and IconButton children. Supports spaced and attached spacing modes in horizontal or vertical directions.',
+          'ButtonGroup -- a layout wrapper that arranges Button and IconButton children in a horizontal or vertical strip with spaced or attached spacing modes.\n\nAccessibility:\n- Renders with `role="group"` so assistive technology treats the buttons as a related set.\n- In attached mode, `z-index` management ensures the focus ring of the active button is never clipped by adjacent siblings.\n- Focus-visible outlines are elevated above overlapping borders for clear keyboard navigation.',
       },
     },
   },
@@ -59,10 +60,12 @@ const meta: Meta<typeof ButtonGroup> = {
     direction: {
       control: { type: 'select' },
       options: ['horizontal', 'vertical'],
+      description: 'Layout axis of the group.',
     },
     spacing: {
       control: { type: 'select' },
       options: ['spaced', 'attached'],
+      description: 'Whether children are separated by a gap or sit flush against each other.',
     },
   },
   args: {
@@ -142,6 +145,13 @@ export const VerticalAttached: Story = {
 // ---------- Mixed variants ----------
 
 export const Mixed: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Common real-world pairings: confirm/cancel, destructive actions, and attached icon-button toolbars.',
+      },
+    },
+  },
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: space[6] }}>
       <ButtonGroup>

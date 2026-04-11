@@ -12,12 +12,13 @@ import { Card } from '../Card';
 const meta: Meta<typeof Badge> = {
   title: 'Components/Data Display/Badge',
   component: Badge,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'Small inline label for status or category information with subtle-background + stronger-text tone pairing.',
+          'Badge -- Small inline label for status or category information. Renders a subtle-background with stronger-text pairing driven by semantic tone. Commonly used to annotate transaction statuses, account types, and priority levels in financial interfaces.\n\nAccessibility:\n- Renders as a `<span>` with inline text content, fully readable by screen readers without additional ARIA markup.\n- Color is never the sole indicator of meaning; the text label inside the badge conveys the status independently.\n- The `sm` size applies uppercase text-transform for visual distinction while preserving the original casing for assistive technology.',
       },
     },
   },
@@ -25,10 +26,12 @@ const meta: Meta<typeof Badge> = {
     tone: {
       control: { type: 'select' },
       options: ['neutral', 'positive', 'negative', 'warning', 'info', 'accent'],
+      description: 'Semantic color tone controlling background and text color pairing.',
     },
     size: {
       control: { type: 'select' },
       options: ['sm', 'md'],
+      description: 'Badge height preset. `sm` applies uppercase text-transform.',
     },
   },
   args: {
@@ -70,6 +73,13 @@ export const AllTones: Story = {
 // ---------- Small ----------
 
 export const Small: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Small badges with uppercase text-transform, used for compact status indicators in dense layouts.',
+      },
+    },
+  },
   render: () => (
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ledger-space-3)', alignItems: 'center' }}>
       <Badge tone="neutral" size="sm">Neutral</Badge>

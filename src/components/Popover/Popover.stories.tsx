@@ -12,12 +12,23 @@ import { Popover } from './Popover';
 const meta: Meta<typeof Popover> = {
   title: 'Components/Surfaces/Popover',
   component: Popover,
+  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
     docs: {
       description: {
         component:
-          'A positioned overlay panel attached to a trigger element. Click the trigger to toggle. Closes on Escape or click outside.',
+          'Popover -- a click-triggered positioned overlay panel anchored to a trigger element.\n\n' +
+          'Supports four placements (top/bottom/left/right) with three alignment options (start/center/end), ' +
+          'plus controlled and uncontrolled modes. In financial workflows, use popovers for account quick-view panels, ' +
+          'filter options, or contextual detail overlays.\n\n' +
+          'Accessibility:\n' +
+          '- Trigger has `role="button"`, `aria-expanded`, and `aria-haspopup="dialog"`\n' +
+          '- Content panel has `role="dialog"` for screen reader announcement\n' +
+          '- Escape key closes the popover\n' +
+          '- Click outside the popover dismisses it\n' +
+          '- Focus is moved to the first focusable element inside the popover on open\n' +
+          '- Trigger is keyboard-accessible via Enter and Space keys',
       },
     },
   },
@@ -25,12 +36,23 @@ const meta: Meta<typeof Popover> = {
     placement: {
       control: { type: 'select' },
       options: ['top', 'bottom', 'left', 'right'],
+      description: 'Placement relative to the trigger element.',
     },
     alignment: {
       control: { type: 'select' },
       options: ['start', 'center', 'end'],
+      description: 'Alignment along the placement axis.',
     },
-    defaultOpen: { control: 'boolean' },
+    defaultOpen: {
+      control: 'boolean',
+      description: 'Uncontrolled default open state.',
+    },
+    open: {
+      description: 'Controlled open state. When provided, the component is fully controlled.',
+    },
+    onOpenChange: {
+      description: 'Callback when the open state changes.',
+    },
   },
   args: {
     placement: 'bottom',
@@ -130,6 +152,13 @@ export const Default: Story = {
 
 export const AccountQuickView: Story = {
   name: 'Account Quick View',
+  parameters: {
+    docs: {
+      description: {
+        story: 'Account quick-view panel triggered by an inline link. Displays balances and account details on hover drill-down.',
+      },
+    },
+  },
   render: () => (
     <Popover
       placement="bottom"
@@ -195,6 +224,13 @@ export const AccountQuickView: Story = {
 
 export const FilterOptionsPanel: Story = {
   name: 'Filter Options Panel',
+  parameters: {
+    docs: {
+      description: {
+        story: 'Filter popover with radio groups for date range and transaction type. Demonstrates interactive form content inside a popover.',
+      },
+    },
+  },
   render: function FilterOptionsPanelStory() {
     const [dateRange, setDateRange] = React.useState('last30');
     const [type, setType] = React.useState('all');
@@ -281,6 +317,13 @@ export const FilterOptionsPanel: Story = {
 // ---------------------------------------------------------------------------
 
 export const Placements: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'All four placement options (top, bottom, left, right) centered along the placement axis.',
+      },
+    },
+  },
   render: () => {
     const placementTrigger: React.CSSProperties = {
       display: 'inline-flex',
@@ -342,6 +385,13 @@ export const Placements: Story = {
 // ---------------------------------------------------------------------------
 
 export const Controlled: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Controlled popover with external state management. The open/closed state is displayed below the trigger.',
+      },
+    },
+  },
   render: function ControlledStory() {
     const [open, setOpen] = React.useState(false);
 

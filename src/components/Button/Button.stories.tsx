@@ -14,12 +14,13 @@ import { fontFamily, fontSize, fontWeight as fontWeightTokens, tracking } from '
 const meta: Meta<typeof Button> = {
   title: 'Components/Inputs/Button',
   component: Button,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'Interactive button with primary, secondary, ghost, and danger variants. Uses scoped CSS custom properties for theme-aware styling.',
+          'Button -- the primary interactive action surface in Skyfall Ledger. Supports four variants (primary, secondary, ghost, danger), three sizes, a loading state with an animated spinner, and full-width layout.\n\nAccessibility:\n- Renders a native `<button>` element, inheriting full keyboard operability.\n- Sets `aria-busy` when in the loading state so assistive technology can announce pending operations.\n- The loading spinner is marked `aria-hidden` to prevent redundant announcements.\n- Uses the `.ledger-focus-ring` utility for a consistent, high-contrast focus indicator.\n- Defaults to `type="button"` to prevent accidental form submissions.',
       },
     },
   },
@@ -27,14 +28,16 @@ const meta: Meta<typeof Button> = {
     variant: {
       control: { type: 'select' },
       options: ['primary', 'secondary', 'ghost', 'danger'],
+      description: 'Visual treatment of the button.',
     },
     size: {
       control: { type: 'select' },
       options: ['sm', 'md', 'lg'],
+      description: 'Control height preset.',
     },
-    loading: { control: 'boolean' },
-    disabled: { control: 'boolean' },
-    fullWidth: { control: 'boolean' },
+    loading: { control: 'boolean', description: 'Shows a spinner and disables interaction.' },
+    disabled: { control: 'boolean', description: 'Prevents interaction and dims the button.' },
+    fullWidth: { control: 'boolean', description: 'Stretches the button to fill its container width.' },
   },
   args: {
     variant: 'primary',
@@ -115,6 +118,13 @@ const ArrowIcon = () => (
 );
 
 export const WithIcons: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Buttons paired with inline SVG icons for common financial actions.',
+      },
+    },
+  },
   render: () => (
     <div style={{ display: 'flex', gap: space[4], flexWrap: 'wrap', alignItems: 'center' }}>
       <Button variant="primary">

@@ -11,12 +11,13 @@ import { Stack } from './Stack';
 const meta: Meta<typeof Stack> = {
   title: 'Components/Layout/Stack',
   component: Stack,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'A flex layout primitive for vertical or horizontal stacking with consistent gap control via spacing tokens.',
+          'Stack -- Flex-based layout primitive for vertical or horizontal stacking with consistent gap control via Ledger spacing tokens. Supports polymorphic rendering for semantic HTML and optional wrapping.\n\nUsage:\n- Use for vertically stacked form fields, card lists, or horizontally arranged nav items and button groups\n- Supports polymorphic rendering (`nav`, `ul`, `ol`) for semantic markup\n- Nest horizontal and vertical stacks to compose complex layouts without custom CSS',
       },
     },
   },
@@ -24,16 +25,22 @@ const meta: Meta<typeof Stack> = {
     direction: {
       control: { type: 'select' },
       options: ['vertical', 'horizontal'],
+      description: 'Stack direction -- `vertical` (column) or `horizontal` (row).',
     },
     gap: {
       control: { type: 'select' },
       options: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+      description: 'Gap between children, mapped to a Ledger space token (0--13).',
     },
     as: {
       control: { type: 'select' },
       options: ['div', 'section', 'nav', 'ul', 'ol'],
+      description: 'Polymorphic root element tag.',
     },
-    wrap: { control: 'boolean' },
+    wrap: {
+      control: 'boolean',
+      description: 'Whether children should wrap when they overflow.',
+    },
   },
   args: {
     direction: 'vertical',
@@ -129,6 +136,13 @@ export const Nested: Story = {
 // ---------- AsNav ----------
 
 export const AsNav: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Polymorphic rendering as a `<nav>` element for semantic navigation layout.',
+      },
+    },
+  },
   args: {
     as: 'nav',
     direction: 'horizontal',

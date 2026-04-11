@@ -14,12 +14,19 @@ import { space } from '../../tokens/spacing';
 const meta: Meta<typeof SearchField> = {
   title: 'Components/Inputs/SearchField',
   component: SearchField,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'Search input with magnifying glass icon, clear button, three sizes, and FormField context integration.',
+          'SearchField — Search-specialized input with a leading magnifying-glass icon and an optional clear button. Designed for filtering tables, searching transactions, and locating accounts in financial dashboards.\n\n' +
+          'Accessibility:\n' +
+          '- Renders a native `<input type="search">` with `role="searchbox"` for optimal screen-reader semantics\n' +
+          '- Clear button carries `aria-label="Clear search"` and returns focus to the input after clearing\n' +
+          '- Supports `aria-invalid` and `aria-describedby` auto-wired from FormField context\n' +
+          '- Decorative icons are marked `aria-hidden="true"` to prevent redundant announcements\n' +
+          '- Forwards ref to the underlying `<input>` element for imperative focus management',
       },
     },
   },
@@ -27,10 +34,20 @@ const meta: Meta<typeof SearchField> = {
     size: {
       control: { type: 'select' },
       options: ['sm', 'md', 'lg'],
+      description: 'Controls the height preset of the search field.',
     },
-    invalid: { control: 'boolean' },
-    disabled: { control: 'boolean' },
-    showClearButton: { control: 'boolean' },
+    invalid: {
+      control: 'boolean',
+      description: 'Renders a red border and focus ring to indicate a validation error.',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Disables the input and clear button.',
+    },
+    showClearButton: {
+      control: 'boolean',
+      description: 'Whether to display the clear (X) button when the input has a value.',
+    },
   },
   args: {
     size: 'md',

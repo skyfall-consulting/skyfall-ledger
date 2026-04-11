@@ -13,12 +13,22 @@ import { space } from '../../tokens/spacing';
 const meta: Meta<typeof Tabs> = {
   title: 'Components/Navigation/Tabs',
   component: Tabs,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'Tabs for switching between related content panels. Supports controlled/uncontrolled modes, two visual variants (line / enclosed), and two sizes (sm / md).',
+          'Tabs -- data-driven tabbed interface for switching between related content panels in fintech dashboards.\n\n' +
+          'Supports controlled and uncontrolled modes, two visual variants (**line** with a bottom border indicator, ' +
+          '**enclosed** with bordered tab caps), two sizes (sm/md), optional per-tab icons, and disabled tabs.\n\n' +
+          'Accessibility:\n' +
+          '- Implements the WAI-ARIA Tabs pattern with `role="tablist"`, `role="tab"`, and `role="tabpanel"`\n' +
+          '- Active tab indicated with `aria-selected="true"` and `aria-controls` linking to its panel\n' +
+          '- Each panel has `aria-labelledby` referencing its tab and `tabIndex={0}` for focus\n' +
+          '- Arrow key navigation (Left/Right) with wrapping between enabled tabs\n' +
+          '- Home/End keys jump to the first/last enabled tab\n' +
+          '- Roving tabindex pattern: only the active tab is in the tab order',
       },
     },
   },
@@ -26,10 +36,21 @@ const meta: Meta<typeof Tabs> = {
     variant: {
       control: { type: 'select' },
       options: ['line', 'enclosed'],
+      description: 'Visual variant: line (bottom border indicator) or enclosed (bordered tab caps).',
     },
     size: {
       control: { type: 'select' },
       options: ['sm', 'md'],
+      description: 'Size preset affecting tab height, font size, and padding.',
+    },
+    value: {
+      description: 'Controlled active tab ID. When provided, the component is fully controlled.',
+    },
+    defaultValue: {
+      description: 'Initial active tab ID for uncontrolled usage. Defaults to the first non-disabled tab.',
+    },
+    onChange: {
+      description: 'Callback fired when the active tab changes.',
     },
   },
   args: {
@@ -98,6 +119,13 @@ export const Default: Story = {
 // ---------------------------------------------------------------------------
 export const AccountTabs: Story = {
   name: 'Account Details / Settings',
+  parameters: {
+    docs: {
+      description: {
+        story: 'Two-tab layout for account detail and settings views. Minimal tab count for focused contexts.',
+      },
+    },
+  },
   args: {
     tabs: [
       {
@@ -128,6 +156,13 @@ export const AccountTabs: Story = {
 // ---------------------------------------------------------------------------
 export const EnclosedVariant: Story = {
   name: 'Enclosed Variant',
+  parameters: {
+    docs: {
+      description: {
+        story: 'Enclosed variant with bordered tab caps. The active tab blends into the panel background while inactive tabs remain visually separated.',
+      },
+    },
+  },
   args: {
     variant: 'enclosed',
     tabs: [
@@ -167,6 +202,13 @@ export const EnclosedVariant: Story = {
 // Small size
 // ---------------------------------------------------------------------------
 export const Small: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Small size preset (36px height) for compact contexts such as transaction status filters.',
+      },
+    },
+  },
   args: {
     size: 'sm',
     tabs: [
@@ -217,6 +259,13 @@ const BarChartIcon = () => (
 );
 
 export const WithIcons: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Tabs with leading icons for visual identification. Icons scale with the size preset.',
+      },
+    },
+  },
   args: {
     tabs: [
       {
@@ -246,6 +295,13 @@ export const WithIcons: Story = {
 // With disabled tab
 // ---------------------------------------------------------------------------
 export const WithDisabledTab: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'A tab marked as disabled. Disabled tabs are visually dimmed, excluded from keyboard navigation, and cannot be selected.',
+      },
+    },
+  },
   args: {
     tabs: [
       {
@@ -273,6 +329,13 @@ export const WithDisabledTab: Story = {
 // Controlled
 // ---------------------------------------------------------------------------
 export const Controlled: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Controlled tabs with external state. The active tab ID is displayed below to verify programmatic control.',
+      },
+    },
+  },
   render: function ControlledStory(args) {
     const [activeTab, setActiveTab] = React.useState('inflows');
     return (

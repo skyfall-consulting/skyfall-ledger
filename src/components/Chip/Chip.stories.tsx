@@ -11,12 +11,13 @@ import { Chip } from './Chip';
 const meta: Meta<typeof Chip> = {
   title: 'Components/Data Display/Chip',
   component: Chip,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'Compact element for filters, tags, and categories. Optionally interactive and dismissible.',
+          'Chip -- Compact pill-shaped element for filters, tags, and categories. Supports interactive (clickable), dismissible, selected, and disabled states. Commonly used for transaction category filters, account tag groups, and multi-select facets.\n\nAccessibility:\n- When interactive (`onClick` provided), renders as a `<button>` element with `type="button"` for correct keyboard and screen reader semantics.\n- Non-interactive chips render as a `<span>` to avoid misleading assistive technology.\n- The dismiss button includes an `aria-label="Dismiss"` for clear screen reader announcement.\n- Interactive chips receive the `ledger-focus-ring` class for visible keyboard focus indication.\n- `data-selected`, `data-disabled`, and `data-interactive` attributes enable CSS-driven state styling.',
       },
     },
   },
@@ -24,9 +25,16 @@ const meta: Meta<typeof Chip> = {
     size: {
       control: { type: 'select' },
       options: ['sm', 'md'],
+      description: 'Size preset controlling height, font size, and padding.',
     },
-    selected: { control: 'boolean' },
-    disabled: { control: 'boolean' },
+    selected: {
+      control: 'boolean',
+      description: 'Whether the chip is visually in a selected state.',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Disables interaction and dims the chip.',
+    },
   },
   args: {
     size: 'md',

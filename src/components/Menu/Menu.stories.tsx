@@ -12,12 +12,24 @@ import { Menu, MenuItem, MenuDivider, MenuGroup } from './Menu';
 const meta: Meta<typeof Menu> = {
   title: 'Components/Navigation/Menu',
   component: Menu,
+  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
     docs: {
       description: {
         component:
-          'A compound dropdown menu for contextual actions. Supports icons, danger items, disabled state, dividers, and grouped sections.',
+          'Menu -- a compound dropdown action-menu surface for contextual actions in fintech interfaces.\n\n' +
+          'Composes `MenuItem`, `MenuDivider`, and `MenuGroup` as children. Opens on trigger click, closes on item selection, ' +
+          'Escape key, or click outside. Supports leading icons, trailing content (shortcut hints, badges), ' +
+          'danger styling for destructive actions, and disabled items. Ideal for account-row actions, transaction context menus, and settings dropdowns.\n\n' +
+          'Accessibility:\n' +
+          '- `role="menu"` on the dropdown panel, `role="menuitem"` on each item\n' +
+          '- Arrow key navigation (Up/Down) with wrapping, Home/End key support\n' +
+          '- Escape closes the menu and returns focus to the trigger\n' +
+          '- Click outside closes the menu\n' +
+          '- First enabled item receives focus on open\n' +
+          '- `aria-haspopup="menu"` and `aria-expanded` on the trigger wrapper\n' +
+          '- Disabled items set `aria-disabled` and are skipped during keyboard navigation',
       },
     },
   },
@@ -25,8 +37,12 @@ const meta: Meta<typeof Menu> = {
     align: {
       control: { type: 'select' },
       options: ['start', 'end'],
+      description: 'Horizontal alignment of the dropdown relative to the trigger.',
     },
-    width: { control: { type: 'number' } },
+    width: {
+      control: { type: 'number' },
+      description: 'Explicit width for the dropdown panel, or `"trigger"` to match trigger width.',
+    },
   },
   args: {
     align: 'start',
@@ -134,6 +150,13 @@ export const Default: Story = {
 
 export const AccountActions: Story = {
   name: 'Account Actions',
+  parameters: {
+    docs: {
+      description: {
+        story: 'Typical account-row context menu with view, edit, export, and destructive delete actions.',
+      },
+    },
+  },
   render: () => (
     <Menu
       trigger={<button type="button" style={triggerBtnStyle}>Account <IconDots /></button>}
@@ -165,6 +188,13 @@ export const AccountActions: Story = {
 
 export const TransactionActions: Story = {
   name: 'Transaction Actions',
+  parameters: {
+    docs: {
+      description: {
+        story: 'Transaction-row context menu with view details, download receipt, and report issue actions.',
+      },
+    },
+  },
   render: () => (
     <Menu
       trigger={<button type="button" style={triggerBtnStyle}>Transaction <IconDots /></button>}
@@ -189,6 +219,13 @@ export const TransactionActions: Story = {
 
 export const WithGroups: Story = {
   name: 'Grouped Items',
+  parameters: {
+    docs: {
+      description: {
+        story: 'Menu items organized into labeled groups with dividers. Uses `MenuGroup` for semantic `role="group"` with `aria-label`.',
+      },
+    },
+  },
   render: () => (
     <Menu
       trigger={<button type="button" style={triggerBtnStyle}>Settings <IconDots /></button>}
@@ -213,6 +250,13 @@ export const WithGroups: Story = {
 
 export const WithDisabledItems: Story = {
   name: 'Disabled Items',
+  parameters: {
+    docs: {
+      description: {
+        story: 'Menu with some items disabled. Disabled items are visually dimmed and skipped during keyboard navigation.',
+      },
+    },
+  },
   render: () => (
     <Menu
       trigger={<button type="button" style={triggerBtnStyle}>Manage <IconDots /></button>}
@@ -240,6 +284,13 @@ export const WithDisabledItems: Story = {
 
 export const AlignEnd: Story = {
   name: 'Align End',
+  parameters: {
+    docs: {
+      description: {
+        story: 'Dropdown aligned to the end (right) edge of the trigger. Use when the trigger is positioned near the right viewport edge.',
+      },
+    },
+  },
   render: () => (
     <div style={{ display: 'flex', justifyContent: 'flex-end', width: 400 }}>
       <Menu
@@ -260,6 +311,13 @@ export const AlignEnd: Story = {
 
 export const WithTrailingHints: Story = {
   name: 'Trailing Hints',
+  parameters: {
+    docs: {
+      description: {
+        story: 'Menu items with trailing keyboard shortcut hints. Trailing content is muted and right-aligned.',
+      },
+    },
+  },
   render: () => (
     <Menu
       trigger={<button type="button" style={triggerBtnStyle}>File <IconDots /></button>}

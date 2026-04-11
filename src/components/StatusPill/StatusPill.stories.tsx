@@ -13,12 +13,13 @@ import { Card } from '../Card';
 const meta: Meta<typeof StatusPill> = {
   title: 'Ledger X/FinTech/Status Pill',
   component: StatusPill,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'Pill-shaped status indicator with a dot. Used for transaction/account statuses.',
+          'StatusPill -- Pill-shaped status indicator with a colored dot, purpose-built for transaction and account statuses across Ledger surfaces. Six statuses cover the full transaction lifecycle: `active`, `pending`, `settled`, `failed`, `cancelled`, and `processing`.\n\nAccessibility:\n- The status dot is marked `aria-hidden="true"` since the label text conveys the status\n- The `processing` dot pulses to convey ongoing activity; animation is purely decorative\n- Color alone does not convey meaning -- each status includes a distinct text label',
       },
     },
   },
@@ -26,10 +27,12 @@ const meta: Meta<typeof StatusPill> = {
     status: {
       control: { type: 'select' },
       options: ['active', 'pending', 'settled', 'failed', 'cancelled', 'processing'],
+      description: 'The transaction/account status to display.',
     },
     size: {
       control: { type: 'select' },
       options: ['sm', 'md'],
+      description: 'Size preset. `sm` for table rows and dense layouts, `md` for standard use.',
     },
   },
   args: {

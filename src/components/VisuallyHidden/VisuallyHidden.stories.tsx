@@ -12,13 +12,19 @@ import { VisuallyHidden } from './VisuallyHidden';
 const meta: Meta<typeof VisuallyHidden> = {
   title: 'Components/Utils/VisuallyHidden',
   component: VisuallyHidden,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'Hides content visually while keeping it accessible to screen readers. Useful for icon-only buttons, skip links, and additional a11y context.',
+          'VisuallyHidden -- Core accessibility utility that hides content visually while keeping it accessible to screen readers and assistive technology. Uses the standard screen-reader-only CSS technique (`position: absolute`, `clip`, `overflow: hidden`).\n\nAccessibility:\n- Keeps content in the accessibility tree so screen readers can announce it\n- Use for labels on icon-only buttons, skip-navigation links, form labels that are visually unnecessary, and additional screen-reader context\n- Supports polymorphic rendering (`span`, `div`, `label`) to match the semantic context',
       },
+    },
+  },
+  argTypes: {
+    as: {
+      description: 'Render as a different element (`span`, `div`, or `label`). Defaults to `span`.',
     },
   },
 };
@@ -29,6 +35,13 @@ type Story = StoryObj<typeof VisuallyHidden>;
 // ---------- Default ----------
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'A visually hidden label inside an icon-only button. Inspect the DOM or use a screen reader to verify the hidden text.',
+      },
+    },
+  },
   render: () => (
     <div style={{ fontFamily: 'var(--ledger-font-sans)' }}>
       <p
@@ -103,6 +116,13 @@ export const AsDiv: Story = {
 // ---------- SkipLink ----------
 
 export const SkipLink: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'A skip-navigation link that becomes visible on keyboard focus. Tab into the story to reveal it.',
+      },
+    },
+  },
   render: () => (
     <div style={{ fontFamily: 'var(--ledger-font-sans)' }}>
       <p

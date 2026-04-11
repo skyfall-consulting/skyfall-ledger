@@ -11,12 +11,13 @@ import { Banner } from './Banner';
 const meta: Meta<typeof Banner> = {
   title: 'Components/Feedback/Banner',
   component: Banner,
+  tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
     docs: {
       description: {
         component:
-          'Full-width page-level message bar for system announcements, compliance notices, and critical status updates. Supports success, error, warning, and info statuses with optional dismiss control.',
+          'Banner -- Full-width page-level message bar for system-wide announcements, compliance notices, and critical status updates. Renders at the top of content areas with a bottom accent border, status icon, and optional dismiss control.\n\n### Accessibility\n- Uses `role="alert"` for `error` and `warning` statuses (assertive announcement) and `role="status"` for `success` and `info` (polite announcement).\n- Dismiss button provides `aria-label="Dismiss banner"` and supports keyboard interaction with a visible focus ring.\n- Status icons are `aria-hidden="true"` to prevent redundant screen-reader output.\n- Full-width layout ensures the banner remains visible and does not obscure interactive content.',
       },
     },
   },
@@ -24,8 +25,12 @@ const meta: Meta<typeof Banner> = {
     status: {
       control: { type: 'select' },
       options: ['success', 'error', 'warning', 'info'],
+      description: 'Visual status variant that controls the background color, accent border, and default icon.',
     },
-    dismissible: { control: 'boolean' },
+    dismissible: {
+      control: 'boolean',
+      description: 'When `true`, renders a dismiss button at the trailing edge of the banner.',
+    },
   },
   args: {
     status: 'info',
@@ -79,6 +84,13 @@ export const VerificationComplete: Story = {
 // ---------- Dismissible ----------
 
 export const Dismissible: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Interactive dismiss flow. The banner can be re-shown after dismissal to demonstrate the `onDismiss` callback.',
+      },
+    },
+  },
   render: function DismissibleStory() {
     const [visible, setVisible] = React.useState(true);
 
@@ -139,6 +151,13 @@ export const CustomIcon: Story = {
 // ---------- All statuses ----------
 
 export const AllStatuses: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'All four status variants stacked to show the full color and icon range.',
+      },
+    },
+  },
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <Banner status="info">

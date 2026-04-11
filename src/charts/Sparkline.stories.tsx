@@ -15,20 +15,37 @@ import { fontFamily, fontSize, fontWeight, tracking } from '../tokens/typography
 const meta: Meta<typeof Sparkline> = {
   title: 'Ledger X/Charts/Sparkline',
   component: Sparkline,
+  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
     docs: {
       description: {
         component:
-          'A small inline trend line. Auto-tones based on first→last delta. Honors `prefers-reduced-motion`. Reads color tokens from the active theme via `useChartTheme()`.',
+          'Sparkline -- The smallest possible chart in Ledger. A single line with no axes and no tooltip, designed to live inline next to a number in cards, table rows, and KPI tiles. Built on Recharts and themed via `useChartTheme()`.\n\nAccessibility:\n- Wrapper renders as `<figure>` with `role="figure"` -- consumers must provide a descriptive `ariaLabel` (e.g. "Account balance trend, last 30 days, +4.2%")\n- Honors `prefers-reduced-motion` via `useReducedMotion()` -- entry animation is automatically disabled\n- The line path is purely decorative; the numeric value should live in an adjacent `<Amount>` or text element\n\nUsage:\n- Pass a flat `number[]` for the simplest case, or `{ x, y }[]` when points need labels\n- `tone="auto"` (default) derives color from the first-to-last value delta: positive trend = green, negative = red\n- Renders inside `ThemedResponsiveContainer` for layout-shift-free sizing',
       },
     },
   },
   argTypes: {
-    height: { control: { type: 'number', min: 16, max: 200, step: 4 } },
-    tone: { control: { type: 'select' }, options: ['auto', 'accent', 'positive', 'negative', 'neutral'] },
-    strokeWidth: { control: { type: 'number', min: 1, max: 4, step: 0.5 } },
-    animate: { control: 'boolean' },
+    height: {
+      control: { type: 'number', min: 16, max: 200, step: 4 },
+      description: 'Pixel height of the sparkline.',
+    },
+    tone: {
+      control: { type: 'select' },
+      options: ['auto', 'accent', 'positive', 'negative', 'neutral'],
+      description: 'Color/role. `auto` derives from first-to-last delta.',
+    },
+    strokeWidth: {
+      control: { type: 'number', min: 1, max: 4, step: 0.5 },
+      description: 'Stroke width override. Defaults to 2 (1.5 for height < 28).',
+    },
+    animate: {
+      control: 'boolean',
+      description: 'Disable the entry animation. Always disabled when `prefers-reduced-motion` is active.',
+    },
+    ariaLabel: {
+      description: 'Required accessible label for the `<figure>` wrapper.',
+    },
   },
   args: {
     ariaLabel: 'Account balance trend, last 30 days',

@@ -14,33 +14,66 @@ import { fontFamily, fontSize, fontWeight, tracking } from '../../tokens/typogra
 const meta: Meta<typeof Amount> = {
   title: 'Components/Data Display/Amount',
   component: Amount,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'Locale + currency aware money primitive with tabular numerals, sign-driven semantic color, screen-reader-friendly labels, and differential styling for the currency symbol and decimal portion.',
+          'Amount -- The lowest-level monetary primitive in Skyfall Ledger. Renders a value as a typographically correct money figure with locale and currency aware formatting via `Intl.NumberFormat`, tabular lining numerals (`tnum lnum`) for column alignment, sign-driven semantic color, and differential styling for the currency symbol and decimal portion.\n\nAccessibility:\n- The visual figure is `aria-hidden`; a spelled-out screen-reader label (e.g. "one thousand two hundred eighty-four dollars and fifty-two cents") is rendered via a visually-hidden `<span>` so assistive technology reads the value naturally.\n- The `ariaLabel` prop allows overriding the auto-generated SR label for custom contexts.\n- Tabular numerals ensure consistent column alignment when amounts are stacked in tables or lists.\n- Invalid values (NaN / Infinity) display an em-dash with an "amount unavailable" SR label.',
       },
     },
   },
   argTypes: {
-    value: { control: { type: 'number', step: 0.01 } },
-    currency: { control: 'text' },
-    locale: { control: 'text' },
-    size: { control: { type: 'select' }, options: ['sm', 'md', 'lg', 'xl', 'hero'] },
+    value: {
+      control: { type: 'number', step: 0.01 },
+      description: 'Numeric value in major units (dollars, euros, yen -- never cents).',
+    },
+    currency: {
+      control: 'text',
+      description: 'ISO 4217 currency code (e.g. USD, EUR, GBP, JPY).',
+    },
+    locale: {
+      control: 'text',
+      description: 'BCP 47 locale tag controlling number formatting (e.g. en-US, de-DE).',
+    },
+    size: {
+      control: { type: 'select' },
+      options: ['sm', 'md', 'lg', 'xl', 'hero'],
+      description: 'Visual size preset. Larger sizes use the display font family.',
+    },
     tone: {
       control: { type: 'select' },
       options: ['auto', 'neutral', 'positive', 'negative', 'accent', 'muted'],
+      description: 'Semantic color. `auto` derives positive/negative from the value sign.',
     },
-    sign: { control: { type: 'select' }, options: ['auto', 'always', 'never', 'accounting'] },
-    decimals: { control: { type: 'select' }, options: ['auto', 'hide', 0, 2, 4] },
-    compact: { control: 'boolean' },
+    sign: {
+      control: { type: 'select' },
+      options: ['auto', 'always', 'never', 'accounting'],
+      description: 'Sign rendering strategy. `accounting` wraps negatives in parentheses.',
+    },
+    decimals: {
+      control: { type: 'select' },
+      options: ['auto', 'hide', 0, 2, 4],
+      description: 'Decimal digit rendering. `auto` defers to Intl defaults; `hide` removes fraction.',
+    },
+    compact: {
+      control: 'boolean',
+      description: 'Enable compact notation (e.g. $1.2k, $4.6M).',
+    },
     weight: {
       control: { type: 'select' },
       options: [undefined, 'regular', 'medium', 'semibold', 'bold'],
+      description: 'Font weight override. When omitted, weight is derived from the size preset.',
     },
-    dimDecimals: { control: 'boolean' },
-    dimSymbol: { control: 'boolean' },
+    dimDecimals: {
+      control: 'boolean',
+      description: 'Render the fractional digits in a muted color for de-emphasized cents.',
+    },
+    dimSymbol: {
+      control: 'boolean',
+      description: 'Render the currency symbol in a muted color.',
+    },
   },
   args: {
     value: 1284.52,

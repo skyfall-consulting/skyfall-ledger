@@ -16,26 +16,44 @@ import { fontFamily, fontSize, fontWeight as fontWeightTokens, lineHeight } from
 const meta: Meta<typeof Drawer> = {
   title: 'Components/Surfaces/Drawer',
   component: Drawer,
+  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
     docs: {
       description: {
         component:
-          'A slide-in panel surface built on the native <dialog> element. Slides from the left or right viewport edge with focus trapping, Escape dismissal, backdrop click, and body scroll-lock.',
+          'Drawer -- a slide-in side panel for contextual detail views, forms, and settings in financial workflows.\n\n' +
+          'Built on the native `<dialog>` element for robust focus management. Slides from the left or right viewport edge ' +
+          'with three width presets (sm/md/lg). Ideal for transaction detail panels, account settings, and notification centers ' +
+          'that do not require a full-page navigation change.\n\n' +
+          'Accessibility:\n' +
+          '- Native `<dialog>` provides built-in focus trapping and Escape key dismissal\n' +
+          '- `aria-labelledby` links to the rendered title heading\n' +
+          '- Close button has `aria-label="Close drawer"` for screen readers\n' +
+          '- Backdrop click dismisses the drawer (click target === dialog element)\n' +
+          '- Body scroll is locked while open to prevent background interaction',
       },
     },
   },
   argTypes: {
-    open: { control: 'boolean' },
+    open: {
+      control: 'boolean',
+      description: 'Whether the drawer is visible. Controls `showModal()`/`close()` calls.',
+    },
     position: {
       control: { type: 'select' },
       options: ['left', 'right'],
+      description: 'Which edge of the viewport the drawer slides from.',
     },
     size: {
       control: { type: 'select' },
       options: ['sm', 'md', 'lg'],
+      description: 'Width preset: sm (320px), md (420px), lg (560px).',
     },
-    title: { control: 'text' },
+    title: {
+      control: 'text',
+      description: 'Optional drawer title rendered in the header bar.',
+    },
   },
   args: {
     open: false,

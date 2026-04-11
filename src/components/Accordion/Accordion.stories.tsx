@@ -12,12 +12,20 @@ import { Accordion, type AccordionItem } from './Accordion';
 const meta: Meta<typeof Accordion> = {
   title: 'Components/Surfaces/Accordion',
   component: Accordion,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'Multi-panel expandable sections with single or multiple open modes, controlled/uncontrolled state, and smooth CSS grid animation.',
+          'Accordion -- multi-panel expandable sections for grouping related content such as FAQs, account details, and transaction categories.\n\n' +
+          'Supports single-open and multiple-open modes with both controlled and uncontrolled state management. Panels animate via CSS grid transitions.\n\n' +
+          'Accessibility:\n' +
+          '- Button triggers with `aria-expanded` and `aria-controls` linking to their panel\n' +
+          '- Content panels use `role="region"` with `aria-labelledby` referencing the trigger\n' +
+          '- Heading structure (`<h3>`) wraps each trigger for proper document outline\n' +
+          '- Disabled items set `aria-disabled` and prevent interaction\n' +
+          '- Chevron icon is `aria-hidden` and rotates to indicate open/close state',
       },
     },
   },
@@ -25,6 +33,16 @@ const meta: Meta<typeof Accordion> = {
     mode: {
       control: { type: 'select' },
       options: ['single', 'multiple'],
+      description: 'Expansion mode. `single` allows one panel open at a time; `multiple` allows any combination.',
+    },
+    value: {
+      description: 'Controlled open panel IDs. When provided, the component is fully controlled.',
+    },
+    defaultValue: {
+      description: 'Default open panel IDs for uncontrolled usage.',
+    },
+    onChange: {
+      description: 'Callback fired when the set of open panels changes.',
     },
   },
   args: {

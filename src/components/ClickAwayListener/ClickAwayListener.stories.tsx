@@ -12,13 +12,19 @@ import { ClickAwayListener } from './ClickAwayListener';
 const meta: Meta<typeof ClickAwayListener> = {
   title: 'Components/Utils/Click-Away Listener',
   component: ClickAwayListener,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'Detects clicks outside a wrapped element and fires an onClickAway callback.',
+          'ClickAwayListener -- Utility wrapper that detects clicks (`mousedown` / `touchstart`) outside the wrapped child element and fires a callback. Commonly used to dismiss dropdowns, popovers, and modal-like surfaces.\n\nUsage:\n- Wrap a single React element; a ref is attached via `cloneElement`\n- Listens on both `mousedown` and `touchstart` for desktop and mobile coverage\n- Pair with `Portal` when the dismissible surface is rendered outside the parent tree',
       },
+    },
+  },
+  argTypes: {
+    onClickAway: {
+      description: 'Callback fired when a click is detected outside the child element.',
     },
   },
 };
@@ -70,6 +76,13 @@ export const Default: Story = {
 // ---------- WithDropdown ----------
 
 export const WithDropdown: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'ClickAwayListener used to dismiss a dropdown menu when clicking outside it.',
+      },
+    },
+  },
   render: function DropdownStory() {
     const [open, setOpen] = React.useState(false);
 

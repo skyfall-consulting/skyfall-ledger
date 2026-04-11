@@ -11,12 +11,13 @@ import { Divider } from './Divider';
 const meta: Meta<typeof Divider> = {
   title: 'Components/Data Display/Divider',
   component: Divider,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'A horizontal or vertical separator line with subtle, default, and strong variants.',
+          'Divider -- A horizontal or vertical separator line for visually dividing sections of content. Supports subtle, default, and strong border variants with configurable spacing tokens.\n\nAccessibility:\n- Renders with `role="separator"` and the corresponding `aria-orientation` attribute (`horizontal` or `vertical`) for correct screen reader semantics.\n- Horizontal orientation renders as a semantic `<hr>` element; vertical orientation renders as a `<div>` with explicit separator role.\n- Purely decorative by default; assistive technology recognizes it as a content boundary.',
       },
     },
   },
@@ -24,13 +25,16 @@ const meta: Meta<typeof Divider> = {
     orientation: {
       control: { type: 'select' },
       options: ['horizontal', 'vertical'],
+      description: 'Direction of the separator line.',
     },
     variant: {
       control: { type: 'select' },
       options: ['subtle', 'default', 'strong'],
+      description: 'Visual weight of the border color.',
     },
     spacing: {
       control: { type: 'number', min: 0, max: 13 },
+      description: 'Spacing token key (0-13) applied as margin around the divider.',
     },
   },
   args: {
@@ -92,6 +96,13 @@ export const WithSpacing: Story = {
 // ---------- InCard ----------
 
 export const InCard: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Subtle dividers used inside a raised card to separate account summary line items.',
+      },
+    },
+  },
   render: () => (
     <div
       style={{

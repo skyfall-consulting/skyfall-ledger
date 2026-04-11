@@ -11,26 +11,35 @@ import { Progress } from './Progress';
 const meta: Meta<typeof Progress> = {
   title: 'Components/Data Display/Progress',
   component: Progress,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'Linear progress bar with determinate and indeterminate modes, sized as sm or md.',
+          'Progress -- A linear progress bar supporting determinate (0-100) and indeterminate modes. Color-coded by semantic tone for status-aware loading, file uploads, and completion indicators in financial workflows.\n\nAccessibility:\n- Renders with `role="progressbar"` and `aria-valuemin` / `aria-valuemax` attributes.\n- In determinate mode, `aria-valuenow` reflects the clamped percentage (0-100).\n- In indeterminate mode, `aria-valuenow` is omitted so assistive technology announces an indeterminate state.\n- The `label` prop maps to `aria-label`, providing a meaningful description for screen readers (e.g. "Uploading document").',
       },
     },
   },
   argTypes: {
-    value: { control: { type: 'range', min: 0, max: 100, step: 1 } },
+    value: {
+      control: { type: 'range', min: 0, max: 100, step: 1 },
+      description: 'Progress value 0-100. Omit for indeterminate mode.',
+    },
     size: {
       control: { type: 'select' },
       options: ['sm', 'md'],
+      description: 'Bar height preset: sm (4px) or md (8px).',
     },
     tone: {
       control: { type: 'select' },
       options: ['accent', 'positive', 'negative', 'warning'],
+      description: 'Semantic color tone for the progress fill.',
     },
-    label: { control: 'text' },
+    label: {
+      control: 'text',
+      description: 'Accessible label describing what the progress bar represents.',
+    },
   },
   args: {
     value: 60,

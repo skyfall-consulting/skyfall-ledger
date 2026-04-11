@@ -12,12 +12,13 @@ import { Spinner } from './Spinner';
 const meta: Meta<typeof Spinner> = {
   title: 'Components/Feedback/Spinner',
   component: Spinner,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'SVG-based circular loading indicator with size and color variants.',
+          'Spinner -- SVG-based circular loading indicator for in-progress states such as transaction processing, data fetching, and account verification. Offers four size presets (`sm`, `md`, `lg`, `xl`) and a configurable color that defaults to `currentColor`.\n\n### Accessibility\n- Renders with `role="status"` and `aria-live="polite"` so loading state is announced without interrupting current screen-reader output.\n- Includes a visually hidden label (defaults to "Loading") for assistive technology.\n- SVG arc is marked `aria-hidden="true"` to avoid announcing decorative content.\n- In financial workflows, always pair with visible context text (e.g. "Processing transaction...") so sighted users also understand the wait.',
       },
     },
   },
@@ -25,9 +26,16 @@ const meta: Meta<typeof Spinner> = {
     size: {
       control: { type: 'select' },
       options: ['sm', 'md', 'lg', 'xl'],
+      description: 'Diameter preset: `sm` (16px), `md` (24px), `lg` (32px), `xl` (48px).',
     },
-    color: { control: 'color' },
-    label: { control: 'text' },
+    color: {
+      control: 'color',
+      description: 'Track and arc color. Defaults to `currentColor` so it inherits from the parent.',
+    },
+    label: {
+      control: 'text',
+      description: 'Visually hidden text read by screen readers. Defaults to "Loading".',
+    },
   },
   args: {
     size: 'md',

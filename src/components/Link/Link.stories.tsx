@@ -15,12 +15,22 @@ import { fontFamily, fontSize, fontWeight as fontWeightTokens, tracking } from '
 const meta: Meta<typeof Link> = {
   title: 'Components/Navigation/Link',
   component: Link,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'Anchor element with default, subtle, and standalone variants. Uses scoped CSS custom properties for theme-aware hover/focus transitions.',
+          'Link -- styled anchor primitive for inline and standalone navigation in fintech interfaces.\n\n' +
+          'Three variants: **default** (teal, underlined) for standard inline links, **subtle** (secondary text color) for ' +
+          'de-emphasized references, and **standalone** (teal with arrow indicator) for call-to-action navigation. ' +
+          'External links automatically add `target="_blank"` with `rel="noopener noreferrer"` and display an external icon.\n\n' +
+          'Accessibility:\n' +
+          '- Native `<a>` element preserves anchor semantics and browser link behaviors\n' +
+          '- External links include a visible icon indicator for sighted users\n' +
+          '- Disabled links set `aria-disabled` and prevent default click behavior\n' +
+          '- Focus ring styles applied via `ledger-focus-ring` utility class\n' +
+          '- Hover/focus transitions use scoped CSS custom properties for theme-aware styling',
       },
     },
   },
@@ -28,13 +38,21 @@ const meta: Meta<typeof Link> = {
     variant: {
       control: { type: 'select' },
       options: ['default', 'subtle', 'standalone'],
+      description: 'Visual treatment: default (teal underline), subtle (secondary text), or standalone (teal with arrow).',
     },
     size: {
       control: { type: 'select' },
       options: ['sm', 'md', 'lg'],
+      description: 'Typography size preset that scales font size and icon dimensions.',
     },
-    external: { control: 'boolean' },
-    disabled: { control: 'boolean' },
+    external: {
+      control: 'boolean',
+      description: 'Adds `target="_blank"` with `rel="noopener noreferrer"` and an external link icon.',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Prevents interaction without removing the element from the DOM.',
+    },
   },
   args: {
     variant: 'default',

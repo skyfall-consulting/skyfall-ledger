@@ -14,12 +14,19 @@ import { space } from '../../tokens/spacing';
 const meta: Meta<typeof Select> = {
   title: 'Components/Inputs/Select',
   component: Select,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'Native dropdown select with three sizes, custom chevron, and automatic FormField context integration.',
+          'Select — Native dropdown select primitive with a custom chevron icon. Built for account-type pickers, currency selectors, and payment-method dropdowns in financial interfaces.\n\n' +
+          'Accessibility:\n' +
+          '- Renders a native `<select>` element, inheriting full browser keyboard and screen-reader support\n' +
+          '- Supports `aria-invalid` and `aria-describedby` auto-wired from FormField context\n' +
+          '- Chevron icon is marked `aria-hidden="true"` to avoid redundant announcements\n' +
+          '- Disabled state sets `cursor: not-allowed` and propagates to the native element\n' +
+          '- Forwards ref to the underlying `<select>` for imperative access',
       },
     },
   },
@@ -27,10 +34,20 @@ const meta: Meta<typeof Select> = {
     size: {
       control: { type: 'select' },
       options: ['sm', 'md', 'lg'],
+      description: 'Controls the height preset of the select.',
     },
-    invalid: { control: 'boolean' },
-    disabled: { control: 'boolean' },
-    fullWidth: { control: 'boolean' },
+    invalid: {
+      control: 'boolean',
+      description: 'Renders a red border and focus ring to signal a validation error.',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Disables the select and prevents interaction.',
+    },
+    fullWidth: {
+      control: 'boolean',
+      description: 'Stretches the select to fill its parent container width.',
+    },
   },
   args: {
     size: 'md',

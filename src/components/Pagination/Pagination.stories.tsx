@@ -14,12 +14,22 @@ import { radius } from '../../tokens/radius';
 const meta: Meta<typeof Pagination> = {
   title: 'Components/Navigation/Pagination',
   component: Pagination,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'Page navigation with smart range, ellipsis collapsing, Previous/Next arrows, and teal highlight on the active page. Wraps in `<nav>` with `aria-label="Pagination"` and `aria-current="page"` on the active button.',
+          'Pagination -- compact page navigation for paginated fintech data sets such as transaction lists, audit logs, and statement history.\n\n' +
+          'Renders a smart page range with ellipsis collapsing, Previous/Next arrow buttons, and a teal highlight on the active page. ' +
+          'The `siblings` prop controls how many page numbers appear on each side of the current page. ' +
+          'Returns `null` when `totalPages` is 1 or less.\n\n' +
+          'Accessibility:\n' +
+          '- Wrapped in `<nav>` with `aria-label="Pagination"` for landmark navigation\n' +
+          '- Current page indicated with `aria-current="page"` on the active button\n' +
+          '- Previous/Next buttons are disabled at boundaries (first/last page)\n' +
+          '- Each page button has `aria-label="Page N"` for screen readers\n' +
+          '- Ellipsis elements are `aria-hidden` to avoid confusing screen reader output',
       },
     },
   },
@@ -34,7 +44,10 @@ const meta: Meta<typeof Pagination> = {
     },
     siblings: {
       control: { type: 'number', min: 0, max: 4, step: 1 },
-      description: 'Number of sibling pages on each side of the current page.',
+      description: 'Number of sibling pages shown on each side of the current page.',
+    },
+    onChange: {
+      description: 'Callback fired when the user selects a different page.',
     },
   },
   args: {

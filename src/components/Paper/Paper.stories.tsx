@@ -12,12 +12,20 @@ import { Paper } from './Paper';
 const meta: Meta<typeof Paper> = {
   title: 'Components/Surfaces/Paper',
   component: Paper,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'A generic surface primitive providing background, elevation, border, and radius tokens without layout opinions.',
+          'Paper -- the foundational surface primitive in Skyfall Ledger.\n\n' +
+          'Provides background, elevation (shadow depth 0-4), border, and radius tokens without layout opinions. ' +
+          'Paper is the atom from which Card, Modal content areas, Drawer panels, and other surface components compose. ' +
+          'Use Paper when you need granular control over elevation, surface tone, and border presence without preset variant bundles.\n\n' +
+          'Accessibility:\n' +
+          '- Presentational surface with no implicit ARIA role\n' +
+          '- Use the `as` prop (`section`, `article`, `aside`, `main`) to add semantic landmarks when needed\n' +
+          '- Pair with `aria-label` or `aria-labelledby` when rendered as a landmark element',
       },
     },
   },
@@ -25,24 +33,32 @@ const meta: Meta<typeof Paper> = {
     elevation: {
       control: { type: 'select' },
       options: [0, 1, 2, 3, 4],
+      description: 'Shadow depth level (0 = none, 4 = highest).',
     },
     surface: {
       control: { type: 'select' },
       options: ['default', 'raised', 'sunken'],
+      description: 'Background tone mapped to Ledger surface tokens.',
     },
     radius: {
       control: { type: 'select' },
       options: ['none', 'sm', 'md', 'lg'],
+      description: 'Border radius preset.',
     },
     padding: {
       control: { type: 'select' },
       options: ['none', 'sm', 'md', 'lg'],
+      description: 'Inner padding preset.',
     },
     as: {
       control: { type: 'select' },
       options: ['div', 'section', 'article', 'aside', 'main'],
+      description: 'Polymorphic root element for semantic HTML landmarks.',
     },
-    bordered: { control: 'boolean' },
+    bordered: {
+      control: 'boolean',
+      description: 'Whether to render a 1px border for visual containment.',
+    },
   },
   args: {
     elevation: 0,

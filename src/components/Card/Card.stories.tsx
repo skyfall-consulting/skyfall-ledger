@@ -12,12 +12,19 @@ import { Amount } from '../Amount';
 const meta: Meta<typeof Card> = {
   title: 'Components/Surfaces/Card',
   component: Card,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'A container surface for content grouping with raised, outlined, and flat variants.',
+          'Card -- the dominant container surface in Skyfall Ledger for grouping related content with visual hierarchy.\n\n' +
+          'Provides three visual treatments (raised, outlined, flat), four padding presets, and polymorphic element rendering via the `as` prop. ' +
+          'Use raised cards for primary content blocks, outlined for secondary groupings, and flat for embedded contexts.\n\n' +
+          'Accessibility:\n' +
+          '- Renders as `<div>` by default; use `as="section"` or `as="article"` to add semantic meaning when appropriate\n' +
+          '- Polymorphic rendering enables proper landmark structure in dashboard layouts\n' +
+          '- No implicit interactive role -- content inside the card manages its own focus and interaction patterns',
       },
     },
   },
@@ -25,14 +32,17 @@ const meta: Meta<typeof Card> = {
     variant: {
       control: { type: 'select' },
       options: ['raised', 'outlined', 'flat'],
+      description: 'Visual treatment: raised (shadow), outlined (border), or flat (no decoration).',
     },
     padding: {
       control: { type: 'select' },
       options: ['none', 'sm', 'md', 'lg'],
+      description: 'Inner padding preset. Use `none` when child content manages its own spacing.',
     },
     as: {
       control: { type: 'select' },
       options: ['div', 'section', 'article'],
+      description: 'Polymorphic root element for semantic HTML.',
     },
   },
   args: {

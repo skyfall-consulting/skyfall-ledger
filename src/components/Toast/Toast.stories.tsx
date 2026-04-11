@@ -12,12 +12,13 @@ import { Toast } from './Toast';
 const meta: Meta<typeof Toast> = {
   title: 'Components/Feedback/Toast',
   component: Toast,
+  tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
     docs: {
       description: {
         component:
-          'Auto-dismissing notification popup fixed to the bottom-right. Timer pauses on hover, resumes on leave. Set duration to 0 to disable auto-dismiss.',
+          'Toast -- Auto-dismissing notification popup for transient feedback such as payment confirmations, transfer failures, and balance warnings. Fixed to the bottom-right of the viewport with a slide-in animation. Timer pauses on hover and resumes on mouse leave.\n\n### Accessibility\n- Uses `role="alert"` for `error` and `warning` statuses (assertive, immediate announcement) and `role="status"` for `success` and `info` (polite announcement).\n- Dismiss button includes `aria-label="Dismiss notification"` and is keyboard-focusable with a visible focus ring.\n- Status icons are `aria-hidden="true"` to prevent redundant screen-reader output.\n- Auto-dismiss defaults to 5 000 ms; set `duration` to `0` for persistent toasts that require manual dismissal.',
       },
     },
   },
@@ -25,11 +26,24 @@ const meta: Meta<typeof Toast> = {
     status: {
       control: { type: 'select' },
       options: ['success', 'error', 'warning', 'info'],
+      description: 'Visual status variant controlling the background, border color, and icon.',
     },
-    duration: { control: 'number' },
-    open: { control: 'boolean' },
-    title: { control: 'text' },
-    description: { control: 'text' },
+    duration: {
+      control: 'number',
+      description: 'Auto-dismiss delay in milliseconds. Set to `0` to disable auto-dismiss.',
+    },
+    open: {
+      control: 'boolean',
+      description: 'Controls visibility of the toast.',
+    },
+    title: {
+      control: 'text',
+      description: 'Bold heading rendered at the top of the toast.',
+    },
+    description: {
+      control: 'text',
+      description: 'Optional body text rendered below the title.',
+    },
   },
   args: {
     status: 'success',
@@ -93,6 +107,13 @@ export const TitleOnly: Story = {
 // ---------- Auto-dismiss ----------
 
 export const AutoDismiss: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Demonstrates the 5-second auto-dismiss timer. Hover over the toast to pause the countdown; move away to resume.',
+      },
+    },
+  },
   render: function AutoDismissStory() {
     const [open, setOpen] = React.useState(true);
 
@@ -135,6 +156,13 @@ export const AutoDismiss: Story = {
 // ---------- All statuses ----------
 
 export const AllStatuses: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'All four status variants stacked vertically to compare color, icon, and layout.',
+      },
+    },
+  },
   render: () => (
     <div style={{ position: 'relative', height: 500 }}>
       {(['success', 'error', 'warning', 'info'] as const).map((status, i) => (

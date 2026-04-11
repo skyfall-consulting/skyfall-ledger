@@ -15,22 +15,41 @@ import { fontFamily, fontSize, fontWeight as fontWeightTokens, lineHeight } from
 const meta: Meta<typeof Modal> = {
   title: 'Components/Surfaces/Modal',
   component: Modal,
+  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
     docs: {
       description: {
         component:
-          'An overlay dialog surface built on the native <dialog> element. Provides focus trapping, Escape dismissal, backdrop click, and body scroll-lock out of the box.',
+          'Modal -- an overlay dialog surface for focused interactions such as transfer confirmations, account settings, and transaction details.\n\n' +
+          'Built on the native `<dialog>` element with four max-width presets (sm/md/lg/xl), a scrollable body, and an optional footer slot for action buttons. ' +
+          'In financial workflows, always pair destructive modals with clear confirmation language and danger-variant action buttons.\n\n' +
+          'Accessibility:\n' +
+          '- Native `<dialog>` provides built-in focus trapping and Escape key dismissal\n' +
+          '- `aria-labelledby` links to the rendered title heading\n' +
+          '- Close button has `aria-label="Close dialog"` for screen readers\n' +
+          '- Backdrop click dismisses the modal (click target === dialog element)\n' +
+          '- Body scroll is locked while open to prevent background interaction',
       },
     },
   },
   argTypes: {
-    open: { control: 'boolean' },
+    open: {
+      control: 'boolean',
+      description: 'Whether the modal is visible. Controls `showModal()`/`close()` calls.',
+    },
     size: {
       control: { type: 'select' },
       options: ['sm', 'md', 'lg', 'xl'],
+      description: 'Max-width preset: sm (400px), md (560px), lg (720px), xl (960px).',
     },
-    title: { control: 'text' },
+    title: {
+      control: 'text',
+      description: 'Modal title rendered in the header bar.',
+    },
+    footer: {
+      description: 'Optional footer content (action buttons, etc.) rendered below the body.',
+    },
   },
   args: {
     open: false,

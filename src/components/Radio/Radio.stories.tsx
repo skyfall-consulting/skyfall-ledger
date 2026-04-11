@@ -12,12 +12,13 @@ import { RadioGroup, Radio } from './Radio';
 const meta: Meta<typeof RadioGroup> = {
   title: 'Components/Inputs/Radio Group',
   component: RadioGroup,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'RadioGroup + Radio for single selection. Checked state and inner dot are handled by CSS transitions in primitives.css.',
+          'RadioGroup + Radio -- a single-selection control for choosing one option from a set. Supports vertical and horizontal layouts, controlled and uncontrolled modes, and FormField context integration.\n\nAccessibility:\n- RadioGroup renders with `role="radiogroup"` for proper grouping semantics.\n- Each Radio uses a native `<input type="radio">` (visually hidden via `.ledger-sr-input`), providing built-in keyboard navigation (arrow keys cycle within the group).\n- Focus-visible tracking applies the focus ring only on keyboard navigation, not on pointer clicks.\n- Shares a `name` attribute across all radios in the group for correct form serialization.\n- Wraps each radio in a `<label>` element for an enlarged click target.',
       },
     },
   },
@@ -25,8 +26,9 @@ const meta: Meta<typeof RadioGroup> = {
     direction: {
       control: { type: 'select' },
       options: ['vertical', 'horizontal'],
+      description: 'Layout axis of the radio items.',
     },
-    disabled: { control: 'boolean' },
+    disabled: { control: 'boolean', description: 'Disables all radios in the group.' },
   },
   args: {
     direction: 'vertical',
@@ -71,6 +73,13 @@ export const Disabled: Story = {
 };
 
 export const Preselected: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'A group with a pre-selected default value, typical for transfer-method selection flows.',
+      },
+    },
+  },
   render: (args) => (
     <RadioGroup {...args} name="preselected" defaultValue="wire">
       <Radio value="ach" label="ACH Transfer" />

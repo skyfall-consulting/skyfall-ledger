@@ -13,22 +13,41 @@ import { space } from '../../tokens/spacing';
 const meta: Meta<typeof FormField> = {
   title: 'Components/Layout/Form Field',
   component: FormField,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'Connects a label, helper/error text, and form control via auto-generated IDs and React context. Controls inside read context to auto-wire accessibility attributes.',
+          'FormField -- Structural wrapper that composes Label, HelperText/ErrorText, and a form control. Generates stable IDs with `React.useId()` and distributes them through `FormFieldContext` so child controls auto-wire `id`, `aria-describedby`, and `aria-invalid`.\n\nAccessibility:\n- Automatically links `<label>` to the control via a generated `htmlFor`/`id` pair\n- Wires `aria-describedby` to helper or error text so assistive technology announces contextual guidance\n- Sets `aria-invalid` on the control when `errorText` is present or `invalid` is explicitly `true`\n- Marks both label and control as `required`/`disabled` through context propagation',
       },
     },
   },
   argTypes: {
-    label: { control: 'text' },
-    helperText: { control: 'text' },
-    errorText: { control: 'text' },
-    required: { control: 'boolean' },
-    disabled: { control: 'boolean' },
-    invalid: { control: 'boolean' },
+    label: {
+      control: 'text',
+      description: 'Renders a Label above the control.',
+    },
+    helperText: {
+      control: 'text',
+      description: 'Renders HelperText below the control.',
+    },
+    errorText: {
+      control: 'text',
+      description: 'Renders ErrorText below the control (replaces helperText when present).',
+    },
+    required: {
+      control: 'boolean',
+      description: 'Marks the field and label as required.',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Marks the field and label as disabled.',
+    },
+    invalid: {
+      control: 'boolean',
+      description: 'Marks the field as invalid. Derived from `!!errorText` when not set explicitly.',
+    },
   },
   args: {
     label: 'Account Name',

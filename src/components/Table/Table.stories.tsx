@@ -20,12 +20,13 @@ import { Badge } from '../Badge';
 const meta: Meta<typeof Table> = {
   title: 'Components/Data Display/Table',
   component: Table,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'Semantic HTML table with compound components and density/striped options for FinTech data display.',
+          'Table -- A compound component system for displaying structured financial data. Composed from `Table`, `TableHead`, `TableBody`, `TableRow`, `TableHeaderCell`, and `TableCell` sub-components that map directly to semantic HTML `<table>`, `<thead>`, `<tbody>`, `<tr>`, `<th>`, and `<td>` elements. Supports three density presets and optional striped row backgrounds for improved scan-ability.\n\nAccessibility:\n- Built entirely on native HTML table elements, providing inherent row/column semantics for screen readers and assistive technology.\n- `<th>` elements include `scope="col"` for explicit column header association.\n- Density is propagated via React Context so all cells receive consistent padding.\n- The root table is wrapped in an `overflow-x: auto` container to ensure horizontal scrollability on narrow viewports without breaking layout.',
       },
     },
   },
@@ -33,9 +34,11 @@ const meta: Meta<typeof Table> = {
     density: {
       control: { type: 'select' },
       options: ['compact', 'default', 'comfortable'],
+      description: 'Row density preset controlling cell padding (compact / default / comfortable).',
     },
     striped: {
       control: { type: 'boolean' },
+      description: 'Alternate row backgrounds for improved scan-ability in data-heavy tables.',
     },
   },
   args: {

@@ -44,12 +44,13 @@ const FilterIcon = () => (
 const meta: Meta<typeof IconButton> = {
   title: 'Components/Inputs/Icon Button',
   component: IconButton,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'Square icon-only button restricted to ghost and secondary variants. Requires aria-label for accessibility.',
+          'IconButton -- a square, icon-only action surface restricted to ghost and secondary variants. Primary and danger call-to-actions should always use a labeled Button for clarity.\n\nAccessibility:\n- Requires `aria-label` at the TypeScript interface level, enforcing an accessible name for every instance.\n- Sets `aria-busy` during the loading state so assistive technology announces pending operations.\n- The icon wrapper is marked `aria-hidden` to prevent duplicate announcements.\n- Uses the `.ledger-focus-ring` utility for a consistent, high-contrast focus indicator.\n- Defaults to `type="button"` to prevent accidental form submissions.',
       },
     },
   },
@@ -57,13 +58,15 @@ const meta: Meta<typeof IconButton> = {
     variant: {
       control: { type: 'select' },
       options: ['ghost', 'secondary'],
+      description: 'Visual treatment -- limited to ghost and secondary.',
     },
     size: {
       control: { type: 'select' },
       options: ['sm', 'md', 'lg'],
+      description: 'Control height and icon size preset.',
     },
-    loading: { control: 'boolean' },
-    disabled: { control: 'boolean' },
+    loading: { control: 'boolean', description: 'Shows a spinner and disables interaction.' },
+    disabled: { control: 'boolean', description: 'Prevents interaction and dims the button.' },
   },
   args: {
     variant: 'ghost',

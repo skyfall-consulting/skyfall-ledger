@@ -14,12 +14,19 @@ import { space } from '../../tokens/spacing';
 const meta: Meta<typeof Textarea> = {
   title: 'Components/Inputs/Textarea',
   component: Textarea,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'Multi-line text input with three sizes, configurable resize, and automatic FormField context integration.',
+          'Textarea — Multi-line text input primitive for transaction notes, payment descriptions, internal memos, and compliance remarks in financial workflows.\n\n' +
+          'Accessibility:\n' +
+          '- Renders a native `<textarea>` element with full browser keyboard and screen-reader support\n' +
+          '- Supports `aria-invalid` and `aria-describedby` auto-wired from FormField context\n' +
+          '- Configurable `resize` behaviour (`none`, `vertical`, `horizontal`, `both`)\n' +
+          '- Disabled state propagates `data-disabled` to the wrapper for consistent styling\n' +
+          '- Forwards ref to the underlying `<textarea>` element for imperative access',
       },
     },
   },
@@ -27,14 +34,25 @@ const meta: Meta<typeof Textarea> = {
     size: {
       control: { type: 'select' },
       options: ['sm', 'md', 'lg'],
+      description: 'Controls the minimum height, padding, and font size.',
     },
     resize: {
       control: { type: 'select' },
       options: ['none', 'vertical', 'horizontal', 'both'],
+      description: 'Sets the CSS resize behaviour of the textarea.',
     },
-    rows: { control: { type: 'number', min: 1, max: 20 } },
-    invalid: { control: 'boolean' },
-    disabled: { control: 'boolean' },
+    rows: {
+      control: { type: 'number', min: 1, max: 20 },
+      description: 'Number of visible text rows.',
+    },
+    invalid: {
+      control: 'boolean',
+      description: 'Renders a red border and focus ring to signal a validation error.',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Disables the textarea and prevents input.',
+    },
   },
   args: {
     size: 'md',

@@ -12,32 +12,40 @@ import { Card } from '../Card';
 const meta: Meta<typeof Grid> = {
   title: 'Components/Layout/Grid',
   component: Grid,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'CSS Grid layout with token-driven gaps. Use GridItem for column span and start control.',
+          'Grid -- CSS Grid layout primitive with token-driven gaps and a companion `GridItem` for column span and start positioning. The `columns` prop accepts a number (mapped to `repeat(n, 1fr)`) or a raw CSS string for advanced track definitions.\n\nUsage:\n- Use for multi-column dashboard layouts, card grids, and responsive content areas\n- Pair with `GridItem` to control individual cell span and start position\n- Pass a CSS string to `columns` (e.g. `repeat(auto-fit, minmax(200px, 1fr))`) for responsive behavior without media queries',
       },
     },
   },
   argTypes: {
-    columns: { control: 'text' },
+    columns: {
+      control: 'text',
+      description: 'Column definition. Number maps to `repeat(n, 1fr)`, string is passed through as raw CSS.',
+    },
     gap: {
       control: { type: 'select' },
       options: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+      description: 'Gap for both axes, mapped to a Ledger space token (0--13).',
     },
     rowGap: {
       control: { type: 'select' },
       options: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+      description: 'Row gap override, mapped to a Ledger space token.',
     },
     columnGap: {
       control: { type: 'select' },
       options: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+      description: 'Column gap override, mapped to a Ledger space token.',
     },
     alignItems: {
       control: { type: 'select' },
       options: ['start', 'center', 'end', 'stretch'],
+      description: 'Cross-axis alignment for all grid items.',
     },
   },
   args: {

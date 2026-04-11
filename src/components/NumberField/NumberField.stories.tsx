@@ -13,12 +13,13 @@ import { space } from '../../tokens/spacing';
 const meta: Meta<typeof NumberField> = {
   title: 'Components/Inputs/Number Field',
   component: NumberField,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'Numeric input with tabular numerals, prefix/suffix slots for currency symbols, and FormField integration.',
+          'NumberField -- a specialized text field for numeric and currency input. Uses `inputMode="decimal"` instead of `type="number"` to avoid browser spinner UX issues while retaining a numeric soft keyboard on mobile devices. Applies tabular numerals (`tnum`, `lnum`) for column-aligned figures in financial tables.\n\nAccessibility:\n- Composes FormField and Input internally, inheriting full label, helper text, and error message wiring via `aria-describedby`.\n- Sets `aria-invalid` automatically when `errorText` is present.\n- Prefix and suffix slots (e.g. "$", "USD") are rendered as inert text with `user-select: none`, keeping the accessible value clean.\n- Supports `min`, `max`, and `step` attributes for assistive technology hints.',
       },
     },
   },
@@ -26,14 +27,15 @@ const meta: Meta<typeof NumberField> = {
     size: {
       control: { type: 'select' },
       options: ['sm', 'md', 'lg'],
+      description: 'Control height preset.',
     },
-    required: { control: 'boolean' },
-    disabled: { control: 'boolean' },
-    label: { control: 'text' },
-    helperText: { control: 'text' },
-    errorText: { control: 'text' },
-    prefix: { control: 'text' },
-    suffix: { control: 'text' },
+    required: { control: 'boolean', description: 'Marks the field as required.' },
+    disabled: { control: 'boolean', description: 'Prevents interaction and dims the field.' },
+    label: { control: 'text', description: 'Renders a label above the input.' },
+    helperText: { control: 'text', description: 'Descriptive text below the input.' },
+    errorText: { control: 'text', description: 'Error message that replaces helper text when present.' },
+    prefix: { control: 'text', description: 'Text in the left slot (e.g. "$").' },
+    suffix: { control: 'text', description: 'Text in the right slot (e.g. "USD").' },
   },
   args: {
     size: 'md',

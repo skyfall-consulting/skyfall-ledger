@@ -11,17 +11,21 @@ import { List, ListItem } from './List';
 const meta: Meta<typeof List> = {
   title: 'Components/Data Display/List',
   component: List,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'A structured list with optional icons, secondary actions, and interactive items.',
+          'List -- A structured list for displaying repeated content rows. Composed with `<ListItem>` sub-components that support optional leading icons, trailing secondary actions, interactive click handling, and a dense sizing mode via React Context.\n\nAccessibility:\n- Renders as a semantic `<ul>` with `<li>` children, providing native list semantics for screen readers.\n- Interactive items (`onClick` provided) receive `role="button"` and `tabIndex={0}` for keyboard focusability.\n- Keyboard support: interactive items respond to `Enter` and `Space` key presses.\n- Disabled items have reduced opacity and suppressed click/keyboard handlers.\n- The `dense` flag is propagated via Context so all child items adjust padding uniformly.',
       },
     },
   },
   argTypes: {
-    dense: { control: 'boolean' },
+    dense: {
+      control: 'boolean',
+      description: 'Reduce vertical padding for compact layouts.',
+    },
   },
   args: {
     dense: false,
@@ -68,6 +72,13 @@ const CreditCardIcon = () => (
 );
 
 export const WithIcons: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'List items with leading icons for visual category identification.',
+      },
+    },
+  },
   render: () => (
     <List style={{ maxWidth: 380 }}>
       <ListItem icon={<WalletIcon />}>Wallet</ListItem>
@@ -80,6 +91,13 @@ export const WithIcons: Story = {
 // ---------- WithActions ----------
 
 export const WithActions: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'List items with trailing secondary actions displaying account balances.',
+      },
+    },
+  },
   render: () => (
     <List style={{ maxWidth: 380 }}>
       <ListItem
@@ -190,6 +208,13 @@ export const Interactive: Story = {
 // ---------- Composed (inside a Card) ----------
 
 export const Composed: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'List composed inside a raised card with icons, secondary actions, and interactive rows.',
+      },
+    },
+  },
   render: () => (
     <div
       style={{

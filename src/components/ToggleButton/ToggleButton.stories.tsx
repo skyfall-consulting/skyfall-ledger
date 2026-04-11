@@ -12,12 +12,19 @@ import { space } from '../../tokens/spacing';
 const meta: Meta<typeof ToggleButton> = {
   title: 'Components/Inputs/Toggle Button',
   component: ToggleButton,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'Toggle button with sm/md sizes and optional full-width layout. Active and hover states are handled by primitives.css.',
+          'ToggleButton — Pill-style segmented control that behaves as a radio group. Used for switching between time periods, account views, or transaction filters in financial dashboards.\n\n' +
+          'Accessibility:\n' +
+          '- Container has `role="radiogroup"` with each segment rendered as `role="radio"` with `aria-checked`\n' +
+          '- Implements roving `tabIndex` so only the active segment is in the tab order\n' +
+          '- Arrow keys (Left/Right, Up/Down) cycle through segments; Home/End jump to first/last\n' +
+          '- Focus is programmatically moved to the newly selected segment on keyboard navigation\n' +
+          '- Disabled state sets `opacity: 0.5` and `cursor: not-allowed` on all segments',
       },
     },
   },
@@ -25,9 +32,16 @@ const meta: Meta<typeof ToggleButton> = {
     size: {
       control: { type: 'select' },
       options: ['sm', 'md'],
+      description: 'Controls segment height, font size, and horizontal padding.',
     },
-    fullWidth: { control: 'boolean' },
-    disabled: { control: 'boolean' },
+    fullWidth: {
+      control: 'boolean',
+      description: 'Stretches the group to fill container width with equal-flex segments.',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Disables all segments and prevents selection changes.',
+    },
   },
   args: {
     size: 'md',

@@ -11,12 +11,13 @@ import { Tooltip } from './Tooltip';
 const meta: Meta<typeof Tooltip> = {
   title: 'Components/Data Display/Tooltip',
   component: Tooltip,
+  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
     docs: {
       description: {
         component:
-          'A hover/focus tooltip with configurable placement, delay, and rich content support.',
+          'Tooltip -- A hover and focus-triggered tooltip that renders into a portal. Positions itself relative to the trigger element using `getBoundingClientRect` with no external positioning library. Supports four placement directions, configurable delay, and rich content.\n\nAccessibility:\n- The trigger element receives `aria-describedby` pointing to the tooltip `id` when visible, associating the description for screen readers.\n- The tooltip container has `role="tooltip"` for correct assistive technology semantics.\n- Activates on both `mouseenter`/`mouseleave` and `focus`/`blur`, ensuring keyboard-only users can access tooltip content by tabbing to the trigger.\n- Uses `pointer-events: none` on the tooltip surface to prevent it from stealing hover focus.',
       },
     },
   },
@@ -24,9 +25,16 @@ const meta: Meta<typeof Tooltip> = {
     placement: {
       control: { type: 'select' },
       options: ['top', 'bottom', 'left', 'right'],
+      description: 'Preferred placement relative to the trigger element.',
     },
-    delay: { control: { type: 'number', min: 0, max: 2000, step: 50 } },
-    content: { control: 'text' },
+    delay: {
+      control: { type: 'number', min: 0, max: 2000, step: 50 },
+      description: 'Delay in milliseconds before the tooltip appears.',
+    },
+    content: {
+      control: 'text',
+      description: 'Content to display inside the tooltip. Supports strings or React nodes.',
+    },
   },
   args: {
     placement: 'top',

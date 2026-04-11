@@ -14,26 +14,46 @@ import { space } from '../../tokens/spacing';
 const meta: Meta<typeof Dialog> = {
   title: 'Components/Feedback/Dialog',
   component: Dialog,
+  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
     docs: {
       description: {
         component:
-          'A focused confirm/cancel dialog built on the native <dialog> element. Ideal for destructive actions, payment confirmations, and any binary decision flow.',
+          'Dialog -- Confirmation-pattern modal for binary decisions such as payment confirmations, account deletions, and transfer cancellations. Built on the native `<dialog>` element with `default` and `danger` variants.\n\n### Accessibility\n- Native `<dialog>` with `showModal()` provides built-in focus trapping and `Escape` key dismissal.\n- `aria-labelledby` links to the dialog title; `aria-describedby` links to the description.\n- Focus moves to the Cancel button on open as the safe default action.\n- Backdrop click triggers the cancel callback.\n- Body scroll is locked while the dialog is open to prevent background interaction.\n- For irreversible financial actions, use the `danger` variant with explicit, specific copy.',
       },
     },
   },
   argTypes: {
-    open: { control: 'boolean' },
+    open: {
+      control: 'boolean',
+      description: 'Controls whether the dialog is visible. Syncs with the native `<dialog>` open state.',
+    },
     variant: {
       control: { type: 'select' },
       options: ['default', 'danger'],
+      description: 'Visual variant. Use `danger` for irreversible or destructive actions.',
     },
-    loading: { control: 'boolean' },
-    title: { control: 'text' },
-    description: { control: 'text' },
-    confirmLabel: { control: 'text' },
-    cancelLabel: { control: 'text' },
+    loading: {
+      control: 'boolean',
+      description: 'Shows a spinner on the confirm button and disables both actions to prevent duplicate submissions.',
+    },
+    title: {
+      control: 'text',
+      description: 'Dialog heading linked via `aria-labelledby`.',
+    },
+    description: {
+      control: 'text',
+      description: 'Body text or rich content linked via `aria-describedby`.',
+    },
+    confirmLabel: {
+      control: 'text',
+      description: 'Label for the primary confirm action button.',
+    },
+    cancelLabel: {
+      control: 'text',
+      description: 'Label for the secondary cancel action button.',
+    },
   },
   args: {
     open: false,

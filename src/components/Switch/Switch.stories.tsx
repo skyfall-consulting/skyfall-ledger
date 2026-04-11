@@ -12,12 +12,19 @@ import { space } from '../../tokens/spacing';
 const meta: Meta<typeof Switch> = {
   title: 'Components/Inputs/Switch',
   component: Switch,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'Toggle switch with sm/md sizes. Cursor and user-select from primitives.css; colors and transforms are inline to support size variants.',
+          'Switch — Binary toggle for on/off states such as enabling two-factor authentication, toggling notifications, or activating feature flags in financial platforms.\n\n' +
+          'Accessibility:\n' +
+          '- Uses a visually-hidden `<input type="checkbox">` with `role="switch"` and `aria-checked` for screen-reader semantics\n' +
+          '- Tracks `:focus-visible` to show a focus ring only on keyboard navigation\n' +
+          '- Wraps the input and track in a `<label>` element for click-to-toggle on the label text\n' +
+          '- Supports controlled and uncontrolled modes with optional FormField context integration\n' +
+          '- Disabled state reduces opacity and sets `cursor: not-allowed` via primitives.css',
       },
     },
   },
@@ -25,9 +32,16 @@ const meta: Meta<typeof Switch> = {
     size: {
       control: { type: 'select' },
       options: ['sm', 'md'],
+      description: 'Controls the track and thumb dimensions.',
     },
-    disabled: { control: 'boolean' },
-    label: { control: 'text' },
+    disabled: {
+      control: 'boolean',
+      description: 'Disables the switch and prevents toggling.',
+    },
+    label: {
+      control: 'text',
+      description: 'Text or element rendered beside the switch track.',
+    },
   },
   args: {
     size: 'md',

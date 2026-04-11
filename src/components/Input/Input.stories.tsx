@@ -14,12 +14,13 @@ import { space } from '../../tokens/spacing';
 const meta: Meta<typeof Input> = {
   title: 'Components/Inputs/Input',
   component: Input,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'Base text input with three sizes, left/right slots, and automatic FormField context integration.',
+          'Input -- the base text input primitive in Skyfall Ledger. Renders inside a `.ledger-input-wrap` container with optional left and right slots for icons, prefixes, or suffix text.\n\nAccessibility:\n- Reads FormField context to auto-wire `id`, `disabled`, `required`, `aria-invalid`, and `aria-describedby` attributes.\n- When invalid, sets `aria-invalid="true"` and links to the FormField error message via `aria-describedby`.\n- When valid with helper text, links to the helper text via `aria-describedby`.\n- Wrapper uses `data-invalid` and `data-disabled` attributes consumed by primitives.css for visual state changes.\n- Supports all native `<input>` attributes via prop forwarding.',
       },
     },
   },
@@ -27,9 +28,10 @@ const meta: Meta<typeof Input> = {
     size: {
       control: { type: 'select' },
       options: ['sm', 'md', 'lg'],
+      description: 'Control height preset.',
     },
-    invalid: { control: 'boolean' },
-    disabled: { control: 'boolean' },
+    invalid: { control: 'boolean', description: 'Renders a red border indicating a validation error.' },
+    disabled: { control: 'boolean', description: 'Prevents interaction and dims the input.' },
   },
   args: {
     size: 'md',

@@ -13,12 +13,13 @@ import { Card } from '../Card';
 const meta: Meta<typeof Avatar> = {
   title: 'Components/Data Display/Avatar',
   component: Avatar,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'Circular user image with initials fallback and optional status indicator for financial team and client displays.',
+          'Avatar -- Circular user image with automatic initials fallback and optional status indicator dot. Designed for user profiles, account managers, and team member displays in financial workflows.\n\nAccessibility:\n- Renders with `role="img"` and an `aria-label` derived from the `alt` or `name` prop, ensuring screen readers announce the user identity.\n- The initials fallback is marked `aria-hidden="true"` so it does not duplicate the accessible label.\n- The status dot is `aria-hidden="true"` with a visually-hidden text label (e.g. "active", "busy") providing status information to assistive technology.\n- When an image fails to load, the component gracefully falls back to initials without layout shift.',
       },
     },
   },
@@ -26,10 +27,12 @@ const meta: Meta<typeof Avatar> = {
     size: {
       control: { type: 'select' },
       options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      description: 'Size preset controlling container dimensions and font size.',
     },
     status: {
       control: { type: 'select' },
       options: [undefined, 'active', 'inactive', 'busy', 'away'],
+      description: 'Optional status dot overlay indicating online presence or availability.',
     },
   },
   args: {

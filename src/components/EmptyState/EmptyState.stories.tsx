@@ -11,18 +11,25 @@ import { EmptyState } from './EmptyState';
 const meta: Meta<typeof EmptyState> = {
   title: 'Components/Feedback/Empty State',
   component: EmptyState,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'Placeholder for empty data views with icon, title, optional description, and action slot.',
+          'EmptyState -- Centered placeholder for empty data views such as zero-transaction tables, empty watchlists, and first-run onboarding screens. Displays an icon, heading, optional description, and an optional action slot to guide users toward their next step.\n\n### Accessibility\n- Uses an `<h3>` heading for semantic hierarchy; ensure surrounding context uses appropriate heading levels.\n- Default icon is marked `aria-hidden="true"` to avoid redundant announcements.\n- Action slot accepts any interactive element -- ensure buttons or links within it have accessible labels.\n- Centered layout with `maxWidth` constraint keeps content readable on wide viewports.',
       },
     },
   },
   argTypes: {
-    title: { control: 'text' },
-    description: { control: 'text' },
+    title: {
+      control: 'text',
+      description: 'Primary heading text displayed below the icon.',
+    },
+    description: {
+      control: 'text',
+      description: 'Optional supporting text rendered below the heading.',
+    },
   },
   args: {
     title: 'No transactions yet',
@@ -101,6 +108,13 @@ export const NoDescription: Story = {
 // ---------- In card ----------
 
 export const InCard: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'EmptyState rendered inside a raised card container, demonstrating usage within dashboard widgets and data panels.',
+      },
+    },
+  },
   render: () => (
     <div
       style={{

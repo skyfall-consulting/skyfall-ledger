@@ -12,13 +12,19 @@ import { NoSSR } from './NoSSR';
 const meta: Meta<typeof NoSSR> = {
   title: 'Components/Utils/No SSR',
   component: NoSSR,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {
       description: {
         component:
-          'Only renders children on the client. Useful for browser-only APIs that would break SSR.',
+          'NoSSR -- Client-only rendering utility that defers children until the component has mounted on the client. Prevents hydration mismatches caused by browser-only APIs (`window`, `navigator`, `localStorage`).\n\nUsage:\n- Wrap content that depends on browser-only APIs to prevent SSR hydration errors\n- Provide an optional `fallback` prop to render a placeholder (e.g. skeleton) during server-side rendering\n- Uses `useEffect` mount detection -- zero runtime cost after initial render',
       },
+    },
+  },
+  argTypes: {
+    fallback: {
+      description: 'Optional placeholder rendered during SSR / before mount.',
     },
   },
 };
