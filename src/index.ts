@@ -40,4 +40,4 @@ export * from './components';
  * Package version — kept in sync with package.json by hand for now.
  * A future build step can replace this from `process.env.npm_package_version`.
  */
-export const LEDGER_VERSION = '0.0.1';
+export const LEDGER_VERSION = '0.1.0';
