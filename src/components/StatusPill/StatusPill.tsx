@@ -7,15 +7,7 @@
  */
 import * as React from 'react';
 
-// ---------------------------------------------------------------------------
-// Pulse keyframes -- injected once at module level
-// ---------------------------------------------------------------------------
-if (typeof document !== 'undefined' && !document.getElementById('ledger-pulse-keyframes')) {
-  const style = document.createElement('style');
-  style.id = 'ledger-pulse-keyframes';
-  style.textContent = '@keyframes ledger-pulse{0%,100%{opacity:1}50%{opacity:0.4}}';
-  document.head.appendChild(style);
-}
+// Keyframes (ledger-pulse) are defined in primitives.css
 
 // ---------------------------------------------------------------------------
 // Types

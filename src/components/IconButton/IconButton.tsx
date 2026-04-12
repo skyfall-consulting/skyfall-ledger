@@ -11,16 +11,6 @@ import { radius } from '../../tokens/radius';
 import { cn } from '../../utils/cn';
 
 // ---------------------------------------------------------------------------
-// Reuse spinner keyframes injected by Button (or inject if loaded standalone)
-// ---------------------------------------------------------------------------
-if (typeof document !== 'undefined' && !document.getElementById('ledger-btn-keyframes')) {
-  const style = document.createElement('style');
-  style.id = 'ledger-btn-keyframes';
-  style.textContent = '@keyframes ledger-spin{to{transform:rotate(360deg)}}';
-  document.head.appendChild(style);
-}
-
-// ---------------------------------------------------------------------------
 // Spinner (same visual as Button)
 // ---------------------------------------------------------------------------
 const Spinner: React.FC<{ size: number }> = ({ size }) => (

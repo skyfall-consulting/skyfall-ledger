@@ -26,24 +26,7 @@ export interface ProgressProps {
   style?: React.CSSProperties;
 }
 
-// ---------------------------------------------------------------------------
-// Indeterminate keyframes injection
-// ---------------------------------------------------------------------------
-const INDETERMINATE_KEYFRAMES = `
-@keyframes ledger-progress-indeterminate {
-  0% { left: -30%; width: 30%; }
-  50% { left: 40%; width: 40%; }
-  100% { left: 100%; width: 30%; }
-}`;
-
-let injected = false;
-function injectKeyframes() {
-  if (injected || typeof document === 'undefined') return;
-  const style = document.createElement('style');
-  style.textContent = INDETERMINATE_KEYFRAMES;
-  document.head.appendChild(style);
-  injected = true;
-}
+// Keyframes (ledger-progress-indeterminate) are defined in primitives.css
 
 // ---------------------------------------------------------------------------
 // Maps
@@ -76,10 +59,6 @@ export const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
     },
     ref,
   ) => {
-    React.useEffect(() => {
-      injectKeyframes();
-    }, []);
-
     const isIndeterminate = value === undefined || value === null;
     const clampedValue = isIndeterminate
       ? undefined

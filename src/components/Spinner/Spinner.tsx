@@ -16,16 +16,6 @@ import * as React from 'react';
 import { cn } from '../../utils/cn';
 
 // ---------------------------------------------------------------------------
-// Keyframes — injected once at module level (shared with Button spinner)
-// ---------------------------------------------------------------------------
-if (typeof document !== 'undefined' && !document.getElementById('ledger-btn-keyframes')) {
-  const style = document.createElement('style');
-  style.id = 'ledger-btn-keyframes';
-  style.textContent = '@keyframes ledger-spin{to{transform:rotate(360deg)}}';
-  document.head.appendChild(style);
-}
-
-// ---------------------------------------------------------------------------
 // Visually-hidden styles (screen-reader-only)
 // ---------------------------------------------------------------------------
 const srOnlyStyles: React.CSSProperties = {

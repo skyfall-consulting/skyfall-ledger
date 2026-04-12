@@ -13,16 +13,6 @@ import { radius } from '../../tokens/radius';
 import { cn } from '../../utils/cn';
 
 // ---------------------------------------------------------------------------
-// Spinner keyframes — injected once at module level
-// ---------------------------------------------------------------------------
-if (typeof document !== 'undefined' && !document.getElementById('ledger-btn-keyframes')) {
-  const style = document.createElement('style');
-  style.id = 'ledger-btn-keyframes';
-  style.textContent = '@keyframes ledger-spin{to{transform:rotate(360deg)}}';
-  document.head.appendChild(style);
-}
-
-// ---------------------------------------------------------------------------
 // Spinner
 // ---------------------------------------------------------------------------
 const Spinner: React.FC<{ size: number }> = ({ size }) => (

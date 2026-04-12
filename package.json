@@ -37,7 +37,9 @@
       }
     },
     "./styles": "./dist/index.css",
-    "./tokens": "./src/tokens/ledger-tokens.css"
+    "./styles.css": "./dist/index.css",
+    "./tokens": "./src/tokens/ledger-tokens.css",
+    "./package.json": "./package.json"
   },
   "files": [
     "dist",

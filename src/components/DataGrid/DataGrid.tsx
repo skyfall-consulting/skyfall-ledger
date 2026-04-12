@@ -28,23 +28,7 @@ import {
 import { Skeleton } from '../Skeleton';
 import { EmptyState } from '../EmptyState';
 
-// ---------------------------------------------------------------------------
-// CSS class injection (hover / interactive states need pseudo-selectors)
-// ---------------------------------------------------------------------------
-const DATAGRID_STYLES = `
-.ledger-datagrid-sort-btn:hover{color:var(--ledger-color-text-primary)}
-.ledger-datagrid-sort-btn:focus-visible{outline:2px solid var(--ledger-color-teal-500);outline-offset:2px;border-radius:2px}
-.ledger-datagrid-row-clickable{cursor:pointer}
-.ledger-datagrid-row-clickable:hover{background:var(--ledger-color-surface-sunken)!important}
-.ledger-datagrid-row-selected{background:rgba(var(--ledger-color-teal-900-rgb,20,184,166),0.15)!important}
-`;
-
-if (typeof document !== 'undefined' && !document.getElementById('ledger-datagrid-styles')) {
-  const style = document.createElement('style');
-  style.id = 'ledger-datagrid-styles';
-  style.textContent = DATAGRID_STYLES;
-  document.head.appendChild(style);
-}
+// DataGrid CSS classes are defined in primitives.css
 
 // ---------------------------------------------------------------------------
 // Types

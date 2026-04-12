@@ -15,15 +15,7 @@ import * as React from 'react';
 import { cn } from '../../utils/cn';
 import { zIndex } from '../../tokens/zIndex';
 
-// ---------------------------------------------------------------------------
-// Keyframes -- injected once for fade-in transition
-// ---------------------------------------------------------------------------
-if (typeof document !== 'undefined' && !document.getElementById('ledger-backdrop-keyframes')) {
-  const style = document.createElement('style');
-  style.id = 'ledger-backdrop-keyframes';
-  style.textContent = '@keyframes ledger-backdrop-in{from{opacity:0}to{opacity:1}}';
-  document.head.appendChild(style);
-}
+// Keyframes (ledger-backdrop-in) are defined in primitives.css
 
 // ---------------------------------------------------------------------------
 // Types

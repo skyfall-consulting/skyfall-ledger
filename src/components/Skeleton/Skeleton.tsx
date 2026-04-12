@@ -26,24 +26,6 @@ export interface SkeletonProps {
 }
 
 // ---------------------------------------------------------------------------
-// Shimmer keyframes injection
-// ---------------------------------------------------------------------------
-const SHIMMER_KEYFRAMES = `
-@keyframes ledger-shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}`;
-
-let injected = false;
-function injectKeyframes() {
-  if (injected || typeof document === 'undefined') return;
-  const style = document.createElement('style');
-  style.textContent = SHIMMER_KEYFRAMES;
-  document.head.appendChild(style);
-  injected = true;
-}
-
-// ---------------------------------------------------------------------------
 // Shared shimmer styles
 // ---------------------------------------------------------------------------
 const shimmerBackground = {
@@ -69,10 +51,6 @@ export const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
     },
     ref,
   ) => {
-    React.useEffect(() => {
-      injectKeyframes();
-    }, []);
-
     if (variant === 'text' && lines > 1) {
       return (
         <div

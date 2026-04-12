@@ -12,29 +12,7 @@ import * as React from 'react';
 import { space } from '../../tokens/spacing';
 import { cn } from '../../utils/cn';
 
-// ---------------------------------------------------------------------------
-// Inject attached-mode CSS once (border-radius overrides via child position)
-// ---------------------------------------------------------------------------
-if (typeof document !== 'undefined' && !document.getElementById('ledger-btn-group-css')) {
-  const style = document.createElement('style');
-  style.id = 'ledger-btn-group-css';
-  style.textContent = [
-    /* Horizontal attached */
-    '.ledger-btn-group--attached-horizontal > *:not(:first-child) { margin-left: -1px; }',
-    '.ledger-btn-group--attached-horizontal > * { border-radius: 0; }',
-    '.ledger-btn-group--attached-horizontal > *:first-child { border-top-left-radius: var(--ledger-radius-sm); border-bottom-left-radius: var(--ledger-radius-sm); }',
-    '.ledger-btn-group--attached-horizontal > *:last-child { border-top-right-radius: var(--ledger-radius-sm); border-bottom-right-radius: var(--ledger-radius-sm); }',
-    /* Vertical attached */
-    '.ledger-btn-group--attached-vertical > *:not(:first-child) { margin-top: -1px; }',
-    '.ledger-btn-group--attached-vertical > * { border-radius: 0; }',
-    '.ledger-btn-group--attached-vertical > *:first-child { border-top-left-radius: var(--ledger-radius-sm); border-top-right-radius: var(--ledger-radius-sm); }',
-    '.ledger-btn-group--attached-vertical > *:last-child { border-bottom-left-radius: var(--ledger-radius-sm); border-bottom-right-radius: var(--ledger-radius-sm); }',
-    /* Hover z-index so overlapping borders look correct */
-    '.ledger-btn-group--attached-horizontal > *:hover, .ledger-btn-group--attached-vertical > *:hover { position: relative; z-index: 1; }',
-    '.ledger-btn-group--attached-horizontal > *:focus-visible, .ledger-btn-group--attached-vertical > *:focus-visible { position: relative; z-index: 2; }',
-  ].join('\n');
-  document.head.appendChild(style);
-}
+// Attached-mode CSS classes are defined in primitives.css
 
 // ---------------------------------------------------------------------------
 // Types

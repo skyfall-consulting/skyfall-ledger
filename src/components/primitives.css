@@ -664,3 +664,89 @@
 .ledger-cmd-item:hover:not([data-disabled]) {
   background: var(--ledger-color-surface-sunken);
 }
+
+/* ================================================================
+   DATA GRID
+   ================================================================ */
+.ledger-datagrid-sort-btn:hover {
+  color: var(--ledger-color-text-primary);
+}
+.ledger-datagrid-sort-btn:focus-visible {
+  outline: 2px solid var(--ledger-color-teal-500);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+.ledger-datagrid-row-clickable {
+  cursor: pointer;
+}
+.ledger-datagrid-row-clickable:hover {
+  background: var(--ledger-color-surface-sunken) !important;
+}
+.ledger-datagrid-row-selected {
+  background: rgba(20, 184, 166, 0.15) !important;
+}
+
+/* ================================================================
+   BUTTON GROUP (attached mode)
+   ================================================================ */
+/* Horizontal attached */
+.ledger-btn-group--attached-horizontal > *:not(:first-child) { margin-left: -1px; }
+.ledger-btn-group--attached-horizontal > * { border-radius: 0; }
+.ledger-btn-group--attached-horizontal > *:first-child {
+  border-top-left-radius: var(--ledger-radius-sm);
+  border-bottom-left-radius: var(--ledger-radius-sm);
+}
+.ledger-btn-group--attached-horizontal > *:last-child {
+  border-top-right-radius: var(--ledger-radius-sm);
+  border-bottom-right-radius: var(--ledger-radius-sm);
+}
+/* Vertical attached */
+.ledger-btn-group--attached-vertical > *:not(:first-child) { margin-top: -1px; }
+.ledger-btn-group--attached-vertical > * { border-radius: 0; }
+.ledger-btn-group--attached-vertical > *:first-child {
+  border-top-left-radius: var(--ledger-radius-sm);
+  border-top-right-radius: var(--ledger-radius-sm);
+}
+.ledger-btn-group--attached-vertical > *:last-child {
+  border-bottom-left-radius: var(--ledger-radius-sm);
+  border-bottom-right-radius: var(--ledger-radius-sm);
+}
+/* Hover z-index for overlapping borders */
+.ledger-btn-group--attached-horizontal > *:hover,
+.ledger-btn-group--attached-vertical > *:hover {
+  position: relative;
+  z-index: 1;
+}
+.ledger-btn-group--attached-horizontal > *:focus-visible,
+.ledger-btn-group--attached-vertical > *:focus-visible {
+  position: relative;
+  z-index: 2;
+}
+
+/* ================================================================
+   KEYFRAMES
+   ================================================================ */
+@keyframes ledger-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ledger-shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes ledger-progress-indeterminate {
+  0%   { left: -30%; width: 30%; }
+  50%  { left: 40%; width: 40%; }
+  100% { left: 100%; width: 30%; }
+}
+
+@keyframes ledger-backdrop-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes ledger-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.4; }
+}

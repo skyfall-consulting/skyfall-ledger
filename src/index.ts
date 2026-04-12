@@ -13,6 +13,11 @@
  * never touch them never bundle Recharts or Lucide.
  */
 
+// Styles — imported here so tsup bundles them into dist/index.css.
+// Consumers load them in one shot: import '@skyfall_ai/ledger/styles.css'
+import './tokens/ledger-tokens.css';
+import './components/primitives.css';
+
 // Theme
 export * from './theme';
 
